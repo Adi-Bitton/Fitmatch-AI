@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaInstagram, FaWhatsapp } from "react-icons/fa";
 
 import {
@@ -119,6 +119,35 @@ export default function Home() {
     }
   };
 
+  const categoriesRef = useRef<HTMLDivElement>(null);
+const categoriesPaused = useRef(false);
+
+useEffect(() => {
+  const container = categoriesRef.current;
+
+  if (!container) return;
+
+  let animationFrame: number;
+
+  const animate = () => {
+    if (!categoriesPaused.current && container) {
+      container.scrollLeft += 0.35;
+
+      const halfway = container.scrollWidth / 2;
+
+      if (container.scrollLeft >= halfway) {
+        container.scrollLeft -= halfway;
+      }
+    }
+
+    animationFrame = requestAnimationFrame(animate);
+  };
+
+  animationFrame = requestAnimationFrame(animate);
+
+  return () => cancelAnimationFrame(animationFrame);
+}, []);
+
   return (
     <main
       dir="rtl"
@@ -210,52 +239,50 @@ export default function Home() {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="fixed inset-0 z-40 bg-[#050308]/95 px-8 pt-28 backdrop-blur-xl lg:hidden">
+          <div
+            className="fixed inset-0 z-40 bg-black/70 backdrop-blur-sm lg:hidden"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            <div
+              className="absolute left-0 top-0 h-full w-[82%] max-w-[340px] border-r border-purple-500/20 bg-[#08060d]/95 px-8 pt-28 shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <nav className="flex flex-col items-center gap-8 text-2xl font-semibold text-white">
 
-            <nav className="flex flex-col items-center gap-8 text-2xl font-semibold text-white">
+                <a
+                  href="#about"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="transition hover:text-purple-400"
+                >
+                  עלינו
+                </a>
 
-              <a
-                href="#about"
-                onClick={() => setMobileMenuOpen(false)}
-                className="transition hover:text-purple-400"
-              >
-                עלינו
-              </a>
+                <a
+                  href="#how"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="transition hover:text-purple-400"
+                >
+                  איך זה עובד
+                </a>
 
-              <a
-                href="#how"
-                onClick={() => setMobileMenuOpen(false)}
-                className="transition hover:text-purple-400"
-              >
-                איך זה עובד
-              </a>
+                <a
+                  href="#categories"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="transition hover:text-purple-400"
+                >
+                  למתאמנים
+                </a>
 
-              <a
-                href="#categories"
-                onClick={() => setMobileMenuOpen(false)}
-                className="transition hover:text-purple-400"
-              >
-                למתאמנים
-              </a>
+                <a
+                  href="#contact"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="transition hover:text-purple-400"
+                >
+                  צור קשר
+                </a>
 
-              <a
-                href="#trainers"
-                onClick={() => setMobileMenuOpen(false)}
-                className="transition hover:text-purple-400"
-              >
-                למאמנים
-              </a>
-
-              <a
-                href="#contact"
-                onClick={() => setMobileMenuOpen(false)}
-                className="transition hover:text-purple-400"
-              >
-                צור קשר
-              </a>
-
-            </nav>
-
+              </nav>
+            </div>
           </div>
         )}
 
@@ -579,11 +606,19 @@ export default function Home() {
         {/* Cards - Mobile Marquee + Desktop Grid */}
 
         {/* MOBILE */}
-        <div
-          className="overflow-hidden xl:hidden"
-          dir="ltr"
-        >
-          <div className="categories-marquee flex w-max gap-4 py-4">
+        <div className="xl:hidden" dir="ltr">
+          <div
+            ref={categoriesRef}
+            onTouchStart={() => {
+              categoriesPaused.current = true;
+            }}
+            onTouchEnd={() => {
+              window.setTimeout(() => {
+                categoriesPaused.current = false;
+              }, 1200);
+            }}
+            className="categories-mobile-scroll flex gap-4 overflow-x-auto py-4"
+          >
             {[...categories, ...categories].map((category, index) => (
               <a
                 key={`${category.title}-${index}`}
@@ -615,7 +650,6 @@ export default function Home() {
             ))}
           </div>
         </div>
-
 
         {/* DESKTOP */}
         <div className="hidden grid-cols-6 gap-4 xl:grid">
@@ -884,8 +918,6 @@ export default function Home() {
       </section>
 
 
-        {/* ================= ABOUT CEO ================= */}
-
       {/* ================= ABOUT CEO ================= */}
 
       <section
@@ -909,24 +941,23 @@ export default function Home() {
             </div>
 
             {/* Images */}
-            <div className="relative mx-auto mt-10 h-[430px] w-full max-w-[340px]">
+            <div className="relative mx-auto mt-10 h-[400px] w-full max-w-[320px]">
 
-              {/* Image 1 - front */}
-              <div className="absolute left-0 top-0 z-20 h-[330px] w-[230px] -rotate-3 overflow-hidden rounded-[22px] border border-white/10 bg-zinc-900 shadow-2xl">
+              {/* Image 1 - front / higher */}
+              <div className="absolute left-0 top-0 z-20 h-[285px] w-[195px] -rotate-2 overflow-hidden rounded-[20px] border border-white/10 bg-zinc-900 shadow-2xl">
                 <div className="flex h-full items-center justify-center text-zinc-500">
                   תמונה 1
                 </div>
               </div>
 
-              {/* Image 2 - behind */}
-              <div className="absolute bottom-0 right-0 z-10 h-[330px] w-[230px] rotate-3 overflow-hidden rounded-[22px] border border-purple-500/20 bg-zinc-900 shadow-2xl">
+              {/* Image 2 - behind / lower */}
+              <div className="absolute bottom-0 right-0 z-10 h-[285px] w-[195px] rotate-2 overflow-hidden rounded-[20px] border border-purple-500/20 bg-zinc-900 shadow-2xl">
                 <div className="flex h-full items-center justify-center text-zinc-500">
                   תמונה 2
                 </div>
               </div>
 
             </div>
-
             {/* Text after images */}
             <div className="mt-10 text-right text-xl leading-9 text-zinc-300">
               <p>

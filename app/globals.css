@@ -36,25 +36,12 @@ body {
 
 /* ================= CATEGORIES MOBILE MARQUEE ================= */
 
-@keyframes categories-scroll {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(calc(-50% - 0.5rem));
-  }
+.categories-mobile-scroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  scroll-behavior: auto;
 }
 
-.categories-marquee {
-  animation: categories-scroll 45s linear infinite;
-  will-change: transform;
-}
-
-/* Desktop - no animation */
-@media (min-width: 1280px) {
-  .categories-marquee {
-    animation: none;
-    transform: none;
-  }
+.categories-mobile-scroll::-webkit-scrollbar {
+  display: none;
 }
