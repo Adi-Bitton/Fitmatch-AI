@@ -141,7 +141,6 @@ export default function Home() {
           </div>
 
 
-
           {/* Navigation */}
           <nav className="hidden items-center gap-9 text-lg text-zinc-300 lg:flex">
             <a href="#about" className="transition hover:text-white">
@@ -581,9 +580,11 @@ export default function Home() {
         {/* Cards - Mobile Marquee + Desktop Grid */}
 
         {/* MOBILE */}
-        <div className="overflow-hidden xl:hidden">
+        <div
+          className="overflow-hidden xl:hidden"
+          dir="ltr"
+        >
           <div className="categories-marquee flex w-max gap-4 py-4">
-
             {[...categories, ...categories].map((category, index) => (
               <a
                 key={`${category.title}-${index}`}
@@ -599,7 +600,10 @@ export default function Home() {
 
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/25 to-transparent" />
 
-                <div className="absolute inset-x-0 bottom-0 z-10 p-4 text-right">
+                <div
+                  dir="rtl"
+                  className="absolute inset-x-0 bottom-0 z-10 p-4 text-right"
+                >
                   <h3 className="text-xl font-bold">
                     {category.title}
                   </h3>
@@ -610,7 +614,6 @@ export default function Home() {
                 </div>
               </a>
             ))}
-
           </div>
         </div>
 
@@ -699,7 +702,7 @@ export default function Home() {
             return (
               <div
                 key={step.number}
-                className={`absolute left-1/2 top-4 h-[350px] w-[90%] -translate-x-1/2 overflow-hidden rounded-[28px] border border-purple-500/30 bg-gradient-to-br from-[#191327] via-[#100d18] to-[#08080d] shadow-[0_25px_70px_rgba(0,0,0,0.55)] transition-all duration-500 ease-out ${positionClass}`}
+                className={`absolute inset-x-0 top-4 mx-auto h-[350px] w-[90%] overflow-hidden rounded-[28px] border border-purple-500/30 bg-gradient-to-br from-[#191327] via-[#100d18] to-[#08080d] shadow-[0_25px_70px_rgba(0,0,0,0.55)] transition-all duration-500 ease-out ${positionClass}`}
               >
                 <div className="flex h-full flex-col p-7">
 
@@ -939,14 +942,14 @@ export default function Home() {
           </div>
 
         </div>
-</section>
+      </section>
 
       {/* ================= CONTACT ================= */}
       <section
         id="contact"
         className="mx-auto w-[calc(100%-3rem)] max-w-[1380px] py-16"
       >
-        <div className="rounded-[32px] border border-purple-500/20 bg-gradient-to-b from-[#11101a] to-[#08080d] p-8 sm:p-12 lg:p-16">
+        <div className="rounded-[32px] border border-purple-500/20 bg-gradient-to-b from-[#11101a] to-[#08080d] p-6 sm:p-12 lg:p-16">
 
           {/* Title */}
           <div className="text-center">
@@ -954,30 +957,33 @@ export default function Home() {
               צור קשר
             </h2>
 
-            <p className="mt-4 text-3xl text-zinc-400">
+            <p className="mt-4 text-2xl text-zinc-400 sm:text-3xl">
               נשמח לשמוע מכם
             </p>
           </div>
 
           {/* Contact Details */}
-          <div className="mt-12 grid grid-cols-2 gap-5 sm:grid-cols-3">
+          <div className="mt-10 grid grid-cols-2 gap-4 sm:mt-12 sm:grid-cols-3 sm:gap-5">
 
             {/* WhatsApp / Phone */}
             <a
               href="https://wa.me/972504080235"
               target="_blank"
               rel="noopener noreferrer"
-              className="group rounded-[22px] border border-white/10 bg-black/20 p-6 text-center transition duration-300 hover:border-purple-500/50 hover:bg-purple-500/5"
+              className="group min-w-0 rounded-[22px] border border-white/10 bg-black/20 p-4 text-center transition duration-300 hover:border-purple-500/50 hover:bg-purple-500/5 sm:p-6"
             >
-              <div className="flex items-center justify-center gap-3">
-                <FaWhatsapp className="text-3xl text-purple-400 transition group-hover:scale-110" />
+              <div className="flex items-center justify-center gap-2 sm:gap-3">
+                <FaWhatsapp className="shrink-0 text-2xl text-purple-400 transition group-hover:scale-110 sm:text-3xl" />
 
-                <p className="text-lg text-zinc-500">
+                <p className="text-base text-zinc-500 sm:text-lg">
                   טלפון
                 </p>
               </div>
 
-              <p className="mt-3 text-xl font-semibold text-white sm:text-2xl">
+              <p
+                dir="ltr"
+                className="mt-3 whitespace-nowrap text-base font-semibold text-white sm:text-2xl"
+              >
                 050-408-0235
               </p>
             </a>
@@ -987,17 +993,20 @@ export default function Home() {
               href="https://www.instagram.com/bar_atias54/"
               target="_blank"
               rel="noopener noreferrer"
-              className="group rounded-[22px] border border-white/10 bg-black/20 p-6 text-center transition duration-300 hover:border-purple-500/50 hover:bg-purple-500/5"
+              className="group min-w-0 rounded-[22px] border border-white/10 bg-black/20 p-4 text-center transition duration-300 hover:border-purple-500/50 hover:bg-purple-500/5 sm:p-6"
             >
-              <div className="flex items-center justify-center gap-3">
-                <FaInstagram className="text-3xl text-purple-400 transition group-hover:scale-110" />
+              <div className="flex items-center justify-center gap-2 sm:gap-3">
+                <FaInstagram className="shrink-0 text-2xl text-purple-400 transition group-hover:scale-110 sm:text-3xl" />
 
-                <p className="text-lg text-zinc-500">
+                <p className="text-base text-zinc-500 sm:text-lg">
                   Instagram
                 </p>
               </div>
 
-              <p className="mt-3 text-xl font-semibold text-white sm:text-2xl">
+              <p
+                dir="ltr"
+                className="mt-3 whitespace-nowrap text-sm font-semibold text-white sm:text-2xl"
+              >
                 @bar_atias54
               </p>
             </a>
@@ -1008,13 +1017,16 @@ export default function Home() {
               onClick={() =>
                 navigator.clipboard.writeText("Baratias109@gmail.com")
               }
-              className="col-span-2 w-full rounded-[22px] border border-white/10 bg-black/20 p-6 text-center transition duration-300 hover:border-purple-500/50 hover:bg-purple-500/5 sm:col-span-1"
+              className="col-span-2 w-full rounded-[22px] border border-white/10 bg-black/20 p-5 text-center transition duration-300 hover:border-purple-500/50 hover:bg-purple-500/5 sm:col-span-1 sm:p-6"
             >
-              <p className="text-lg text-zinc-500">
+              <p className="text-base text-zinc-500 sm:text-lg">
                 מייל
               </p>
 
-              <p className="mt-2 break-all text-xl font-semibold text-white sm:text-2xl">
+              <p
+                dir="ltr"
+                className="mt-2 break-all text-base font-semibold text-white sm:text-2xl"
+              >
                 Baratias109@gmail.com
               </p>
 
@@ -1026,7 +1038,7 @@ export default function Home() {
           </div>
 
           {/* Contact Form */}
-          <div className="mx-auto mt-16 max-w-[900px]">
+          <div className="mx-auto mt-14 max-w-[900px] sm:mt-16">
 
             <h3 className="mb-7 text-center text-2xl font-bold text-white">
               ניתן גם לכתוב לנו
@@ -1037,28 +1049,26 @@ export default function Home() {
               className="space-y-5"
             >
 
-              {/* Name + Phone */}
-              <div className="grid gap-5 sm:grid-cols-2">
+              {/* Name */}
+              <input
+                type="text"
+                required
+                value={contactName}
+                onChange={(e) => setContactName(e.target.value)}
+                placeholder="שם"
+                className="w-full rounded-[18px] border border-white/10 bg-black/30 px-5 py-4 text-right text-white outline-none transition placeholder:text-zinc-600 focus:border-purple-500"
+              />
 
-                <input
-                  type="text"
-                  required
-                  value={contactName}
-                  onChange={(e) => setContactName(e.target.value)}
-                  placeholder="שם"
-                  className="w-full rounded-[18px] border border-white/10 bg-black/30 px-5 py-4 text-white outline-none transition placeholder:text-zinc-600 focus:border-purple-500"
-                />
-
-                <input
-                  type="tel"
-                  required
-                  value={contactPhone}
-                  onChange={(e) => setContactPhone(e.target.value)}
-                  placeholder="מספר טלפון"
-                  className="w-full rounded-[18px] border border-white/10 bg-black/30 px-5 py-4 text-white outline-none transition placeholder:text-zinc-600 focus:border-purple-500"
-                />
-
-              </div>
+              {/* Phone */}
+              <input
+                type="tel"
+                required
+                value={contactPhone}
+                onChange={(e) => setContactPhone(e.target.value)}
+                placeholder="מספר טלפון"
+                dir="rtl"
+                className="w-full rounded-[18px] border border-white/10 bg-black/30 px-5 py-4 text-right text-white outline-none transition placeholder:text-zinc-600 focus:border-purple-500"
+              />
 
               {/* Message */}
               <textarea
@@ -1066,8 +1076,8 @@ export default function Home() {
                 rows={6}
                 value={contactMessage}
                 onChange={(e) => setContactMessage(e.target.value)}
-                placeholder="כתבו לנו..."
-                className="w-full resize-none rounded-[18px] border border-white/10 bg-black/30 px-5 py-4 text-white outline-none transition placeholder:text-zinc-600 focus:border-purple-500"
+                placeholder="גוף ההודעה"
+                className="w-full resize-none rounded-[18px] border border-white/10 bg-black/30 px-5 py-4 text-right text-white outline-none transition placeholder:text-zinc-600 focus:border-purple-500"
               />
 
               {/* Submit */}

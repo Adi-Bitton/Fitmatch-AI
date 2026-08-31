@@ -34,26 +34,7 @@ body {
   font-family: var(--font-heebo), Arial, Helvetica, sans-serif;
 }
 
-@keyframes categories-scroll {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-.categories-marquee {
-  animation: categories-scroll 40s linear infinite;
-}
-
-@media (min-width: 1280px) {
-  .categories-marquee {
-    animation: none;
-    transform: none;
-  }
-}
+/* ================= CATEGORIES MOBILE MARQUEE ================= */
 
 @keyframes categories-scroll {
   from {
@@ -61,10 +42,19 @@ body {
   }
 
   to {
-    transform: translateX(-50%);
+    transform: translateX(calc(-50% - 0.5rem));
   }
 }
 
 .categories-marquee {
   animation: categories-scroll 45s linear infinite;
+  will-change: transform;
+}
+
+/* Desktop - no animation */
+@media (min-width: 1280px) {
+  .categories-marquee {
+    animation: none;
+    transform: none;
+  }
 }
