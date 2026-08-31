@@ -260,10 +260,9 @@ export default function Home() {
         )}
 
         {/* Hero Content */}
-        <div className="relative z-10 mx-auto grid min-h-[calc(100vh-100px)] w-full max-w-[1450px] items-center gap-10 px-6 pb-16 pt-8 lg:grid-cols-[0.9fr_1.1fr] lg:px-10 lg:-translate-y-20">
-          {/* Hero Text */}
+        <div className="relative z-10 mx-auto grid min-h-[calc(100vh-70px)] w-full max-w-[1450px] items-center gap-4 px-6 pb-8 pt-2 lg:min-h-[calc(100vh-100px)] lg:gap-10 lg:px-10 lg:pb-16 lg:pt-8 lg:grid-cols-[0.9fr_1.1fr] lg:-translate-y-20">          {/* Hero Text */}
           <div className="order-2 max-w-[620px] text-center lg:order-1 lg:text-right">
-            <h1 className="text-5xl font-black leading-[1.08] tracking-tight sm:text-6xl lg:text-7xl xl:text-[78px]">
+            <h1 className="text-4xl font-black leading-[1.08] tracking-tight sm:text-6xl lg:text-7xl xl:text-[78px]">
               <span className="block">
                 <span className="bg-gradient-to-l from-purple-300 via-fuchsia-400 to-purple-600 bg-clip-text text-transparent">
                   המאמן
@@ -887,16 +886,67 @@ export default function Home() {
 
         {/* ================= ABOUT CEO ================= */}
 
+      {/* ================= ABOUT CEO ================= */}
+
       <section
         id="about"
         className="mx-auto w-[calc(100%-3rem)] max-w-[1380px] py-14"
       >
-        <div className="rounded-[32px] border border-purple-500/20 bg-gradient-to-b from-[#11101a] to-[#08080d] p-12 lg:p-20">
+        <div className="rounded-[32px] border border-purple-500/20 bg-gradient-to-b from-[#11101a] to-[#08080d] p-6 sm:p-12 lg:p-20">
 
-          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+          {/* ================= MOBILE ================= */}
+          <div className="lg:hidden">
 
-            {/* TEXT - RIGHT ON DESKTOP / SECOND ON MOBILE */}
-            <div className="order-2 text-right lg:order-none">
+            {/* Heading first */}
+            <div className="text-right">
+              <p className="mb-3 text-sm font-semibold uppercase tracking-[0.35em] text-purple-400">
+                ABOUT FITMATCH AI
+              </p>
+
+              <h2 className="text-4xl font-bold text-white">
+                הכירו את המייסד
+              </h2>
+            </div>
+
+            {/* Images */}
+            <div className="relative mx-auto mt-10 h-[430px] w-full max-w-[340px]">
+
+              {/* Image 1 - front */}
+              <div className="absolute left-0 top-0 z-20 h-[330px] w-[230px] -rotate-3 overflow-hidden rounded-[22px] border border-white/10 bg-zinc-900 shadow-2xl">
+                <div className="flex h-full items-center justify-center text-zinc-500">
+                  תמונה 1
+                </div>
+              </div>
+
+              {/* Image 2 - behind */}
+              <div className="absolute bottom-0 right-0 z-10 h-[330px] w-[230px] rotate-3 overflow-hidden rounded-[22px] border border-purple-500/20 bg-zinc-900 shadow-2xl">
+                <div className="flex h-full items-center justify-center text-zinc-500">
+                  תמונה 2
+                </div>
+              </div>
+
+            </div>
+
+            {/* Text after images */}
+            <div className="mt-10 text-right text-xl leading-9 text-zinc-300">
+              <p>
+                אני בר אטיאס, בן 31. במשך 13 השנים האחרונות שירתתי כלוחם
+                ומפקד בחטיבת גבעתי, ובשנה האחרונה לקחתי את עצמי לאתגר חדש -
+                ההכנה לתחרות איש הברזל. במהלך הדרך נחשפתי לעולם פיטנס רווי
+                באפשרויות, וגיליתי עד כמה מורכב למצוא את איש המקצוע שבאמת
+                מתאים לצרכים ולמטרות שלי. אחרי לא מעט זמן, כסף ומשאבים
+                שהושקעו בחיפוש אחר ההתאמה הנכונה, הבנתי שיש כאן צורך אמיתי,
+                ומתוך החוויה האישית הזו נולד הרעיון ל־FITMATCH AI.
+              </p>
+            </div>
+
+          </div>
+
+          {/* ================= DESKTOP ================= */}
+          <div className="hidden items-center gap-12 lg:grid lg:grid-cols-2 lg:gap-16">
+
+            {/* TEXT - RIGHT */}
+            <div className="text-right">
 
               <p className="mb-3 text-sm font-semibold uppercase tracking-[0.35em] text-purple-400">
                 ABOUT FITMATCH AI
@@ -920,8 +970,8 @@ export default function Home() {
 
             </div>
 
-            {/* IMAGES - LEFT ON DESKTOP / FIRST ON MOBILE */}
-            <div className="order-1 relative mx-auto h-[600px] w-full max-w-[600px] lg:order-none">
+            {/* IMAGES - LEFT */}
+            <div className="relative mx-auto h-[600px] w-full max-w-[600px]">
 
               {/* Image 1 - upper left + ABOVE image 2 */}
               <div className="absolute left-0 top-0 z-20 h-[470px] w-[330px] -rotate-5 overflow-hidden rounded-[24px] border border-white/10 bg-zinc-900 shadow-2xl">
