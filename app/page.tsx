@@ -14,6 +14,7 @@ export default function Home() {
   const [contactName, setContactName] = useState("");
   const [contactPhone, setContactPhone] = useState("");
   const [contactMessage, setContactMessage] = useState("");
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleContactSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -46,7 +47,7 @@ export default function Home() {
         {/* Header */}
         <header className="relative z-20 mx-auto flex w-full max-w-[1450px] items-center justify-between px-6 py-6 lg:px-10">
           {/* Logo */}
-          <div className="flex items-center gap-2 text-xl font-bold tracking-wide sm:text-2xl">
+          <div className="flex items-center gap-2 text-xl font-bold tracking-wide sm:text-3xl">
             <span>FITMATCH</span>
 
             <span className="rounded-md border border-purple-500 px-2 py-0.5 text-sm italic text-purple-300">
@@ -57,7 +58,7 @@ export default function Home() {
 
 
           {/* Navigation */}
-          <nav className="hidden items-center gap-9 text-sm text-zinc-300 lg:flex">
+          <nav className="hidden items-center gap-9 text-lg text-zinc-300 lg:flex">
             <a href="#about" className="transition hover:text-white">
                עלינו
             </a>
@@ -90,7 +91,7 @@ export default function Home() {
               href="https://docs.google.com/forms/d/1CmunFdshpkfB63OGo0Kl8xRM0c2Vof5OCAgNcWAzYH0/viewform?edit_requested=true"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden rounded-full bg-gradient-to-l from-purple-500 to-violet-700 px-7 py-3 text-sm font-semibold shadow-[0_0_25px_rgba(139,92,246,0.35)] transition hover:scale-105 sm:block"
+              className="hidden rounded-full bg-gradient-to-l from-purple-500 to-violet-700 px-7 py-3 text-lg font-semibold shadow-[0_0_25px_rgba(139,92,246,0.35)] transition hover:scale-105 sm:block"
             >
               התחילו עכשיו
             </a>
@@ -99,18 +100,83 @@ export default function Home() {
             <button
               type="button"
               aria-label="פתיחת תפריט"
-              className="flex flex-col gap-1.5 lg:hidden"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="relative z-50 flex flex-col gap-1.5 lg:hidden"
             >
-              <span className="h-0.5 w-6 bg-white" />
-              <span className="h-0.5 w-6 bg-white" />
-              <span className="h-0.5 w-6 bg-white" />
+              <span
+                className={`h-0.5 w-7 bg-white transition duration-300 ${
+                  mobileMenuOpen ? "translate-y-2 rotate-45" : ""
+                }`}
+              />
+
+              <span
+                className={`h-0.5 w-7 bg-white transition duration-300 ${
+                  mobileMenuOpen ? "opacity-0" : ""
+                }`}
+              />
+
+              <span
+                className={`h-0.5 w-7 bg-white transition duration-300 ${
+                  mobileMenuOpen ? "-translate-y-2 -rotate-45" : ""
+                }`}
+              />
             </button>
           </div>
         </header>
 
+        {/* Mobile Menu */}
+        {mobileMenuOpen && (
+          <div className="fixed inset-0 z-40 bg-[#050308]/95 px-8 pt-28 backdrop-blur-xl lg:hidden">
+
+            <nav className="flex flex-col items-center gap-8 text-2xl font-semibold text-white">
+
+              <a
+                href="#about"
+                onClick={() => setMobileMenuOpen(false)}
+                className="transition hover:text-purple-400"
+              >
+                עלינו
+              </a>
+
+              <a
+                href="#how"
+                onClick={() => setMobileMenuOpen(false)}
+                className="transition hover:text-purple-400"
+              >
+                איך זה עובד
+              </a>
+
+              <a
+                href="#categories"
+                onClick={() => setMobileMenuOpen(false)}
+                className="transition hover:text-purple-400"
+              >
+                למתאמנים
+              </a>
+
+              <a
+                href="#trainers"
+                onClick={() => setMobileMenuOpen(false)}
+                className="transition hover:text-purple-400"
+              >
+                למאמנים
+              </a>
+
+              <a
+                href="#contact"
+                onClick={() => setMobileMenuOpen(false)}
+                className="transition hover:text-purple-400"
+              >
+                צור קשר
+              </a>
+
+            </nav>
+
+          </div>
+        )}
+
         {/* Hero Content */}
-        <div className="relative z-10 mx-auto grid min-h-[calc(100vh-100px)] w-full max-w-[1450px] items-center gap-10 px-6 pb-16 pt-8 lg:grid-cols-[0.9fr_1.1fr] lg:px-10">
-          {/* Hero Text */}
+          <div className="relative z-10 mx-auto grid min-h-[calc(100vh-100px)] w-full max-w-[1450px] items-center gap-10 px-6 pb-16 pt-8 lg:grid-cols-[0.9fr_1.1fr] lg:px-10 lg:-translate-y-20">          {/* Hero Text */}
           <div className="order-2 max-w-[620px] text-center lg:order-1 lg:text-right">
             <h1 className="text-5xl font-black leading-[1.08] tracking-tight sm:text-6xl lg:text-7xl xl:text-[78px]">
               <span className="block">
@@ -279,7 +345,7 @@ export default function Home() {
       {/* Benefits */}
       <section
         id="benefits"
-        className="relative mx-auto w-[calc(100%-3rem)] max-w-[1380px] pb-1"
+        className="relative mx-auto w-[calc(100%-3rem)] max-w-[1380px] pb-1 lg:-translate-y-2"
       >
         <div className="grid overflow-hidden rounded-[28px] border border-purple-500/20 bg-gradient-to-b from-[#11101a] to-[#08080d] shadow-[0_0_50px_rgba(88,28,135,0.12)] sm:grid-cols-2 lg:grid-cols-4">
           {/* Benefit 1 */}
@@ -357,7 +423,7 @@ export default function Home() {
        {/* ================= ABOUT ================= */}
       <section
       id="about"
-      className="mx-auto w-[calc(100%-3rem)] max-w-[1380px] py-32"
+      className="mx-auto w-[calc(100%-3rem)] max-w-[1380px] py-18"
     >
       <div className="rounded-[32px] border border-purple-500/20 bg-gradient-to-b from-[#11101a] to-[#08080d] p-12 text-center lg:p-20">
 
@@ -380,7 +446,7 @@ export default function Home() {
       {/* ================= CATEGORIES ================= */}
       <section
         id="categories"
-        className="mx-auto w-[calc(100%-3rem)] max-w-[1450px] py-20"
+        className="mx-auto w-[calc(100%-3rem)] max-w-[1450px] py-14"
       >
         {/* Heading */}
         <div className="mb-12 text-center">
@@ -398,13 +464,12 @@ export default function Home() {
         </div>
 
         {/* Cards */}
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
+        <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 sm:grid sm:grid-cols-2 sm:overflow-visible lg:grid-cols-3 xl:grid-cols-6">
 
           {/* Running */}
           <a
             href="#"
-            className="group relative min-h-[400px] overflow-hidden rounded-[26px] border border-white/10 bg-zinc-900 transition duration-300 hover:-translate-y-2 hover:border-purple-500/50 hover:shadow-[0_0_35px_rgba(168,85,247,0.18)]"
-          >
+            className="group relative min-h-[300px] min-w-[calc(50%-0.5rem)] snap-start overflow-hidden rounded-[22px] border border-white/10 bg-zinc-900 transition duration-300 hover:-translate-y-2 hover:border-purple-500/50 hover:shadow-[0_0_35px_rgba(168,85,247,0.18)] sm:min-w-0 sm:min-h-[400px]"          >
             <Image
               src="/running.jpg"
               alt="ריצה"
@@ -423,14 +488,13 @@ export default function Home() {
             </div>
           </a>
 
-          {/* Cycling */}
+          {/* Triathlon */}
           <a
             href="#"
-            className="group relative min-h-[400px] overflow-hidden rounded-[26px] border border-white/10 bg-zinc-900 transition duration-300 hover:-translate-y-2 hover:border-purple-500/50 hover:shadow-[0_0_35px_rgba(168,85,247,0.18)]"
-          >
+            className="group relative min-h-[300px] min-w-[calc(50%-0.5rem)] snap-start overflow-hidden rounded-[22px] border border-white/10 bg-zinc-900 transition duration-300 hover:-translate-y-2 hover:border-purple-500/50 hover:shadow-[0_0_35px_rgba(168,85,247,0.18)] sm:min-w-0 sm:min-h-[400px]"          >
             <Image
-              src="/cycling.jpg"
-              alt="אופניים"
+              src="/triathlon.jpg"
+              alt="טריאטלון"
               fill
               className="object-cover transition duration-700 group-hover:scale-105"
             />
@@ -449,11 +513,10 @@ export default function Home() {
           {/* studio / gym - להחליף תמונה!! */}
           <a
             href="#"
-            className="group relative min-h-[400px] overflow-hidden rounded-[26px] border border-white/10 bg-zinc-900 transition duration-300 hover:-translate-y-2 hover:border-purple-500/50 hover:shadow-[0_0_35px_rgba(168,85,247,0.18)]"
-          >
+            className="group relative min-h-[300px] min-w-[calc(50%-0.5rem)] snap-start overflow-hidden rounded-[22px] border border-white/10 bg-zinc-900 transition duration-300 hover:-translate-y-2 hover:border-purple-500/50 hover:shadow-[0_0_35px_rgba(168,85,247,0.18)] sm:min-w-0 sm:min-h-[400px]"          >
             <Image
-              src="/swimming.jpg"
-              alt="שחייה"
+              src="/studio-strength.jpg"
+              alt="סטודיו כוח"
               fill
               className="object-cover transition duration-700 group-hover:scale-105"
             />
@@ -472,8 +535,7 @@ export default function Home() {
           {/* Strength */}
           <a
             href="#"
-            className="group relative min-h-[400px] overflow-hidden rounded-[26px] border border-white/10 bg-zinc-900 transition duration-300 hover:-translate-y-2 hover:border-purple-500/50 hover:shadow-[0_0_35px_rgba(168,85,247,0.18)]"
-          >
+            className="group relative min-h-[300px] min-w-[calc(50%-0.5rem)] snap-start overflow-hidden rounded-[22px] border border-white/10 bg-zinc-900 transition duration-300 hover:-translate-y-2 hover:border-purple-500/50 hover:shadow-[0_0_35px_rgba(168,85,247,0.18)] sm:min-w-0 sm:min-h-[400px]"          >
             <Image
               src="/strength.jpg"
               alt="אימוני כוח"
@@ -495,8 +557,7 @@ export default function Home() {
           {/* Pilates */}
           <a
             href="#"
-            className="group relative min-h-[400px] overflow-hidden rounded-[26px] border border-white/10 bg-zinc-900 transition duration-300 hover:-translate-y-2 hover:border-purple-500/50 hover:shadow-[0_0_35px_rgba(168,85,247,0.18)]"
-          >
+            className="group relative min-h-[300px] min-w-[calc(50%-0.5rem)] snap-start overflow-hidden rounded-[22px] border border-white/10 bg-zinc-900 transition duration-300 hover:-translate-y-2 hover:border-purple-500/50 hover:shadow-[0_0_35px_rgba(168,85,247,0.18)] sm:min-w-0 sm:min-h-[400px]"          >
             <Image
               src="/pilates.jpg"
               alt="פילאטיס"
@@ -519,8 +580,7 @@ export default function Home() {
           {/* Nutrition */}
           <a
             href="#"
-            className="group relative min-h-[400px] overflow-hidden rounded-[26px] border border-white/10 bg-zinc-900 transition duration-300 hover:-translate-y-2 hover:border-purple-500/50 hover:shadow-[0_0_35px_rgba(168,85,247,0.18)]"
-          >
+            className="group relative min-h-[300px] min-w-[calc(50%-0.5rem)] snap-start overflow-hidden rounded-[22px] border border-white/10 bg-zinc-900 transition duration-300 hover:-translate-y-2 hover:border-purple-500/50 hover:shadow-[0_0_35px_rgba(168,85,247,0.18)] sm:min-w-0 sm:min-h-[400px]"          >
             <Image
               src="/nutrition.jpg"
               alt="תזונה"
@@ -546,7 +606,7 @@ export default function Home() {
 
       <section
         id="how"
-        className="mx-auto w-[calc(100%-3rem)] max-w-[1380px] py-24"
+        className="mx-auto w-[calc(100%-3rem)] max-w-[1380px] py-10"
       >
         {/* Title */}
         <div className="mb-16 text-center">
@@ -643,7 +703,7 @@ export default function Home() {
 
 
       {/* ================= ARTICLE ================= */}
-      <section className="mx-auto w-full max-w-[1450px] px-6 py-20 lg:px-10">
+      <section className="mx-auto w-full max-w-[1450px] px-6 py-14 lg:px-10">
 
         {/* Small title */}
         <h2 className="mb-8 text-center text-4xl font-bold text-white lg:text-5xl">
@@ -688,7 +748,7 @@ export default function Home() {
 
       <section
         id="about"
-        className="mx-auto w-[calc(100%-3rem)] max-w-[1380px] py-32"
+        className="mx-auto w-[calc(100%-3rem)] max-w-[1380px] py-14"
       >
         <div className="rounded-[32px] border border-purple-500/20 bg-gradient-to-b from-[#11101a] to-[#08080d] p-12 lg:p-20">
 
@@ -747,7 +807,7 @@ export default function Home() {
       {/* ================= CONTACT ================= */}
       <section
         id="contact"
-        className="mx-auto w-[calc(100%-3rem)] max-w-[1380px] py-20"
+        className="mx-auto w-[calc(100%-3rem)] max-w-[1380px] py-16"
       >
         <div className="rounded-[32px] border border-purple-500/20 bg-gradient-to-b from-[#11101a] to-[#08080d] p-8 sm:p-12 lg:p-16">
 
