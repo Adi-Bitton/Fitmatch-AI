@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { FaInstagram, FaWhatsapp } from "react-icons/fa";
 
 import {
   Target,
@@ -15,6 +16,7 @@ export default function Home() {
   const [contactPhone, setContactPhone] = useState("");
   const [contactMessage, setContactMessage] = useState("");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [trainerMenuOpen, setTrainerMenuOpen] = useState(false);
 
   const handleContactSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -32,6 +34,89 @@ export default function Home() {
     )}`;
 
     window.open(whatsappUrl, "_blank");
+  };
+
+  const categories = [
+  {
+    title: "ריצה",
+    description: "מאמנים אישיים וקבוצות ריצה",
+    image: "/running.jpg",
+  },
+  {
+    title: "טריאתלון",
+    description: "אימונים אישיים וקבוצות רכיבה ושחייה",
+    image: "/triathlon.jpg",
+  },
+  {
+    title: "סטודיו strength",
+    description: "סטודיואים לאימוני כוח",
+    image: "/studio-strength.jpg",
+  },
+  {
+    title: "מאמני כושר אישיים",
+    description: "מאמנים אישיים ומסגרות כוח",
+    image: "/strength.jpg",
+  },
+  {
+    title: "פילאטיס",
+    description: "סטודיואים ומדריכי פילאטיס",
+    image: "/pilates.jpg",
+  },
+  {
+    title: "תזונה",
+    description: "תזונאים קליניים וליווי מותאם אישית",
+    image: "/nutrition.jpg",
+  },
+];
+
+  const [activeStep, setActiveStep] = useState(0);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
+  const howSteps = [
+    {
+      number: "1",
+      title: "עונים על שאלון קצר",
+      image: "",
+    },
+    {
+      number: "2",
+      title: "FITMATCH AI מנתחת את ההתאמה",
+      image: "",
+    },
+    {
+      number: "3",
+      title: "מקבלים את ה־MATCH שלכם",
+      image: "",
+    },
+  ];
+
+  const handleStepTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleStepTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleStepTouchEnd = () => {
+    if (touchStart === null || touchEnd === null) return;
+
+    const distance = touchStart - touchEnd;
+    const minSwipeDistance = 50;
+
+    // Swipe left
+    if (distance > minSwipeDistance) {
+      setActiveStep((prev) =>
+        prev < howSteps.length - 1 ? prev + 1 : prev
+      );
+    }
+
+    // Swipe right
+    if (distance < -minSwipeDistance) {
+      setActiveStep((prev) => (prev > 0 ? prev - 1 : prev));
+    }
   };
 
   return (
@@ -176,7 +261,8 @@ export default function Home() {
         )}
 
         {/* Hero Content */}
-          <div className="relative z-10 mx-auto grid min-h-[calc(100vh-100px)] w-full max-w-[1450px] items-center gap-10 px-6 pb-16 pt-8 lg:grid-cols-[0.9fr_1.1fr] lg:px-10 lg:-translate-y-20">          {/* Hero Text */}
+        <div className="relative z-10 mx-auto grid min-h-[calc(100vh-100px)] w-full max-w-[1450px] items-center gap-10 px-6 pb-16 pt-8 lg:grid-cols-[0.9fr_1.1fr] lg:px-10 lg:-translate-y-20">
+          {/* Hero Text */}
           <div className="order-2 max-w-[620px] text-center lg:order-1 lg:text-right">
             <h1 className="text-5xl font-black leading-[1.08] tracking-tight sm:text-6xl lg:text-7xl xl:text-[78px]">
               <span className="block">
@@ -189,7 +275,7 @@ export default function Home() {
               <span className="mt-2 block">ההתאמה שלך.</span>
 
               <span className="bg-gradient-to-l from-purple-300 via-fuchsia-400 to-purple-600 bg-clip-text text-transparent">
-                  FITMATCH AI
+                FITMATCH AI
               </span>
             </h1>
 
@@ -214,66 +300,96 @@ export default function Home() {
                 </span>
               </a>
 
-              <div className="group relative">
+             <div className="group relative flex w-full justify-center sm:w-auto">
+
               <button
                 type="button"
-                className="flex items-center justify-center gap-3 rounded-full border border-purple-500/70 bg-purple-950/10 px-8 py-4 font-semibold transition hover:bg-purple-500/10"
+                onClick={() => setTrainerMenuOpen(!trainerMenuOpen)}
+                className="flex w-full max-w-[360px] items-center justify-center gap-3 rounded-full border border-purple-500/70 bg-purple-950/10 px-8 py-4 font-semibold transition hover:bg-purple-500/10 sm:w-auto"
               >
                 <span className="text-purple-300">♙</span>
 
                 אני מאמן / סטודיו
 
-                <span className="text-sm text-purple-300">⌄</span>
+                <span
+                  className={`text-sm text-purple-300 transition-transform duration-200 ${
+                    trainerMenuOpen ? "rotate-180" : ""
+                  }`}
+                >
+                  ⌄
+                </span>
               </button>
 
-              {/* Dropdown */}
-              <div className="invisible absolute right-0 top-full z-50 w-[250px] pt-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
+              {/* Trainer Dropdown */}
+              <div
+                className={`
+                  absolute top-full z-50 mt-3 w-full max-w-[360px]
+                  rounded-[22px] border border-purple-500/30
+                  bg-[rgba(17,16,26,0.90)] p-2
+                  shadow-[0_20px_60px_rgba(0,0,0,0.45)]
+                  backdrop-blur-md
+                  transition-all duration-200
 
-                <div className="rounded-[22px] border border-purple-500/30 bg-[rgba(17,16,26,0.78)] p-2 shadow-[0_20px_60px_rgba(0,0,0,0.45)] backdrop-blur-md">
+                  ${
+                    trainerMenuOpen
+                      ? "visible translate-y-0 opacity-100"
+                      : "invisible translate-y-2 opacity-0"
+                  }
 
-                  <a
-                    href="#"
-                    className="block rounded-[14px] px-4 py-3 text-center text-lg font-medium text-zinc-300 transition hover:bg-purple-500/10 hover:text-white"
-                  >
-                    מאמן ריצה
-                  </a>
+                  lg:group-hover:visible
+                  lg:group-hover:translate-y-0
+                  lg:group-hover:opacity-100
+                `}
+              >
 
-                  <a
-                    href="#"
-                    className="block rounded-[14px] px-4 py-3 text-center text-lg font-medium text-zinc-300 transition hover:bg-purple-500/10 hover:text-white"
-                  >
-                    מאמן כוח
-                  </a>
+                {/* TODO: שאלון מאמן ריצה */}
+                <a
+                  href="#"
+                  className="block rounded-[14px] px-4 py-3 text-center text-lg font-medium text-zinc-300 transition hover:bg-purple-500/10 hover:text-white"
+                >
+                  מאמן ריצה
+                </a>
 
-                  <a
-                    href="#"
-                    className="block rounded-[14px] px-4 py-3 text-center text-lg font-medium text-zinc-300 transition hover:bg-purple-500/10 hover:text-white"
-                  >
-                    פילאטיס
-                  </a>
+                {/* TODO: שאלון מאמן כוח */}
+                <a
+                  href="#"
+                  className="block rounded-[14px] px-4 py-3 text-center text-lg font-medium text-zinc-300 transition hover:bg-purple-500/10 hover:text-white"
+                >
+                  מאמן כוח
+                </a>
 
-                  <a
-                    href="#"
-                    className="block rounded-[14px] px-4 py-3 text-center text-lg font-medium text-zinc-300 transition hover:bg-purple-500/10 hover:text-white"
-                  >
-                    שחייה
-                  </a>
+                {/* TODO: שאלון פילאטיס */}
+                <a
+                  href="#"
+                  className="block rounded-[14px] px-4 py-3 text-center text-lg font-medium text-zinc-300 transition hover:bg-purple-500/10 hover:text-white"
+                >
+                  פילאטיס
+                </a>
 
-                  <a
-                    href="#"
-                    className="block rounded-[14px] px-4 py-3 text-center text-lg font-medium text-zinc-300 transition hover:bg-purple-500/10 hover:text-white"
-                  >
-                    אופניים
-                  </a>
+                {/* TODO: שאלון שחייה */}
+                <a
+                  href="#"
+                  className="block rounded-[14px] px-4 py-3 text-center text-lg font-medium text-zinc-300 transition hover:bg-purple-500/10 hover:text-white"
+                >
+                  שחייה
+                </a>
 
-                  <a
-                    href="#"
-                    className="block rounded-[14px] px-4 py-3 text-center text-lg font-medium text-zinc-300 transition hover:bg-purple-500/10 hover:text-white"
-                  >
-                    תזונה
-                  </a>
+                {/* TODO: שאלון אופניים */}
+                <a
+                  href="#"
+                  className="block rounded-[14px] px-4 py-3 text-center text-lg font-medium text-zinc-300 transition hover:bg-purple-500/10 hover:text-white"
+                >
+                  אופניים
+                </a>
 
-                </div>
+                {/* TODO: שאלון תזונה */}
+                <a
+                  href="#"
+                  className="block rounded-[14px] px-4 py-3 text-center text-lg font-medium text-zinc-300 transition hover:bg-purple-500/10 hover:text-white"
+                >
+                  תזונה
+                </a>
+
               </div>
             </div>
             </div>
@@ -295,7 +411,6 @@ export default function Home() {
                 <span className="font-bold text-purple-400">+1,200</span>{" "}
                 מתאמנים כבר מצאו את ההתאמה שלהם
               </p>
-
             </div>
           </div>
 
@@ -321,7 +436,7 @@ export default function Home() {
                 src="/fitmatch-wheel.png"
                 alt="FITMATCH AI Wheel"
                 fill
-                priority  
+                priority
                 className="z-20 object-contain"
               />
             </div>
@@ -463,141 +578,73 @@ export default function Home() {
           </p>
         </div>
 
-        {/* Cards */}
-        <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 sm:grid sm:grid-cols-2 sm:overflow-visible lg:grid-cols-3 xl:grid-cols-6">
+        {/* Cards - Mobile Marquee + Desktop Grid */}
 
-          {/* Running */}
-          <a
-            href="#"
-            className="group relative min-h-[300px] min-w-[calc(50%-0.5rem)] snap-start overflow-hidden rounded-[22px] border border-white/10 bg-zinc-900 transition duration-300 hover:-translate-y-2 hover:border-purple-500/50 hover:shadow-[0_0_35px_rgba(168,85,247,0.18)] sm:min-w-0 sm:min-h-[400px]"          >
-            <Image
-              src="/running.jpg"
-              alt="ריצה"
-              fill
-              className="object-cover transition duration-700 group-hover:scale-105"
-            />
+        {/* MOBILE */}
+        <div className="overflow-hidden xl:hidden">
+          <div className="categories-marquee flex w-max gap-4 py-4">
 
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/25 to-transparent" />
+            {[...categories, ...categories].map((category, index) => (
+              <a
+                key={`${category.title}-${index}`}
+                href="#"
+                className="group relative h-[280px] w-[170px] shrink-0 overflow-hidden rounded-[22px] border border-white/10 bg-zinc-900"
+              >
+                <Image
+                  src={category.image}
+                  alt={category.title}
+                  fill
+                  className="object-cover"
+                />
 
-            <div className="absolute inset-x-0 bottom-0 z-10 p-6">
-              <h3 className="text-2xl font-bold">ריצה</h3>
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/25 to-transparent" />
 
-              <p className="mt-2 text-sm leading-6 text-zinc-300">
-                מאמנים אישיים וקבוצות ריצה
-              </p>
-            </div>
-          </a>
+                <div className="absolute inset-x-0 bottom-0 z-10 p-4 text-right">
+                  <h3 className="text-xl font-bold">
+                    {category.title}
+                  </h3>
 
-          {/* Triathlon */}
-          <a
-            href="#"
-            className="group relative min-h-[300px] min-w-[calc(50%-0.5rem)] snap-start overflow-hidden rounded-[22px] border border-white/10 bg-zinc-900 transition duration-300 hover:-translate-y-2 hover:border-purple-500/50 hover:shadow-[0_0_35px_rgba(168,85,247,0.18)] sm:min-w-0 sm:min-h-[400px]"          >
-            <Image
-              src="/triathlon.jpg"
-              alt="טריאטלון"
-              fill
-              className="object-cover transition duration-700 group-hover:scale-105"
-            />
+                  <p className="mt-2 text-sm leading-5 text-zinc-300">
+                    {category.description}
+                  </p>
+                </div>
+              </a>
+            ))}
 
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/25 to-transparent" />
+          </div>
+        </div>
 
-            <div className="absolute inset-x-0 bottom-0 z-10 p-6">
-              <h3 className="text-2xl font-bold">טריאטלון</h3>
 
-              <p className="mt-2 text-sm leading-6 text-zinc-300">
-                אימונים אישיים וקבוצות רכיבה ושחייה
-              </p>
-            </div>
-          </a>
+        {/* DESKTOP */}
+        <div className="hidden grid-cols-6 gap-4 xl:grid">
 
-          {/* studio / gym - להחליף תמונה!! */}
-          <a
-            href="#"
-            className="group relative min-h-[300px] min-w-[calc(50%-0.5rem)] snap-start overflow-hidden rounded-[22px] border border-white/10 bg-zinc-900 transition duration-300 hover:-translate-y-2 hover:border-purple-500/50 hover:shadow-[0_0_35px_rgba(168,85,247,0.18)] sm:min-w-0 sm:min-h-[400px]"          >
-            <Image
-              src="/studio-strength.jpg"
-              alt="סטודיו כוח"
-              fill
-              className="object-cover transition duration-700 group-hover:scale-105"
-            />
+          {categories.map((category) => (
+            <a
+              key={category.title}
+              href="#"
+              className="group relative min-h-[400px] overflow-hidden rounded-[22px] border border-white/10 bg-zinc-900 transition duration-300 hover:-translate-y-2 hover:border-purple-500/50 hover:shadow-[0_0_35px_rgba(168,85,247,0.18)]"
+            >
+              <Image
+                src={category.image}
+                alt={category.title}
+                fill
+                className="object-cover transition duration-700 group-hover:scale-105"
+              />
 
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/25 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/25 to-transparent" />
 
-            <div className="absolute inset-x-0 bottom-0 z-10 p-6">
-              <h3 className="text-2xl font-bold">סטודיו strength</h3>
+              <div className="absolute inset-x-0 bottom-0 z-10 p-6">
+                <h3 className="text-2xl font-bold">
+                  {category.title}
+                </h3>
 
-              <p className="mt-2 text-sm leading-6 text-zinc-300">
-               סטודיואים לאימוני כוח
-              </p>
-            </div>
-          </a>
+                <p className="mt-2 text-sm leading-6 text-zinc-300">
+                  {category.description}
+                </p>
+              </div>
+            </a>
+          ))}
 
-          {/* Strength */}
-          <a
-            href="#"
-            className="group relative min-h-[300px] min-w-[calc(50%-0.5rem)] snap-start overflow-hidden rounded-[22px] border border-white/10 bg-zinc-900 transition duration-300 hover:-translate-y-2 hover:border-purple-500/50 hover:shadow-[0_0_35px_rgba(168,85,247,0.18)] sm:min-w-0 sm:min-h-[400px]"          >
-            <Image
-              src="/strength.jpg"
-              alt="אימוני כוח"
-              fill
-              className="object-cover transition duration-700 group-hover:scale-105"
-            />
-
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/25 to-transparent" />
-
-            <div className="absolute inset-x-0 bottom-0 z-10 p-6">
-              <h3 className="text-2xl font-bold">מאמני כושר אישיים</h3>
-
-              <p className="mt-2 text-sm leading-6 text-zinc-300">
-                מאמנים אישיים ומסגרות כוח
-              </p>
-            </div>
-          </a>
-
-          {/* Pilates */}
-          <a
-            href="#"
-            className="group relative min-h-[300px] min-w-[calc(50%-0.5rem)] snap-start overflow-hidden rounded-[22px] border border-white/10 bg-zinc-900 transition duration-300 hover:-translate-y-2 hover:border-purple-500/50 hover:shadow-[0_0_35px_rgba(168,85,247,0.18)] sm:min-w-0 sm:min-h-[400px]"          >
-            <Image
-              src="/pilates.jpg"
-              alt="פילאטיס"
-              fill
-              className="object-cover transition duration-700 group-hover:scale-105"
-            />
-
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/25 to-transparent" />
-
-            <div className="absolute inset-x-0 bottom-0 z-10 p-6">
-              <h3 className="text-2xl font-bold">פילאטיס</h3>
-
-              <p className="mt-2 text-sm leading-6 text-zinc-300">
-                סטודיואים ומדריכי פילאטיס
-              </p>
-            </div>
-          </a>
-
-          
-          {/* Nutrition */}
-          <a
-            href="#"
-            className="group relative min-h-[300px] min-w-[calc(50%-0.5rem)] snap-start overflow-hidden rounded-[22px] border border-white/10 bg-zinc-900 transition duration-300 hover:-translate-y-2 hover:border-purple-500/50 hover:shadow-[0_0_35px_rgba(168,85,247,0.18)] sm:min-w-0 sm:min-h-[400px]"          >
-            <Image
-              src="/nutrition.jpg"
-              alt="תזונה"
-              fill
-              className="object-cover transition duration-700 group-hover:scale-105"
-            />
-
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/25 to-transparent" />
-
-            <div className="absolute inset-x-0 bottom-0 z-10 p-6">
-              <h3 className="text-2xl font-bold">תזונה</h3>
-
-              <p className="mt-2 text-sm leading-6 text-zinc-300">
-                תזונאים קלינים וליווי מותאם אישית
-              </p>
-            </div>
-          </a>
         </div>
       </section>
 
@@ -609,7 +656,7 @@ export default function Home() {
         className="mx-auto w-[calc(100%-3rem)] max-w-[1380px] py-10"
       >
         {/* Title */}
-        <div className="mb-16 text-center">
+        <div className="mb-12 text-center lg:mb-16">
           <p className="mb-3 text-sm font-semibold uppercase tracking-[0.35em] text-purple-400">
             HOW IT WORKS
           </p>
@@ -619,8 +666,100 @@ export default function Home() {
           </h2>
         </div>
 
-        {/* Steps */}
-        <div className="grid items-center gap-8 lg:grid-cols-[1fr_auto_1fr_auto_1fr]">
+        {/* ================================================= */}
+        {/* MOBILE CARD DECK */}
+        {/* ================================================= */}
+
+        <div
+          className="relative mx-auto h-[500px] w-full max-w-[390px] touch-pan-y lg:hidden"
+          onTouchStart={handleStepTouchStart}
+          onTouchMove={handleStepTouchMove}
+          onTouchEnd={handleStepTouchEnd}
+        >
+          {howSteps.map((step, index) => {
+            const relativePosition =
+              (index - activeStep + howSteps.length) % howSteps.length;
+
+            let positionClass = "";
+
+            if (relativePosition === 0) {
+              // Active card - TOP
+              positionClass =
+                "z-30 translate-x-0 translate-y-0 rotate-[-3deg] scale-100 opacity-100";
+            } else if (relativePosition === 1) {
+              // Second card
+              positionClass =
+                "z-20 translate-x-4 translate-y-12 rotate-[3deg] scale-[0.96] opacity-90";
+            } else {
+              // Third / bottom card
+              positionClass =
+                "z-10 translate-x-8 translate-y-24 rotate-[6deg] scale-[0.92] opacity-75";
+            }
+
+            return (
+              <div
+                key={step.number}
+                className={`absolute left-1/2 top-4 h-[350px] w-[90%] -translate-x-1/2 overflow-hidden rounded-[28px] border border-purple-500/30 bg-gradient-to-br from-[#191327] via-[#100d18] to-[#08080d] shadow-[0_25px_70px_rgba(0,0,0,0.55)] transition-all duration-500 ease-out ${positionClass}`}
+              >
+                <div className="flex h-full flex-col p-7">
+
+                  {/* Number */}
+                  <p className="text-left text-3xl font-bold text-purple-400">
+                    0{step.number}
+                  </p>
+
+                  {/* Image placeholder */}
+                  <div className="mt-5 flex flex-1 items-center justify-center overflow-hidden rounded-[20px] border border-purple-500/20 bg-black/20 text-zinc-500">
+                    תמונה {step.number}
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="mt-6 text-center text-2xl font-bold text-white">
+                    {step.title}
+                  </h3>
+
+                </div>
+              </div>
+            );
+          })}
+
+          {/* Swipe hint */}
+          <div className="absolute bottom-4 left-0 right-0 flex items-center justify-between px-5 text-sm text-zinc-500">
+
+            <span>
+              ← החליקו
+            </span>
+
+            {/* Pagination dots */}
+            <div className="flex gap-2">
+              {howSteps.map((_, index) => (
+                <button
+                  key={index}
+                  type="button"
+                  onClick={() => setActiveStep(index)}
+                  aria-label={`שלב ${index + 1}`}
+                  className={`h-2.5 w-2.5 rounded-full transition ${
+                    activeStep === index
+                      ? "bg-purple-400"
+                      : "bg-zinc-700"
+                  }`}
+                />
+              ))}
+            </div>
+
+            <span>
+              החליקו →
+            </span>
+
+          </div>
+        </div>
+
+
+        {/* ================================================= */}
+        {/* DESKTOP */}
+        {/* ================================================= */}
+
+        <div className="hidden items-center gap-8 lg:grid lg:grid-cols-[1fr_auto_1fr_auto_1fr]">
 
           {/* STEP 1 */}
           <div className="text-center">
@@ -628,7 +767,7 @@ export default function Home() {
               1
             </p>
 
-            <h3 className="mb-7 text-2xl font-bold text-white lg:text-3xl">
+            <h3 className="mb-7 text-3xl font-bold text-white">
               עונים על שאלון קצר
             </h3>
 
@@ -639,12 +778,16 @@ export default function Home() {
             </div>
           </div>
 
+
           {/* ARROW 1 */}
-          <div className="hidden items-center justify-center lg:flex">
-            <span className="text-6xl font-light text-purple-400">
+          <div className="flex items-center justify-center">
+            <span
+              className="text-6xl font-bold text-purple-400 drop-shadow-[0_0_12px_rgba(168,85,247,0.45)]"
+            >
               ←
             </span>
           </div>
+
 
           {/* STEP 2 */}
           <div className="text-center">
@@ -652,7 +795,7 @@ export default function Home() {
               2
             </p>
 
-            <h3 className="mb-7 text-2xl font-bold text-white lg:text-3xl">
+            <h3 className="mb-7 text-3xl font-bold text-white">
               FITMATCH AI מנתחת את ההתאמה
             </h3>
 
@@ -663,12 +806,16 @@ export default function Home() {
             </div>
           </div>
 
+
           {/* ARROW 2 */}
-          <div className="hidden items-center justify-center lg:flex">
-            <span className="text-6xl font-light text-purple-400">
+          <div className="flex items-center justify-center">
+            <span
+              className="text-6xl font-bold text-purple-400 drop-shadow-[0_0_12px_rgba(168,85,247,0.45)]"
+            >
               ←
             </span>
           </div>
+
 
           {/* STEP 3 */}
           <div className="text-center">
@@ -676,7 +823,7 @@ export default function Home() {
               3
             </p>
 
-            <h3 className="mb-7 text-2xl font-bold text-white lg:text-3xl">
+            <h3 className="mb-7 text-3xl font-bold text-white">
               מקבלים את ה־MATCH שלכם
             </h3>
 
@@ -688,15 +835,6 @@ export default function Home() {
           </div>
 
         </div>
-
-        {/* Mobile arrows */}
-        <style jsx>{`
-          @media (max-width: 1023px) {
-            .mobile-step-arrow::after {
-              content: "↓";
-            }
-          }
-        `}</style>
 
       </section>
 
@@ -754,8 +892,8 @@ export default function Home() {
 
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
 
-            {/* TEXT - RIGHT */}
-            <div className="text-right">
+            {/* TEXT - RIGHT ON DESKTOP / SECOND ON MOBILE */}
+            <div className="order-2 text-right lg:order-none">
 
               <p className="mb-3 text-sm font-semibold uppercase tracking-[0.35em] text-purple-400">
                 ABOUT FITMATCH AI
@@ -779,8 +917,8 @@ export default function Home() {
 
             </div>
 
-            {/* IMAGES - LEFT */}
-            <div className="relative mx-auto h-[600px] w-full max-w-[600px]">
+            {/* IMAGES - LEFT ON DESKTOP / FIRST ON MOBILE */}
+            <div className="order-1 relative mx-auto h-[600px] w-full max-w-[600px] lg:order-none">
 
               {/* Image 1 - upper left + ABOVE image 2 */}
               <div className="absolute left-0 top-0 z-20 h-[470px] w-[330px] -rotate-5 overflow-hidden rounded-[24px] border border-white/10 bg-zinc-900 shadow-2xl">
@@ -794,15 +932,14 @@ export default function Home() {
                 <div className="flex h-full items-center justify-center text-zinc-500">
                   תמונה 2
                 </div>
-               </div>
+              </div>
 
             </div>
 
           </div>
 
         </div>
-      </section>
-
+</section>
 
       {/* ================= CONTACT ================= */}
       <section
@@ -823,20 +960,24 @@ export default function Home() {
           </div>
 
           {/* Contact Details */}
-          <div className="mt-12 grid gap-5 sm:grid-cols-3">
+          <div className="mt-12 grid grid-cols-2 gap-5 sm:grid-cols-3">
 
-            {/* Phone */}
+            {/* WhatsApp / Phone */}
             <a
               href="https://wa.me/972504080235"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-[22px] border border-white/10 bg-black/20 p-6 text-center transition duration-300 hover:border-purple-500/50 hover:bg-purple-500/5"
+              className="group rounded-[22px] border border-white/10 bg-black/20 p-6 text-center transition duration-300 hover:border-purple-500/50 hover:bg-purple-500/5"
             >
-              <p className="text-lg text-zinc-500">
-                טלפון
-              </p>
+              <div className="flex items-center justify-center gap-3">
+                <FaWhatsapp className="text-3xl text-purple-400 transition group-hover:scale-110" />
 
-              <p className="mt-2 text-2xl font-semibold text-white">
+                <p className="text-lg text-zinc-500">
+                  טלפון
+                </p>
+              </div>
+
+              <p className="mt-3 text-xl font-semibold text-white sm:text-2xl">
                 050-408-0235
               </p>
             </a>
@@ -846,13 +987,17 @@ export default function Home() {
               href="https://www.instagram.com/bar_atias54/"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-[22px] border border-white/10 bg-black/20 p-6 text-center transition duration-300 hover:border-purple-500/50 hover:bg-purple-500/5"
+              className="group rounded-[22px] border border-white/10 bg-black/20 p-6 text-center transition duration-300 hover:border-purple-500/50 hover:bg-purple-500/5"
             >
-              <p className="text-lg text-zinc-500">
-                Instagram
-              </p>
+              <div className="flex items-center justify-center gap-3">
+                <FaInstagram className="text-3xl text-purple-400 transition group-hover:scale-110" />
 
-              <p className="mt-2 text-2xl font-semibold text-white">
+                <p className="text-lg text-zinc-500">
+                  Instagram
+                </p>
+              </div>
+
+              <p className="mt-3 text-xl font-semibold text-white sm:text-2xl">
                 @bar_atias54
               </p>
             </a>
@@ -863,17 +1008,17 @@ export default function Home() {
               onClick={() =>
                 navigator.clipboard.writeText("Baratias109@gmail.com")
               }
-              className="w-full rounded-[22px] border border-white/10 bg-black/20 p-6 text-center transition duration-300 hover:border-purple-500/50 hover:bg-purple-500/5"
+              className="col-span-2 w-full rounded-[22px] border border-white/10 bg-black/20 p-6 text-center transition duration-300 hover:border-purple-500/50 hover:bg-purple-500/5 sm:col-span-1"
             >
               <p className="text-lg text-zinc-500">
                 מייל
               </p>
 
-              <p className="mt-2 text-2xl font-semibold text-white">
+              <p className="mt-2 break-all text-xl font-semibold text-white sm:text-2xl">
                 Baratias109@gmail.com
               </p>
 
-              <p className="mt-2 text-m text-purple-400">
+              <p className="mt-2 text-sm text-purple-400">
                 לחצו להעתקה
               </p>
             </button>
@@ -938,6 +1083,17 @@ export default function Home() {
 
         </div>
       </section>
+
+      {/* Floating WhatsApp */}
+      <a
+        href="https://wa.me/972504080235"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="צור קשר ב-WhatsApp"
+        className="fixed bottom-5 right-5 z-[100] flex h-16 w-16 items-center justify-center rounded-full border border-purple-400/40 bg-[#11101a]/90 text-purple-400 shadow-[0_0_30px_rgba(168,85,247,0.35)] backdrop-blur-md transition duration-300 hover:scale-110 hover:border-purple-400 hover:bg-purple-500/10"
+      >
+        <FaWhatsapp className="text-3xl" />
+      </a>
 
     </main>
   );

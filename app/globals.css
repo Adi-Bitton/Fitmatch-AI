@@ -33,3 +33,38 @@ body {
   color: var(--foreground);
   font-family: var(--font-heebo), Arial, Helvetica, sans-serif;
 }
+
+@keyframes categories-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.categories-marquee {
+  animation: categories-scroll 40s linear infinite;
+}
+
+@media (min-width: 1280px) {
+  .categories-marquee {
+    animation: none;
+    transform: none;
+  }
+}
+
+@keyframes categories-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.categories-marquee {
+  animation: categories-scroll 45s linear infinite;
+}
