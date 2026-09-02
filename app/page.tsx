@@ -289,15 +289,18 @@ useEffect(() => {
         {/* Hero Content */}
         <div className="relative z-10 mx-auto grid min-h-[calc(100vh-70px)] w-full max-w-[1450px] items-center gap-4 px-6 pb-8 pt-2 lg:min-h-[calc(100vh-100px)] lg:gap-10 lg:px-10 lg:pb-16 lg:pt-8 lg:grid-cols-[0.9fr_1.1fr] lg:-translate-y-20">          {/* Hero Text */}
           <div className="order-2 max-w-[620px] text-center lg:order-1 lg:text-right">
-            <h1 className="text-4xl font-black leading-[1.08] tracking-tight sm:text-6xl lg:text-7xl xl:text-[78px]">
-              <span className="block">
-                <span className="bg-gradient-to-l from-purple-300 via-fuchsia-400 to-purple-600 bg-clip-text text-transparent">
-                  המאמן
-                </span>{" "}
-                הנכון.
+           <h1 className="text-4xl font-black leading-[1.08] tracking-tight sm:text-6xl lg:text-7xl xl:text-[78px]">
+            <span className="block">
+              <span className="text-white">
+                התאמה
+              </span>{" "}
+              <span className="bg-gradient-to-l from-purple-300 via-fuchsia-400 to-purple-600 bg-clip-text text-transparent">
+                מדוייקת,
               </span>
+           </span>
 
-              <span className="mt-2 block">ההתאמה שלך.</span>
+
+              <span className="mt-2 block"> תוצאות גדולות .</span>
 
               <span className="bg-gradient-to-l from-purple-300 via-fuchsia-400 to-purple-600 bg-clip-text text-transparent">
                 FITMATCH AI
@@ -305,8 +308,8 @@ useEffect(() => {
             </h1>
 
             <p className="mx-auto mt-7 max-w-[560px] text-lg leading-8 text-zinc-300 lg:mx-0 lg:text-xl">
-              מערכת AI חכמה המחברת בין מתאמנים למאמנים, קבוצות וסטודיו
-              שמתאימים בדיוק למטרות, להעדפות ולסגנון החיים שלך.
+              שאלון האפיון הפסיכולוגי שלנו בשילוב טכנולוגיית AI מתקדמת,
+              תתאים לך את המאמן, הקבוצה או הסטודיו שמדוייקים לאישיות, למטרות ולצרכים שלך.
             </p>
 
             {/* Hero Buttons */}
@@ -516,7 +519,7 @@ useEffect(() => {
             />
 
             <h3 className="text-xl font-bold text-purple-400">
-              חיסכון בזמן
+              חיסכון בזמן וכסף
             </h3>
 
             <p className="mt-3 max-w-[230px] leading-7 text-zinc-400">
@@ -538,7 +541,7 @@ useEffect(() => {
             </h3>
 
             <p className="mt-3 max-w-[230px] leading-7 text-zinc-400">
-              המערכת מבינה את הצרכים שלך ומוצאת התאמה רלוונטית.
+              המערכת מבינה את הצרכים שלך, ועל סמך שאלון אפיון מוצאת את ההתאמה המדוייקת עבורך.
             </p>
           </div>
 
@@ -554,7 +557,7 @@ useEffect(() => {
             </h3>
 
             <p className="mt-3 max-w-[230px] leading-7 text-zinc-400">
-              מאמנים אישיים, קבוצות, סטודיו ומגוון תחומי אימון.
+              מאמנים אישיים, קבוצות, סטודיו ומגוון סוגי ותחומי אימון.
             </p>
           </div>
         </div>
@@ -803,9 +806,16 @@ useEffect(() => {
               1
             </p>
 
-            <h3 className="mb-7 text-3xl font-bold text-white">
-              עונים על שאלון קצר
+            <h3 className="text-3xl font-bold text-white">
+              עונים על שאלון אפיון אישי
             </h3>
+
+            {/* Secondary Description */}
+            <p className="mx-auto mt-3 mb-7 max-w-[300px] text-base leading-6 text-zinc-400">
+                  {/* כתבי כאן את משפט התיאור של שלב 1 */}
+                  ממלאים שאלון קצר שיעזור לנו להכיר אתכם בצורה מקיפה ומדויקת.
+
+            </p>
 
             <div className="relative mx-auto h-[340px] w-full max-w-[330px] overflow-hidden rounded-[26px] border border-purple-500/20 bg-gradient-to-b from-[#15121f] to-[#09090d]">
               <div className="flex h-full items-center justify-center text-zinc-500">
@@ -817,9 +827,7 @@ useEffect(() => {
 
           {/* ARROW 1 */}
           <div className="flex items-center justify-center">
-            <span
-              className="text-6xl font-bold text-purple-400 drop-shadow-[0_0_12px_rgba(168,85,247,0.45)]"
-            >
+            <span className="text-6xl font-bold text-purple-400 drop-shadow-[0_0_12px_rgba(168,85,247,0.45)]">
               ←
             </span>
           </div>
@@ -831,23 +839,27 @@ useEffect(() => {
               2
             </p>
 
-            <h3 className="mb-7 text-3xl font-bold text-white">
+            <h3 className="text-3xl font-bold text-white">
               FITMATCH AI מנתחת את ההתאמה
             </h3>
+
+            {/* Secondary Description */}
+            <p className="mx-auto mt-3 mb-7 max-w-[300px] text-base leading-6 text-zinc-400">
+              {/* כתבי כאן את משפט התיאור של שלב 2 */}
+              נזהה מה מתאים לכם, מה מניע אתכם ואיזה סוג ליווי יגרום לכרום לכם להתמיד לאורך
+            </p>
 
             <div className="relative mx-auto h-[340px] w-full max-w-[330px] overflow-hidden rounded-[26px] border border-purple-500/20 bg-gradient-to-b from-[#15121f] to-[#09090d]">
               <div className="flex h-full items-center justify-center text-zinc-500">
                 תמונה 2
               </div>
             </div>
-          </div>
+        </div>
 
 
           {/* ARROW 2 */}
           <div className="flex items-center justify-center">
-            <span
-              className="text-6xl font-bold text-purple-400 drop-shadow-[0_0_12px_rgba(168,85,247,0.45)]"
-            >
+            <span className="text-6xl font-bold text-purple-400 drop-shadow-[0_0_12px_rgba(168,85,247,0.45)]">
               ←
             </span>
           </div>
@@ -859,9 +871,15 @@ useEffect(() => {
               3
             </p>
 
-            <h3 className="mb-7 text-3xl font-bold text-white">
+            <h3 className="text-3xl font-bold text-white">
               מקבלים את ה־MATCH שלכם
             </h3>
+
+            {/* Secondary Description */}
+            <p className="mx-auto mt-3 mb-7 max-w-[300px] text-base leading-6 text-zinc-400">
+              {/* כתבי כאן את משפט התיאור של שלב 3 */}
+              מקבלים שיחת טלפון מהמאמן בזמן שנוח לכם על מנת להתאים את המסלול הרלוונטי אליכם.
+            </p>
 
             <div className="relative mx-auto h-[340px] w-full max-w-[330px] overflow-hidden rounded-[26px] border border-purple-500/20 bg-gradient-to-b from-[#15121f] to-[#09090d]">
               <div className="flex h-full items-center justify-center text-zinc-500">
@@ -869,11 +887,8 @@ useEffect(() => {
               </div>
             </div>
           </div>
-
         </div>
-
       </section>
-
 
 
       {/* ================= ARTICLE ================= */}
@@ -884,37 +899,21 @@ useEffect(() => {
              רוצים להכיר את הסיפור קצת יותר מקרוב?
         </h2>
 
-        {/* Article preview */}
+        {/* Article / YouTube preview */}
         <div className="mx-auto max-w-[1400px]">
-          <a
-            href="https://www.instagram.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative flex min-h-[430px] items-center justify-center overflow-hidden rounded-[30px] border border-purple-500/30 bg-[#11101a] transition duration-300 hover:border-purple-400/60 hover:shadow-[0_0_45px_rgba(168,85,247,0.18)]"
-          >
-            {/* Temporary placeholder */}
-            <div className="absolute inset-0 bg-gradient-to-br from-purple-950/30 via-[#11101a] to-black" />
+          <div className="overflow-hidden rounded-[30px] border border-purple-500/30 bg-[#11101a] shadow-[0_0_45px_rgba(168,85,247,0.12)]">
 
-            <div className="relative z-10 px-8 text-center">
-              <p className="text-sm font-semibold tracking-[0.25em] text-purple-400">
-                FITMATCH AI
-              </p>
-
-              <h3 className="mt-4 text-3xl font-bold text-white">
-                הכתבה תופיע כאן
-              </h3>
-
-              <p className="mt-4 text-zinc-400">
-                לחצו לצפייה
-              </p>
-
-              <span className="mt-6 inline-block text-2xl text-purple-400 transition-transform duration-300 group-hover:-translate-x-2">
-                ←
-              </span>
+            <div className="relative aspect-video w-full">
+              <iframe
+                src="https://www.youtube.com/embed/cbSBvXPicU0"
+                title="FITMATCH AI - כתבה"
+                className="absolute inset-0 h-full w-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
             </div>
-          </a>
+          </div>
         </div>
-
       </section>
 
 
@@ -929,7 +928,7 @@ useEffect(() => {
           {/* ================= MOBILE ================= */}
           <div className="lg:hidden">
 
-            {/* Heading first */}
+            {/* Heading */}
             <div className="text-right">
               <p className="mb-3 text-sm font-semibold uppercase tracking-[0.35em] text-purple-400">
                 ABOUT FITMATCH AI
@@ -945,20 +944,29 @@ useEffect(() => {
 
               {/* Image 1 - front / higher */}
               <div className="absolute left-0 top-0 z-20 h-[285px] w-[195px] -rotate-2 overflow-hidden rounded-[20px] border border-white/10 bg-zinc-900 shadow-2xl">
-                <div className="flex h-full items-center justify-center text-zinc-500">
-                  תמונה 1
-                </div>
+                <Image
+                  src="/ironman-photo.jpg"
+                  alt="בר אטיאס באיש הברזל"
+                  width={195}
+                  height={285}
+                  className="h-full w-full object-cover"
+                />
               </div>
 
               {/* Image 2 - behind / lower */}
               <div className="absolute bottom-0 right-0 z-10 h-[285px] w-[195px] rotate-2 overflow-hidden rounded-[20px] border border-purple-500/20 bg-zinc-900 shadow-2xl">
-                <div className="flex h-full items-center justify-center text-zinc-500">
-                  תמונה 2
-                </div>
+                <Image
+                  src="/bar-army.jpg"
+                  alt="בר אטיאס בשירות הצבאי"
+                  width={195}
+                  height={285}
+                  className="h-full w-full object-cover"
+                />
               </div>
 
             </div>
-            {/* Text after images */}
+
+            {/* Text */}
             <div className="mt-10 text-right text-xl leading-9 text-zinc-300">
               <p>
                 אני בר אטיאס, בן 31. במשך 13 השנים האחרונות שירתתי כלוחם
@@ -983,7 +991,7 @@ useEffect(() => {
                 ABOUT FITMATCH AI
               </p>
 
-              <h2 className="text-4xl font-bold text-white lg:text-5xl">
+              <h2 className="text-5xl font-bold text-white">
                 הכירו את המייסד
               </h2>
 
@@ -1004,18 +1012,26 @@ useEffect(() => {
             {/* IMAGES - LEFT */}
             <div className="relative mx-auto h-[600px] w-full max-w-[600px]">
 
-              {/* Image 1 - upper left + ABOVE image 2 */}
+              {/* Image 1 - front */}
               <div className="absolute left-0 top-0 z-20 h-[470px] w-[330px] -rotate-5 overflow-hidden rounded-[24px] border border-white/10 bg-zinc-900 shadow-2xl">
-                <div className="flex h-full items-center justify-center text-zinc-500">
-                  תמונה 1
-                </div>
+                <Image
+                  src="/ironman-photo.jpg"
+                  alt="בר אטיאס באיש הברזל"
+                  fill
+                  sizes="330px"
+                  className="object-cover"
+                />
               </div>
 
-              {/* Image 2 - lower right + BEHIND image 1 */}
+              {/* Image 2 - behind */}
               <div className="absolute bottom-0 right-0 z-10 h-[470px] w-[330px] rotate-5 overflow-hidden rounded-[24px] border border-purple-500/20 bg-zinc-900 shadow-2xl">
-                <div className="flex h-full items-center justify-center text-zinc-500">
-                  תמונה 2
-                </div>
+                <Image
+                  src="/bar-army.jpg"
+                  alt="בר אטיאס בשירות הצבאי"
+                  fill
+                  sizes="330px"
+                  className="object-cover"
+                />
               </div>
 
             </div>
