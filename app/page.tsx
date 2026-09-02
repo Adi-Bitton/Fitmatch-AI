@@ -902,21 +902,24 @@ useEffect(() => {
         </div>
       </section>
 
-       <div className="mt-9 flex w-full justify-center">
-          <a
-            id="start"
-            href="https://docs.google.com/forms/d/1CmunFdshpkfB63OGo0Kl8xRM0c2Vof5OCAgNcWAzYH0/viewform?edit_requested=true"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex w-full max-w-[520px] items-center justify-center gap-4 rounded-full bg-gradient-to-l from-purple-500 to-violet-700 px-10 py-5 text-xl font-semibold shadow-[0_0_35px_rgba(139,92,246,0.4)] transition duration-300 hover:scale-[1.03]"
-          >
-            מצא את ה־MATCH שלך
+      {/* ================= FIND YOUR MATCH ================= */}
 
-            <span className="text-2xl transition group-hover:-translate-x-1">
-              ←
-            </span>
-          </a>
-        </div>
+
+      <div className="mt-9 flex w-full justify-center">
+        <a
+          id="start"
+          href="https://docs.google.com/forms/d/1CmunFdshpkfB63OGo0Kl8xRM0c2Vof5OCAgNcWAzYH0/viewform?edit_requested=true"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group flex w-full max-w-[520px] items-center justify-center gap-4 rounded-full bg-gradient-to-l from-purple-500 to-violet-700 px-10 py-5 text-xl font-semibold shadow-[0_0_35px_rgba(139,92,246,0.4)] transition duration-300 hover:scale-[1.03]"
+        >
+          מצא את ה־MATCH שלך
+
+          <span className="text-2xl transition group-hover:-translate-x-1">
+            ←
+          </span>
+        </a>
+      </div>
 
       {/* ================= ARTICLE ================= */}
       <section className="mx-auto w-full max-w-[1450px] px-6 py-14 lg:px-10">
@@ -1067,21 +1070,24 @@ useEffect(() => {
         </div>
       </section>
 
-      <div className="mt-9 flex w-full justify-center">
-          <a
-            id="start"
-            href="https://docs.google.com/forms/d/1CmunFdshpkfB63OGo0Kl8xRM0c2Vof5OCAgNcWAzYH0/viewform?edit_requested=true"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex w-full max-w-[520px] items-center justify-center gap-4 rounded-full bg-gradient-to-l from-purple-500 to-violet-700 px-10 py-5 text-xl font-semibold shadow-[0_0_35px_rgba(139,92,246,0.4)] transition duration-300 hover:scale-[1.03]"
-          >
-            מצא את ה־MATCH שלך
+    {/* ================= FIND YOUR MATCH ================= */}
 
-            <span className="text-2xl transition group-hover:-translate-x-1">
-              ←
-            </span>
-          </a>
-        </div>
+
+   <div className="mt-9 flex w-full justify-center">
+      <a
+        id="start"
+        href="https://docs.google.com/forms/d/1CmunFdshpkfB63OGo0Kl8xRM0c2Vof5OCAgNcWAzYH0/viewform?edit_requested=true"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group flex w-full max-w-[520px] items-center justify-center gap-4 rounded-full bg-gradient-to-l from-purple-500 to-violet-700 px-10 py-5 text-xl font-semibold shadow-[0_0_35px_rgba(139,92,246,0.4)] transition duration-300 hover:scale-[1.03]"
+      >
+        מצא את ה־MATCH שלך
+
+        <span className="text-2xl transition group-hover:-translate-x-1">
+          ←
+        </span>
+      </a>
+    </div>
 
       {/* ================= CONTACT ================= */}
       <section
