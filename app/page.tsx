@@ -74,22 +74,26 @@ export default function Home() {
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
   const howSteps = [
-    {
-      number: "1",
-      title: "עונים על שאלון קצר",
-      image: "",
-    },
-    {
-      number: "2",
-      title: "FITMATCH AI מנתחת את ההתאמה",
-      image: "",
-    },
-    {
-      number: "3",
-      title: "מקבלים את ה־MATCH שלכם",
-      image: "",
-    },
-  ];
+  {
+    number: "1",
+    title: "עונים על שאלון אפיון אישי",
+    description: "ממלאים שאלון קצר שיעזור לנו להכיר אתכם טוב יותר",
+    image: "",
+  },
+  {
+    number: "2",
+    title: "FITMATCH AI מנתחת את ההתאמה",
+    description:
+      "נזהה מה מתאים לכם, מה מניע אתכם ואיזה סוג ליווי יגרום לכם להתמיד לאורך זמן",
+    image: "",
+  },
+  {
+    number: "3",
+    title: "מקבלים את ה־MATCH שלכם",
+    description: "כאן תכתבי את משפט התיאור של שלב 3",
+    image: "",
+  },
+];
 
   const handleStepTouchStart = (e: React.TouchEvent) => {
     setTouchEnd(null);
@@ -570,8 +574,11 @@ useEffect(() => {
     >
       <div className="rounded-[32px] border border-purple-500/20 bg-gradient-to-b from-[#11101a] to-[#08080d] p-12 text-center lg:p-20">
 
-        <h2 className="text-5xl font-bold text-white lg:text-6xl">
-          מאחורי FITMATCH AI
+        <h2 className="text-4xl font-bold text-white lg:text-5xl">
+          מאחורי{" "}
+          <span className="whitespace-nowrap">
+            FITMATCH AI
+          </span>
         </h2>
 
       <div className="mt-10 w-full space-y-7 text-xl leading-10 text-zinc-300 lg:text-3xl lg:leading-[1.8]">
@@ -756,6 +763,11 @@ useEffect(() => {
                   <h3 className="mt-6 text-center text-2xl font-bold text-white">
                     {step.title}
                   </h3>
+
+                  {/* Description */}
+                <p className="mx-auto mt-3 max-w-[290px] text-center text-base leading-6 text-zinc-400">
+                  {step.description}
+                </p>
 
                 </div>
               </div>
@@ -954,8 +966,7 @@ useEffect(() => {
               </div>
 
               {/* Image 2 - behind / lower */}
-              <div className="absolute bottom-0 right-0 z-10 h-[285px] w-[195px] rotate-2 overflow-hidden rounded-[20px] border border-purple-500/20 bg-zinc-900 shadow-2xl">
-                <Image
+              <div className="absolute bottom-0 -right-3 z-10 h-[285px] w-[195px] rotate-6 overflow-hidden rounded-[20px] border border-purple-500/20 bg-zinc-900 shadow-2xl">                <Image
                   src="/bar-army.jpg"
                   alt="בר אטיאס בשירות הצבאי"
                   width={195}
