@@ -902,6 +902,21 @@ useEffect(() => {
         </div>
       </section>
 
+       <div className="mt-9 flex w-full justify-center">
+          <a
+            id="start"
+            href="https://docs.google.com/forms/d/1CmunFdshpkfB63OGo0Kl8xRM0c2Vof5OCAgNcWAzYH0/viewform?edit_requested=true"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex w-full max-w-[520px] items-center justify-center gap-4 rounded-full bg-gradient-to-l from-purple-500 to-violet-700 px-10 py-5 text-xl font-semibold shadow-[0_0_35px_rgba(139,92,246,0.4)] transition duration-300 hover:scale-[1.03]"
+          >
+            מצא את ה־MATCH שלך
+
+            <span className="text-2xl transition group-hover:-translate-x-1">
+              ←
+            </span>
+          </a>
+        </div>
 
       {/* ================= ARTICLE ================= */}
       <section className="mx-auto w-full max-w-[1450px] px-6 py-14 lg:px-10">
@@ -917,7 +932,7 @@ useEffect(() => {
 
             <div className="relative aspect-video w-full">
               <iframe
-                src="https://www.youtube.com/embed/cbSBvXPicU0"
+                src="https://www.youtube.com/embed/cbSBvXPicU0?start=1738"
                 title="FITMATCH AI - כתבה"
                 className="absolute inset-0 h-full w-full"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -978,7 +993,7 @@ useEffect(() => {
             </div>
 
             {/* Text */}
-            <div className="mt-10 text-right text-xl leading-9 text-zinc-300">
+            <div className="mt-10 text-center text-xl leading-9 text-zinc-300">
               <p>
                 אני בר אטיאס, בן 31. במשך 13 השנים האחרונות שירתתי כלוחם
                 ומפקד בחטיבת גבעתי, ובשנה האחרונה לקחתי את עצמי לאתגר חדש -
@@ -1052,6 +1067,22 @@ useEffect(() => {
         </div>
       </section>
 
+      <div className="mt-9 flex w-full justify-center">
+          <a
+            id="start"
+            href="https://docs.google.com/forms/d/1CmunFdshpkfB63OGo0Kl8xRM0c2Vof5OCAgNcWAzYH0/viewform?edit_requested=true"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex w-full max-w-[520px] items-center justify-center gap-4 rounded-full bg-gradient-to-l from-purple-500 to-violet-700 px-10 py-5 text-xl font-semibold shadow-[0_0_35px_rgba(139,92,246,0.4)] transition duration-300 hover:scale-[1.03]"
+          >
+            מצא את ה־MATCH שלך
+
+            <span className="text-2xl transition group-hover:-translate-x-1">
+              ←
+            </span>
+          </a>
+        </div>
+
       {/* ================= CONTACT ================= */}
       <section
         id="contact"
@@ -1092,7 +1123,6 @@ useEffect(() => {
                 dir="ltr"
                 className="mt-3 whitespace-nowrap text-base font-semibold text-white sm:text-2xl"
               >
-                050-408-0235
               </p>
             </a>
 
@@ -1115,33 +1145,8 @@ useEffect(() => {
                 dir="ltr"
                 className="mt-3 whitespace-nowrap text-sm font-semibold text-white sm:text-2xl"
               >
-                @bar_atias54
               </p>
             </a>
-
-            {/* Email */}
-            <button
-              type="button"
-              onClick={() =>
-                navigator.clipboard.writeText("Baratias109@gmail.com")
-              }
-              className="col-span-2 w-full rounded-[22px] border border-white/10 bg-black/20 p-5 text-center transition duration-300 hover:border-purple-500/50 hover:bg-purple-500/5 sm:col-span-1 sm:p-6"
-            >
-              <p className="text-base text-zinc-500 sm:text-lg">
-                מייל
-              </p>
-
-              <p
-                dir="ltr"
-                className="mt-2 break-all text-base font-semibold text-white sm:text-2xl"
-              >
-                Baratias109@gmail.com
-              </p>
-
-              <p className="mt-2 text-sm text-purple-400">
-                לחצו להעתקה
-              </p>
-            </button>
 
           </div>
 
