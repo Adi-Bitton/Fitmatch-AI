@@ -80,11 +80,7 @@ export default function Hero() {
         {/* Visual — full brand emblem, bled into the layout */}
         <div className="order-1 flex justify-center lg:order-2 lg:block">
           <div className="relative w-full max-w-[340px] sm:max-w-[460px] lg:max-w-none lg:-ml-[9%] lg:-mr-[4%] lg:w-[118%]">
-            <div className="glow pointer-events-none absolute inset-[-32%]" />
-            <div
-              className="glow pointer-events-none absolute inset-[-10%]"
-              style={{ ["--tw-glow" as string]: "rgba(139,92,246,0.22)" }}
-            />
+            <div className="glow pointer-events-none absolute inset-[-40%]" />
             <Image
               src="/fitmatch-icon.png"
               alt="FITMATCH AI — התאמה חכמה בין מתאמנים לאנשי מקצוע בכל תחומי הכושר"
@@ -92,12 +88,12 @@ export default function Hero() {
               height={699}
               priority
               sizes="(max-width: 1024px) 80vw, 700px"
-              className="relative h-auto w-full object-contain drop-shadow-[0_0_60px_rgba(139,92,246,0.45)]"
+              className="relative h-auto w-full object-contain drop-shadow-[0_0_55px_rgba(139,92,246,0.4)]"
               style={{
                 maskImage:
-                  "radial-gradient(125% 125% at 52% 46%, #000 56%, transparent 90%)",
+                  "radial-gradient(125% 125% at 51% 45%, #000 22%, rgba(0,0,0,0.55) 58%, transparent 92%)",
                 WebkitMaskImage:
-                  "radial-gradient(125% 125% at 52% 46%, #000 56%, transparent 90%)",
+                  "radial-gradient(125% 125% at 51% 45%, #000 22%, rgba(0,0,0,0.55) 58%, transparent 92%)",
               }}
             />
           </div>

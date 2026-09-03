@@ -9,7 +9,7 @@ export default function FinalCta() {
         <div className="glow pointer-events-none absolute -left-16 -top-24 h-72 w-72" />
         <div
           className="glow pointer-events-none absolute -bottom-28 right-0 h-72 w-72"
-          style={{ ["--tw-glow" as string]: "rgba(201,242,78,0.12)" }}
+          style={{ ["--glow-rgb" as string]: "201 242 78" }}
         />
 
         <div className="relative">

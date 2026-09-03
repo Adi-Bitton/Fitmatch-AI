@@ -104,19 +104,26 @@ h3 {
   background: linear-gradient(90deg, transparent, var(--violet));
 }
 
-/* page-wide subtle texture — fade baked into the gradient stack, no mask/filter */
+/* page-wide subtle texture — very gradual fade, no perceptible edge */
 .bg-grid {
   background-image:
-    radial-gradient(ellipse 75% 55% at 50% 0%, transparent 30%, var(--ink) 78%),
-    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
-  background-size: 100% 100%, 64px 64px, 64px 64px;
+    radial-gradient(150% 110% at 50% -25%, transparent 0%, transparent 38%, var(--ink) 92%),
+    linear-gradient(rgba(255, 255, 255, 0.026) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.026) 1px, transparent 1px);
+  background-size: 100% 100%, 62px 62px, 62px 62px;
 }
 
-/* soft radial glow without filter:blur (screenshot + perf friendly) */
+/* soft radial glow — same-hue alpha falloff (no dark ring from `transparent`) */
 .glow {
+  --gr: var(--glow-rgb, 139 92 246);
   border-radius: 9999px;
-  background: radial-gradient(circle at center, var(--tw-glow, rgba(139, 92, 246, 0.28)), transparent 70%);
+  background: radial-gradient(
+    circle at center,
+    rgb(var(--gr) / 0.2) 0%,
+    rgb(var(--gr) / 0.09) 36%,
+    rgb(var(--gr) / 0.025) 60%,
+    rgb(var(--gr) / 0) 80%
+  );
 }
 
 .card {
