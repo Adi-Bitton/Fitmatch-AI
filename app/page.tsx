@@ -1,5 +1,6 @@
 import Header from "./components/Header";
 import Hero from "./components/Hero";
+import RaceScene from "./components/RaceScene";
 import Benefits from "./components/Benefits";
 import About from "./components/About";
 import Categories from "./components/Categories";
@@ -17,6 +18,7 @@ export default function Home() {
       <Header />
       <main dir="rtl" className="overflow-x-clip">
         <Hero />
+        <RaceScene />
         <Benefits />
         <About />
         <Categories />
