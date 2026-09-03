@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { ArrowLeft, Check } from "lucide-react";
 import { MATCH_FORM_URL, CATEGORIES } from "@/app/lib/site";
+import TrainerPicker from "./TrainerPicker";
 
 export default function Hero() {
   return (
@@ -16,14 +17,17 @@ export default function Hero() {
             פלטפורמת התאמה מבוססת AI
           </p>
 
-          <h1 className="mt-5 font-black leading-[1.05] tracking-tight text-4xl sm:text-6xl lg:text-[68px]">
-            <span className="block">
-              התאמה{" "}
+          <h1 className="mt-5 font-black leading-[1.08] tracking-tight text-[34px] sm:text-6xl lg:text-[62px]">
+            <span className="block text-foreground">התאמה מדוייקת</span>
+            <span className="mt-1 block text-foreground">תוצאות גדולות</span>
+            <span
+              dir="ltr"
+              className="wordmark mt-3 block text-[28px] tracking-[0.06em] sm:text-5xl lg:text-[52px]"
+            >
               <span className="bg-gradient-to-l from-violet-light via-fuchsia-400 to-violet-deep bg-clip-text text-transparent">
-                מדויקת.
+                FITMATCH AI
               </span>
             </span>
-            <span className="mt-1 block">תוצאות גדולות.</span>
           </h1>
 
           <p className="mx-auto mt-6 max-w-[540px] text-lg leading-8 text-muted lg:mx-0">
@@ -41,12 +45,7 @@ export default function Hero() {
               מצא את ה־MATCH שלך
               <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
             </a>
-            <a
-              href="#trainers"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-line bg-white/[0.03] px-7 py-4 font-semibold text-foreground transition-colors hover:border-violet/50 hover:bg-violet/5"
-            >
-              אני מאמן / סטודיו
-            </a>
+            <TrainerPicker label="אני מאמן / סטודיו" align="center" />
           </div>
 
           {/* trust strip */}
@@ -78,41 +77,22 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Visual */}
+        {/* Visual — full brand emblem */}
         <div className="order-1 flex justify-center lg:order-2">
-          <div className="relative aspect-square w-full max-w-[320px] sm:max-w-[440px] lg:max-w-[520px]">
-            {/* glow */}
-            <div className="glow pointer-events-none absolute inset-[-6%]" />
-
-            {/* orbit rings */}
-            <div className="pointer-events-none absolute inset-0 rounded-full border border-white/5" />
-            <div className="pointer-events-none absolute inset-[10%] rounded-full border border-white/[0.06]" />
-            <div
-              className="pointer-events-none absolute inset-[10%] rounded-full"
-              style={{ animation: "fm-orbit 26s linear infinite" }}
-            >
-              <span className="absolute left-1/2 top-0 h-2.5 w-2.5 -translate-x-1/2 rounded-full bg-lime shadow-[0_0_16px_4px_rgba(201,242,78,0.5)]" />
-            </div>
-            <div
-              className="pointer-events-none absolute inset-0 rounded-full"
-              style={{ animation: "fm-orbit 40s linear infinite reverse" }}
-            >
-              <span className="absolute right-0 top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-violet-light shadow-[0_0_14px_3px_rgba(167,139,250,0.6)]" />
-            </div>
-
-            {/* head */}
+          <div className="relative w-full max-w-[300px] sm:max-w-[420px] lg:max-w-[520px]">
+            <div className="glow pointer-events-none absolute inset-[-14%]" />
             <Image
-              src="/fitmatch-head-base.png"
-              alt="ראש דיגיטלי עם רשת נוירונים — סמל ה־AI של FITMATCH"
-              fill
+              src="/fitmatch-icon.png"
+              alt="FITMATCH AI — התאמה חכמה בין מתאמנים לאנשי מקצוע בכל תחומי הכושר"
+              width={1046}
+              height={699}
               priority
-              sizes="(max-width: 1024px) 80vw, 520px"
-              className="object-contain drop-shadow-[0_0_40px_rgba(139,92,246,0.35)]"
+              sizes="(max-width: 1024px) 70vw, 520px"
+              className="relative h-auto w-full object-contain drop-shadow-[0_0_44px_rgba(139,92,246,0.4)]"
             />
           </div>
         </div>
       </div>
-
     </section>
   );
 }

@@ -4,8 +4,8 @@
    FITMATCH AI — design tokens
    ============================================================ */
 :root {
-  --background: #0b0a0f;
-  --foreground: #f4f3f7;
+  --background: #1b1a22;
+  --foreground: #f2f1f6;
 
   /* Brand */
   --violet: #8b5cf6;
@@ -13,13 +13,14 @@
   --violet-deep: #6d28d9;
   --lime: #c9f24e;
 
-  --ink: #0b0a0f;
-  --ink-2: #100e16;
-  --surface: #16131f;
-  --line: rgba(255, 255, 255, 0.08);
+  /* violet-tinted graphite (not pure black) */
+  --ink: #1b1a22;
+  --ink-2: #211f2a;
+  --surface: #272430;
+  --line: rgba(255, 255, 255, 0.1);
 
-  --muted: #a9a6b6;
-  --faint: #74707f;
+  --muted: #b2afc0;
+  --faint: #837f93;
 }
 
 @theme inline {
@@ -128,7 +129,7 @@ h3 {
 
 .panel {
   border: 1px solid var(--line);
-  background: linear-gradient(180deg, #17131f, #0d0b13);
+  background: linear-gradient(180deg, #2a2735, #1d1b25);
   border-radius: 1.75rem;
 }
 

@@ -11,11 +11,23 @@ export const MATCH_FORM_URL =
   "https://docs.google.com/forms/d/1CmunFdshpkfB63OGo0Kl8xRM0c2Vof5OCAgNcWAzYH0/viewform";
 
 export const NAV_LINKS = [
+  { href: "#about", label: "עלינו" },
   { href: "#how", label: "איך זה עובד" },
   { href: "#categories", label: "תחומי אימון" },
   { href: "#trainers", label: "למאמנים" },
   { href: "#founder", label: "הסיפור שלנו" },
   { href: "#contact", label: "צור קשר" },
+];
+
+// Trainer / studio onboarding — one entry per discipline (as in the original site).
+// TODO: swap `href` for a dedicated questionnaire per type when they exist.
+export const TRAINER_TYPES: { label: string; href: string }[] = [
+  { label: "מאמן ריצה", href: MATCH_FORM_URL },
+  { label: "מאמן כוח", href: MATCH_FORM_URL },
+  { label: "פילאטיס", href: MATCH_FORM_URL },
+  { label: "שחייה", href: MATCH_FORM_URL },
+  { label: "אופניים", href: MATCH_FORM_URL },
+  { label: "תזונה", href: MATCH_FORM_URL },
 ];
 
 export type Category = {

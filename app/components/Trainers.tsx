@@ -1,5 +1,5 @@
-import { Check, ArrowLeft } from "lucide-react";
-import { CONTACT } from "@/app/lib/site";
+import { Check } from "lucide-react";
+import TrainerPicker from "./TrainerPicker";
 
 const POINTS = [
   "לקוחות שמתאימים לשיטה ולתחום שלך",
@@ -25,18 +25,14 @@ export default function Trainers() {
             </p>
 
             <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:justify-center lg:justify-start">
-              <a
-                href={CONTACT.whatsapp}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="cta-primary group inline-flex items-center justify-center gap-2.5 rounded-full px-7 py-3.5 font-semibold text-white transition-transform duration-200 hover:scale-[1.03]"
-              >
-                הצטרפו כמאמנים
-                <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
-              </a>
+              <TrainerPicker
+                label="הצטרפו כמאמנים"
+                variant="primary"
+                align="center"
+              />
               <a
                 href="#contact"
-                className="inline-flex items-center justify-center rounded-full border border-line bg-white/[0.03] px-7 py-3.5 font-semibold text-foreground transition-colors hover:border-violet/50 hover:bg-violet/5"
+                className="inline-flex items-center justify-center rounded-full border border-line bg-white/[0.03] px-7 py-4 font-semibold text-foreground transition-colors hover:border-violet/50 hover:bg-violet/5"
               >
                 יש לי שאלה
               </a>
