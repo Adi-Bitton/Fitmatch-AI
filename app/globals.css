@@ -113,16 +113,16 @@ h3 {
   background-size: 100% 100%, 62px 62px, 62px 62px;
 }
 
-/* soft radial glow — same-hue alpha falloff (no dark ring from `transparent`) */
+/* soft radial glow — fades fully to zero-alpha before reaching any edge,
+   so the element's own bounds are never visible (no ring, no rectangle) */
 .glow {
   --gr: var(--glow-rgb, 139 92 246);
-  border-radius: 9999px;
+  border-radius: 50%;
   background: radial-gradient(
-    circle at center,
-    rgb(var(--gr) / 0.2) 0%,
-    rgb(var(--gr) / 0.09) 36%,
-    rgb(var(--gr) / 0.025) 60%,
-    rgb(var(--gr) / 0) 80%
+    closest-side at center,
+    rgb(var(--gr) / 0.18),
+    rgb(var(--gr) / 0.06) 45%,
+    rgb(var(--gr) / 0) 78%
   );
 }
 
