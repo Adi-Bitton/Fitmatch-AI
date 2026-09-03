@@ -10,7 +10,7 @@ export default function Hero() {
       <div className="bg-grid pointer-events-none absolute inset-0" />
       <div className="glow pointer-events-none absolute left-1/2 top-[-14%] h-[620px] w-[620px] -translate-x-1/2" />
 
-      <div className="relative mx-auto grid w-full max-w-[1200px] items-center gap-10 px-6 pb-14 pt-28 sm:px-8 lg:min-h-[86vh] lg:grid-cols-[1.05fr_0.95fr] lg:gap-8 lg:pb-20 lg:pt-32">
+      <div className="relative mx-auto grid w-full max-w-[1200px] items-center gap-8 px-6 pb-14 pt-28 sm:px-8 lg:min-h-[86vh] lg:grid-cols-[1fr_1.08fr] lg:gap-4 lg:pb-20 lg:pt-32">
         {/* Copy */}
         <div className="order-2 text-center lg:order-1 lg:text-right">
           <p className="kicker justify-center lg:justify-start">
@@ -77,18 +77,28 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Visual — full brand emblem */}
-        <div className="order-1 flex justify-center lg:order-2">
-          <div className="relative w-full max-w-[300px] sm:max-w-[420px] lg:max-w-[520px]">
-            <div className="glow pointer-events-none absolute inset-[-14%]" />
+        {/* Visual — full brand emblem, bled into the layout */}
+        <div className="order-1 flex justify-center lg:order-2 lg:block">
+          <div className="relative w-full max-w-[340px] sm:max-w-[460px] lg:max-w-none lg:-ml-[9%] lg:-mr-[4%] lg:w-[118%]">
+            <div className="glow pointer-events-none absolute inset-[-32%]" />
+            <div
+              className="glow pointer-events-none absolute inset-[-10%]"
+              style={{ ["--tw-glow" as string]: "rgba(139,92,246,0.22)" }}
+            />
             <Image
               src="/fitmatch-icon.png"
               alt="FITMATCH AI — התאמה חכמה בין מתאמנים לאנשי מקצוע בכל תחומי הכושר"
               width={1046}
               height={699}
               priority
-              sizes="(max-width: 1024px) 70vw, 520px"
-              className="relative h-auto w-full object-contain drop-shadow-[0_0_44px_rgba(139,92,246,0.4)]"
+              sizes="(max-width: 1024px) 80vw, 700px"
+              className="relative h-auto w-full object-contain drop-shadow-[0_0_60px_rgba(139,92,246,0.45)]"
+              style={{
+                maskImage:
+                  "radial-gradient(125% 125% at 52% 46%, #000 56%, transparent 90%)",
+                WebkitMaskImage:
+                  "radial-gradient(125% 125% at 52% 46%, #000 56%, transparent 90%)",
+              }}
             />
           </div>
         </div>

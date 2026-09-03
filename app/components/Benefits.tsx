@@ -35,13 +35,13 @@ export default function Benefits() {
         {ITEMS.map(({ icon: Icon, title, body }) => (
           <div
             key={title}
-            className="card group p-6 transition-colors duration-300 hover:border-violet/40"
+            className="card group flex flex-col items-center p-6 text-center transition-colors duration-300 hover:border-violet/40"
           >
             <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl border border-violet/25 bg-violet/10 text-violet-light transition-transform duration-300 group-hover:scale-105">
               <Icon className="h-6 w-6" strokeWidth={1.8} />
             </span>
             <h3 className="mt-5 text-lg font-bold text-foreground">{title}</h3>
-            <p className="mt-2 text-sm leading-6 text-muted">{body}</p>
+            <p className="mt-2 max-w-[240px] text-sm leading-6 text-muted">{body}</p>
           </div>
         ))}
       </div>
