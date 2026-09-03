@@ -64,7 +64,7 @@ export default function Categories() {
   return (
     <section
       id="categories"
-      className="mx-auto w-full max-w-[1200px] px-6 py-12 sm:px-8 sm:py-16 lg:py-24"
+      className="mx-auto w-full max-w-[1200px] px-6 py-7 sm:px-8 sm:py-9 lg:py-14"
     >
       <div className="mb-10 text-center lg:mb-14">
         <p className="kicker justify-center">Find your match</p>

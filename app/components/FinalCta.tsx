@@ -3,7 +3,7 @@ import { MATCH_FORM_URL } from "@/app/lib/site";
 
 export default function FinalCta() {
   return (
-    <section className="mx-auto w-full max-w-[1200px] px-6 py-10 sm:px-8 lg:py-16">
+    <section className="mx-auto w-full max-w-[1200px] px-6 py-7 sm:px-8 sm:py-9 lg:py-14">
       <div className="relative overflow-hidden rounded-[28px] border border-violet/30 px-7 py-14 text-center sm:px-12 lg:px-16 lg:py-20">
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-l from-violet-deep/40 via-violet/20 to-violet-deep/40" />
         <div className="glow pointer-events-none absolute -left-16 -top-24 h-72 w-72" />

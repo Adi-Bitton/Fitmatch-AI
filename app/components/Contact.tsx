@@ -27,7 +27,7 @@ export default function Contact() {
     "w-full rounded-xl border border-white/12 bg-white/[0.04] px-4 py-3.5 text-right text-foreground outline-none transition-colors placeholder:text-faint focus:border-violet focus:bg-white/[0.06]";
 
   return (
-    <section id="contact" className="mx-auto w-full max-w-[1200px] px-6 py-12 sm:px-8 sm:py-16 lg:py-24">
+    <section id="contact" className="mx-auto w-full max-w-[1200px] px-6 py-7 sm:px-8 sm:py-9 lg:py-14">
       <div className="panel px-7 py-10 sm:px-12 sm:py-14 lg:px-16 lg:py-16">
         <div className="text-center">
           <p className="kicker justify-center">צור קשר</p>

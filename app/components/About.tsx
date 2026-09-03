@@ -1,6 +1,6 @@
 export default function About() {
   return (
-    <section id="about" className="mx-auto w-full max-w-[1200px] px-6 py-12 sm:px-8 sm:py-16 lg:py-24">
+    <section id="about" className="mx-auto w-full max-w-[1200px] px-6 py-7 sm:px-8 sm:py-9 lg:py-14">
       <div className="panel px-7 py-12 text-center sm:px-14 sm:py-14 lg:px-20 lg:py-20">
         <p className="kicker justify-center">עלינו</p>
         <h2 className="mx-auto mt-5 max-w-[720px] text-3xl font-bold leading-tight text-foreground sm:text-4xl lg:text-5xl">

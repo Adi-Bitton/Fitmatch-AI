@@ -6,7 +6,7 @@ const ICONS = [ClipboardList, Sparkles, PhoneCall];
 
 export default function HowItWorks() {
   return (
-    <section id="how" className="mx-auto w-full max-w-[1200px] px-6 py-12 sm:px-8 sm:py-16 lg:py-24">
+    <section id="how" className="mx-auto w-full max-w-[1200px] px-6 py-7 sm:px-8 sm:py-9 lg:py-14">
       <div className="mb-10 text-center lg:mb-16">
         <p className="kicker justify-center">How it works</p>
         <h2 className="mt-4 text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl">

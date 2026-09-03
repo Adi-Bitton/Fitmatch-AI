@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Founder() {
   return (
-    <section id="founder" className="mx-auto w-full max-w-[1200px] px-6 py-12 sm:px-8 sm:py-16 lg:py-24">
+    <section id="founder" className="mx-auto w-full max-w-[1200px] px-6 py-7 sm:px-8 sm:py-9 lg:py-14">
       <div className="panel overflow-hidden px-7 py-10 sm:px-12 sm:py-14 lg:px-16 lg:py-16">
         <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-16">
           {/* text */}

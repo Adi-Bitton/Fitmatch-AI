@@ -30,7 +30,7 @@ const ITEMS = [
 
 export default function Benefits() {
   return (
-    <section id="benefits" className="mx-auto w-full max-w-[1200px] px-6 py-12 sm:px-8 sm:py-16 lg:py-24">
+    <section id="benefits" className="mx-auto w-full max-w-[1200px] px-6 py-7 sm:px-8 sm:py-9 lg:py-14">
       <div className="grid gap-2 sm:grid-cols-2 sm:gap-2.5 lg:grid-cols-4 lg:gap-3">
         {ITEMS.map(({ icon: Icon, title, body }) => (
           <div
