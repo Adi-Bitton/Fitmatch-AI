@@ -1,52 +1,45 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
-/* Scroll-scrubbed journey: 5 stills of a triathlon, start line -> finish line.
-   The section is tall; a pinned stage inside it cross-fades between the frames
-   as you scroll, with a slow shared zoom so the stills read as motion. */
-const FRAMES = [
-  {
-    src: "/race/1-start.webp",
-    label: "קו הזינוק",
-    caption: "כאן זה מתחיל — עם החלטה אחת.",
-    blur: "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAADwAQCdASoQAAsAA4BaJZQCdACwDc91DIAA/vAaowxEYLL7kQcum7NkIPyaXxFTv3r2Hnb3gKCyTfngF2VPvvylNXSAqhAqRSjErXjPwEYEsAAA",
-  },
-  {
-    src: "/race/2-swim.webp",
-    label: "מקצה השחייה",
-    caption: "מוצאים קצב, נכנסים לפוקוס.",
-    blur: "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAACwAQCdASoQAAsAA4BaJZQAAucK8yPQAP7GBiGaJfUcWPnajEmIIx9/fTyX0jL0gzQ4IPw2A5XXCH5I3xPOb1xZTC9usAAA",
-  },
-  {
-    src: "/race/3-bike.webp",
-    label: "מקצה הרכיבה",
-    caption: "צוברים מומנטום, שומרים על הכיוון.",
-    blur: "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADwAQCdASoQAAsAA4BaJZQC7AEO8PKK5KgA/tc/zOZd92bUHEquWM4qqRM7GpISi6rK4VyzXhxsweUCbmo/Wc5jlgJkvMCNKV9VhSX0EX9mw07VXo/XRgAA",
-  },
-  {
-    src: "/race/4-run.webp",
-    label: "מקצה הריצה",
-    caption: "החלק הקשה — כאן ההתמדה עושה את ההבדל.",
-    blur: "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAABwAQCdASoQAAsAA4BaJagAAkbQAAD+mF9DuU62LoxbV4fAWH4w9x9OlZ877xYsnz19c9Uc1l7WWp2knJn+qjm//uD+gAAA",
-  },
-  {
-    src: "/race/5-finish.webp",
-    label: "קו הסיום",
-    caption: "מגיעים ליעד. בדיוק כמו שתכננו.",
-    blur: "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAAAQAgCdASoQAAsAA4BaJbAC7AEDqZI6qdAAAP5tKq9voYmfnXp6f+b2mi5ylGF05xpkualWtKE4b+hI655qSW63Zr6SlaowG4xtTHJHuTrts/iO01C0aMRMGZgysGdtBeOcoS99aQAAAA==",
-  },
+/* Scroll-driven journey: the athlete's IRONMAN, start line -> finish line.
+   A tall section holds a pinned canvas; scroll position picks the frame
+   from a pre-rendered 16:9 image sequence (art-directed per stage). */
+
+const FRAME_COUNT = 153;
+const frameSrc = (i: number) =>
+  `/race/frames/frame_${String(i + 1).padStart(3, "0")}.webp`;
+
+const STAGES = [
+  { key: "start", label: "זינוק", until: 0.19, caption: "כאן זה מתחיל — עם החלטה אחת." },
+  { key: "swim", label: "שחייה", until: 0.4, caption: "מוצאים קצב, נכנסים לפוקוס." },
+  { key: "bike", label: "רכיבה", until: 0.6, caption: "צוברים מומנטום, שומרים על הכיוון." },
+  { key: "run", label: "ריצה", until: 0.82, caption: "החלק הקשה — ההתמדה עושה את ההבדל." },
+  { key: "finish", label: "סיום", until: 1.01, caption: "מגיעים ליעד. בדיוק כמו שתכננו." },
 ];
 
-const N = FRAMES.length;
+function stageIndex(p: number) {
+  for (let i = 0; i < STAGES.length; i++) if (p < STAGES[i].until) return i;
+  return STAGES.length - 1;
+}
 
 export default function RaceScene() {
   const wrapRef = useRef<HTMLDivElement>(null);
-  const [progress, setProgress] = useState(0);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const imagesRef = useRef<HTMLImageElement[]>([]);
+  const rafRef = useRef(0);
+  const frameRef = useRef(-1);
+
+  const [mounted, setMounted] = useState(false);
   const [reduced, setReduced] = useState(false);
+  const [ready, setReady] = useState(false);
+  const [loaded, setLoaded] = useState(0);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- hydration gate
+    setMounted(true);
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
     const sync = () => setReduced(mq.matches);
     sync();
@@ -54,48 +47,127 @@ export default function RaceScene() {
     return () => mq.removeEventListener("change", sync);
   }, []);
 
+  const draw = useCallback((idx: number) => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    let img = imagesRef.current[idx];
+    if (!img || !img.complete || !img.naturalWidth) {
+      // fall back to the nearest already-decoded frame
+      let alt: HTMLImageElement | undefined;
+      for (let d = 1; d < FRAME_COUNT; d++) {
+        const lo = imagesRef.current[idx - d];
+        if (lo && lo.complete && lo.naturalWidth) {
+          alt = lo;
+          break;
+        }
+        const hi = imagesRef.current[idx + d];
+        if (hi && hi.complete && hi.naturalWidth) {
+          alt = hi;
+          break;
+        }
+      }
+      if (!alt) return;
+      img = alt;
+    }
+
+    const cw = canvas.width;
+    const ch = canvas.height;
+    const iw = img.naturalWidth;
+    const ih = img.naturalHeight;
+    const scale = Math.max(cw / iw, ch / ih);
+    const dw = iw * scale;
+    const dh = ih * scale;
+    const dx = (cw - dw) / 2;
+    const dy = (ch - dh) * 0.38; // bias toward the top so heads survive the crop
+    ctx.clearRect(0, 0, cw, ch);
+    ctx.drawImage(img, dx, dy, dw, dh);
+  }, []);
+
+  const resize = useCallback(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const r = canvas.getBoundingClientRect();
+    canvas.width = Math.round(r.width * dpr);
+    canvas.height = Math.round(r.height * dpr);
+    if (frameRef.current >= 0) draw(frameRef.current);
+  }, [draw]);
+
+  // preload the sequence
   useEffect(() => {
-    if (reduced) return;
-    const el = wrapRef.current;
-    if (!el) return;
+    if (!mounted || reduced) return;
+    let done = 0;
+    const imgs: HTMLImageElement[] = [];
+    for (let i = 0; i < FRAME_COUNT; i++) {
+      const im = new window.Image();
+      im.decoding = "async";
+      im.src = frameSrc(i);
+      const onDone = () => {
+        done += 1;
+        setLoaded(done);
+        if (done >= 20) setReady(true);
+        if (i === frameRef.current) draw(i);
+      };
+      im.onload = onDone;
+      im.onerror = onDone;
+      imgs[i] = im;
+    }
+    imagesRef.current = imgs;
+  }, [mounted, reduced, draw]);
 
-    let raf = 0;
-    const measure = () => {
-      raf = 0;
-      const rect = el.getBoundingClientRect();
-      const travel = rect.height - window.innerHeight;
-      const p = travel > 0 ? -rect.top / travel : 0;
-      setProgress(Math.min(1, Math.max(0, p)));
-    };
+  // scroll wiring
+  useEffect(() => {
+    if (!ready || reduced) return;
+    resize();
+
     const onScroll = () => {
-      if (!raf) raf = requestAnimationFrame(measure);
+      if (rafRef.current) return;
+      rafRef.current = requestAnimationFrame(() => {
+        rafRef.current = 0;
+        const el = wrapRef.current;
+        if (!el) return;
+        const rect = el.getBoundingClientRect();
+        const travel = rect.height - window.innerHeight;
+        const p =
+          travel > 0 ? Math.min(1, Math.max(0, -rect.top / travel)) : 0;
+        setProgress(p);
+        const idx = Math.min(
+          FRAME_COUNT - 1,
+          Math.max(0, Math.round(p * (FRAME_COUNT - 1))),
+        );
+        if (idx !== frameRef.current) {
+          frameRef.current = idx;
+          draw(idx);
+        }
+      });
     };
 
-    measure();
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
+    window.addEventListener("resize", resize);
     return () => {
       window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-      if (raf) cancelAnimationFrame(raf);
+      window.removeEventListener("resize", resize);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
-  }, [reduced]);
+  }, [ready, reduced, draw, resize]);
 
-  // static fallback — just the finish frame + headline
-  if (reduced) {
+  const si = stageIndex(progress);
+  const pct = Math.round((loaded / FRAME_COUNT) * 100);
+
+  // static fallback: no JS yet, or reduced motion
+  if (!mounted || reduced) {
     return (
-      <section
-        id="journey"
-        className="mx-auto w-full max-w-[1200px] px-6 sm:px-8"
-      >
-        <div className="relative aspect-[16/10] w-full overflow-hidden rounded-3xl border border-line">
+      <section id="journey" className="mx-auto w-full max-w-[1200px] px-6 sm:px-8">
+        <div className="relative aspect-[16/9] w-full overflow-hidden rounded-3xl border border-line">
           <Image
-            src={FRAMES[N - 1].src}
-            alt={FRAMES[N - 1].label}
+            src={frameSrc(FRAME_COUNT - 4)}
+            alt="בר אטיאס חוצה את קו הסיום של תחרות איש הברזל"
             fill
             sizes="100vw"
-            placeholder="blur"
-            blurDataURL={FRAMES[N - 1].blur}
             className="object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/35 to-transparent" />
@@ -110,66 +182,48 @@ export default function RaceScene() {
     );
   }
 
-  const playhead = progress * (N - 1); // 0 .. N-1
-  const stage = Math.round(playhead);
-
   return (
-    <section ref={wrapRef} id="journey" className="relative h-[200vh] sm:h-[280vh]">
-      <div className="sticky top-0 h-[100svh] w-full overflow-hidden">
-        {/* frames */}
-        {FRAMES.map((frame, i) => {
-          const opacity = Math.min(1, Math.max(0, 1 - Math.abs(playhead - i)));
-          return (
-            <div
-              key={frame.src}
-              className="absolute inset-0"
-              style={{
-                opacity,
-                transform: `scale(${1.03 + progress * 0.1}) translateX(${
-                  (playhead - i) * -2
-                }%)`,
-                transition: "opacity 120ms linear",
-                willChange: "opacity, transform",
-              }}
-            >
-              <Image
-                src={frame.src}
-                alt={frame.label}
-                fill
-                sizes="100vw"
-                loading={i <= 2 ? "eager" : "lazy"}
-                placeholder="blur"
-                blurDataURL={frame.blur}
-                className="object-cover"
-              />
-            </div>
-          );
-        })}
+    <section ref={wrapRef} id="journey" className="relative h-[280vh] sm:h-[420vh]">
+      <div className="sticky top-0 h-[100svh] w-full overflow-hidden bg-ink">
+        <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" />
 
-        {/* grade + blend into the page above and below */}
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink via-ink/45 to-ink/20" />
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-ink to-transparent" />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-ink to-transparent" />
+        {/* grade + blend into the page */}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/20 to-ink/45" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-ink to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-ink to-transparent" />
+
+        {/* loading veil */}
+        {!ready && (
+          <div className="absolute inset-0 grid place-items-center bg-ink">
+            <div className="w-48 text-center">
+              <div className="h-px w-full bg-white/15">
+                <div
+                  className="h-full bg-violet-light transition-[width] duration-200"
+                  style={{ width: `${pct}%` }}
+                />
+              </div>
+              <p className="mt-3 text-xs tracking-[0.3em] text-faint">טוען…</p>
+            </div>
+          </div>
+        )}
 
         {/* headline */}
-        <div className="absolute inset-x-0 top-[12%] px-6 text-center">
+        <div className="absolute inset-x-0 top-[11%] px-6 text-center">
           <p className="kicker justify-center">המסע שלך</p>
           <h2 className="mx-auto mt-3 max-w-[680px] text-3xl font-black leading-tight text-foreground sm:text-5xl">
-            כל מקצה מקרב אותך לקו הסיום
+            מקו הזינוק ועד קו הסיום
           </h2>
         </div>
 
         {/* per-stage caption */}
-        <div className="absolute inset-x-0 bottom-[20%] h-12 px-6 text-center">
-          {FRAMES.map((frame, i) => (
+        <div className="absolute inset-x-0 bottom-[20%] h-10 px-6 text-center">
+          {STAGES.map((s, i) => (
             <p
-              key={frame.src}
+              key={s.key}
               className="absolute inset-x-0 mx-auto max-w-[520px] px-6 text-base leading-7 text-muted sm:text-lg"
-              style={{
-                opacity: Math.max(0, 1 - Math.abs(playhead - i) * 2),
-              }}
+              style={{ opacity: si === i ? 1 : 0, transition: "opacity 300ms" }}
             >
-              {frame.caption}
+              {s.caption}
             </p>
           ))}
         </div>
@@ -190,15 +244,13 @@ export default function RaceScene() {
             />
           </div>
           <div className="mt-3 flex justify-between">
-            {FRAMES.map((frame, i) => (
+            {STAGES.map((s, i) => (
               <span
-                key={frame.src}
+                key={s.key}
                 className="text-[10px] font-medium tracking-wide sm:text-xs"
-                style={{
-                  color: stage >= i ? "var(--foreground)" : "var(--faint)",
-                }}
+                style={{ color: i <= si ? "var(--foreground)" : "var(--faint)" }}
               >
-                {frame.label}
+                {s.label}
               </span>
             ))}
           </div>
