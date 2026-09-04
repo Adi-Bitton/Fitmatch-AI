@@ -173,8 +173,8 @@ export default function RaceScene() {
           <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/35 to-transparent" />
           <div className="absolute inset-x-0 bottom-0 p-8 text-center">
             <p className="kicker justify-center">המסע שלך</p>
-            <h2 className="mt-2 text-2xl font-bold text-foreground sm:text-4xl">
-              מקו הזינוק ועד קו הסיום
+            <h2 className="mx-auto mt-2 max-w-[620px] text-2xl font-bold text-foreground sm:text-4xl">
+              מלווים אותך מקו הזינוק ועד השגת המטרות שלך
             </h2>
           </div>
         </div>
@@ -210,8 +210,8 @@ export default function RaceScene() {
         {/* headline */}
         <div className="absolute inset-x-0 top-[11%] px-6 text-center">
           <p className="kicker justify-center">המסע שלך</p>
-          <h2 className="mx-auto mt-3 max-w-[680px] text-3xl font-black leading-tight text-foreground sm:text-5xl">
-            מקו הזינוק ועד קו הסיום
+          <h2 className="mx-auto mt-3 max-w-[720px] text-3xl font-black leading-tight text-foreground sm:text-5xl">
+            מלווים אותך מקו הזינוק ועד השגת המטרות שלך
           </h2>
         </div>
 
