@@ -8,29 +8,34 @@ import Image from "next/image";
    as you scroll, with a slow shared zoom so the stills read as motion. */
 const FRAMES = [
   {
-    src: "/race/1-start.jpg",
+    src: "/race/1-start.webp",
     label: "קו הזינוק",
     caption: "כאן זה מתחיל — עם החלטה אחת.",
+    blur: "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAADwAQCdASoQAAsAA4BaJZQCdACwDc91DIAA/vAaowxEYLL7kQcum7NkIPyaXxFTv3r2Hnb3gKCyTfngF2VPvvylNXSAqhAqRSjErXjPwEYEsAAA",
   },
   {
-    src: "/race/2-swim.jpg",
+    src: "/race/2-swim.webp",
     label: "מקצה השחייה",
     caption: "מוצאים קצב, נכנסים לפוקוס.",
+    blur: "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAACwAQCdASoQAAsAA4BaJZQAAucK8yPQAP7GBiGaJfUcWPnajEmIIx9/fTyX0jL0gzQ4IPw2A5XXCH5I3xPOb1xZTC9usAAA",
   },
   {
-    src: "/race/3-bike.jpg",
+    src: "/race/3-bike.webp",
     label: "מקצה הרכיבה",
     caption: "צוברים מומנטום, שומרים על הכיוון.",
+    blur: "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADwAQCdASoQAAsAA4BaJZQC7AEO8PKK5KgA/tc/zOZd92bUHEquWM4qqRM7GpISi6rK4VyzXhxsweUCbmo/Wc5jlgJkvMCNKV9VhSX0EX9mw07VXo/XRgAA",
   },
   {
-    src: "/race/4-run.jpg",
+    src: "/race/4-run.webp",
     label: "מקצה הריצה",
     caption: "החלק הקשה — כאן ההתמדה עושה את ההבדל.",
+    blur: "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAABwAQCdASoQAAsAA4BaJagAAkbQAAD+mF9DuU62LoxbV4fAWH4w9x9OlZ877xYsnz19c9Uc1l7WWp2knJn+qjm//uD+gAAA",
   },
   {
-    src: "/race/5-finish.jpg",
+    src: "/race/5-finish.webp",
     label: "קו הסיום",
     caption: "מגיעים ליעד. בדיוק כמו שתכננו.",
+    blur: "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAAAQAgCdASoQAAsAA4BaJbAC7AEDqZI6qdAAAP5tKq9voYmfnXp6f+b2mi5ylGF05xpkualWtKE4b+hI655qSW63Zr6SlaowG4xtTHJHuTrts/iO01C0aMRMGZgysGdtBeOcoS99aQAAAA==",
   },
 ];
 
@@ -89,6 +94,8 @@ export default function RaceScene() {
             alt={FRAMES[N - 1].label}
             fill
             sizes="100vw"
+            placeholder="blur"
+            blurDataURL={FRAMES[N - 1].blur}
             className="object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/35 to-transparent" />
@@ -131,6 +138,8 @@ export default function RaceScene() {
                 fill
                 sizes="100vw"
                 loading={i <= 2 ? "eager" : "lazy"}
+                placeholder="blur"
+                blurDataURL={frame.blur}
                 className="object-cover"
               />
             </div>
