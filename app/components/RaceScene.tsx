@@ -256,17 +256,6 @@ export default function RaceScene() {
                 style={{ right: `${progress * 100}%`, marginRight: "-5px" }}
               />
             </div>
-            <div className="mt-3 flex justify-between">
-              {STAGES.map((s, i) => (
-                <span
-                  key={s.key}
-                  className="text-xs font-medium tracking-wide"
-                  style={{ color: i <= si ? "var(--foreground)" : "var(--faint)" }}
-                >
-                  {s.label}
-                </span>
-              ))}
-            </div>
           </div>
         </div>
 
@@ -293,17 +282,6 @@ export default function RaceScene() {
                 className="absolute top-1/2 h-2.5 w-2.5 -translate-y-1/2 rounded-full bg-lime shadow-[0_0_12px_rgba(201,242,78,0.85)]"
                 style={{ right: `${progress * 100}%`, marginRight: "-5px" }}
               />
-            </div>
-            <div className="mt-3 flex justify-between">
-              {STAGES.map((s, i) => (
-                <span
-                  key={s.key}
-                  className="text-[10px] font-medium tracking-wide"
-                  style={{ color: i <= si ? "var(--foreground)" : "var(--faint)" }}
-                >
-                  {s.label}
-                </span>
-              ))}
             </div>
           </div>
         </div>
