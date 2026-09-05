@@ -3,7 +3,8 @@
 import { useEffect, useState } from "react";
 import { ArrowLeft } from "lucide-react";
 import Wordmark from "./Wordmark";
-import { NAV_LINKS, MATCH_FORM_URL } from "@/app/lib/site";
+import TrainerPicker from "./TrainerPicker";
+import { NAV_LINKS, MATCH_TYPES } from "@/app/lib/site";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -47,14 +48,15 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <a
-            href={MATCH_FORM_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="cta-primary hidden rounded-full px-5 py-2.5 text-sm font-semibold text-white transition-transform duration-200 hover:scale-[1.03] sm:inline-flex"
-          >
-            התחילו עכשיו
-          </a>
+          <div className="hidden sm:block">
+            <TrainerPicker
+              label="התחילו עכשיו"
+              variant="primary"
+              size="sm"
+              align="start"
+              options={MATCH_TYPES}
+            />
+          </div>
 
           <button
             type="button"
@@ -93,7 +95,7 @@ export default function Header() {
           }`}
         />
         <div
-          className={`absolute right-0 top-0 h-full w-[84%] max-w-[360px] border-l border-line bg-ink-2 px-8 pt-28 transition-transform duration-300 ${
+          className={`absolute right-0 top-0 h-full w-[84%] max-w-[360px] overflow-y-auto border-l border-line bg-ink-2 px-8 pb-12 pt-28 transition-transform duration-300 ${
             open ? "translate-x-0" : "translate-x-full"
           }`}
         >
@@ -111,15 +113,24 @@ export default function Header() {
             ))}
           </nav>
 
-          <a
-            href={MATCH_FORM_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => setOpen(false)}
-            className="cta-primary mt-6 flex items-center justify-center rounded-full px-6 py-3.5 font-semibold text-white"
-          >
-            מצא את ה־MATCH שלך
-          </a>
+          <div className="mt-6">
+            <span className="mb-2 block px-4 text-xs font-semibold uppercase tracking-wider text-faint">
+              בחרו תחום להתאמה
+            </span>
+            {MATCH_TYPES.map((t) => (
+              <a
+                key={t.label}
+                href={t.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setOpen(false)}
+                className="flex items-center justify-between rounded-xl px-4 py-3 text-base font-medium text-foreground transition-colors hover:bg-violet/10"
+              >
+                {t.label}
+                <ArrowLeft className="h-4 w-4 text-faint" />
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </header>

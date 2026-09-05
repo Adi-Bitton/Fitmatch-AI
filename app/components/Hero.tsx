@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { ArrowLeft, Check } from "lucide-react";
-import { MATCH_FORM_URL, CATEGORIES } from "@/app/lib/site";
+import { Check } from "lucide-react";
+import { MATCH_TYPES, CATEGORIES } from "@/app/lib/site";
 import TrainerPicker from "./TrainerPicker";
 
 export default function Hero() {
@@ -36,15 +36,12 @@ export default function Hero() {
           </p>
 
           <div className="mt-8 flex flex-col items-stretch justify-center gap-3 sm:flex-row lg:justify-start">
-            <a
-              href={MATCH_FORM_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="cta-primary group inline-flex items-center justify-center gap-2.5 rounded-full px-7 py-4 font-semibold text-white transition-transform duration-200 hover:scale-[1.03]"
-            >
-              מצא את ה־MATCH שלך
-              <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
-            </a>
+            <TrainerPicker
+              label="מצא את ה־MATCH שלך"
+              variant="primary"
+              options={MATCH_TYPES}
+              align="center"
+            />
             <TrainerPicker label="אני מאמן / סטודיו" align="center" />
           </div>
 

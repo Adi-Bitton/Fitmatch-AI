@@ -4,16 +4,22 @@ import { useEffect, useRef, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { TRAINER_TYPES } from "@/app/lib/site";
 
+type Option = { label: string; href: string };
+
 type Props = {
   label: string;
   variant?: "primary" | "secondary";
   align?: "start" | "center";
+  size?: "sm" | "md";
+  options?: Option[];
 };
 
 export default function TrainerPicker({
   label,
   variant = "secondary",
   align = "center",
+  size = "md",
+  options = TRAINER_TYPES,
 }: Props) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -36,6 +42,8 @@ export default function TrainerPicker({
     variant === "primary"
       ? "cta-primary text-white"
       : "border border-line bg-white/[0.03] text-foreground hover:border-violet/50 hover:bg-violet/5";
+  const sizing =
+    size === "sm" ? "px-5 py-2.5 text-sm sm:w-auto" : "px-7 py-4 sm:w-auto";
 
   return (
     <div ref={ref} className="group relative flex w-full justify-center sm:w-auto">
@@ -44,7 +52,7 @@ export default function TrainerPicker({
         aria-haspopup="menu"
         aria-expanded={open}
         onClick={() => setOpen((v) => !v)}
-        className={`inline-flex w-full items-center justify-center gap-2.5 rounded-full px-7 py-4 font-semibold transition-transform duration-200 hover:scale-[1.02] sm:w-auto ${btn}`}
+        className={`inline-flex w-full items-center justify-center gap-2.5 rounded-full font-semibold transition-transform duration-200 hover:scale-[1.02] ${sizing} ${btn}`}
       >
         {label}
         <ChevronDown
@@ -62,7 +70,7 @@ export default function TrainerPicker({
             : "invisible -translate-y-1 opacity-0"
         }`}
       >
-        {TRAINER_TYPES.map((t) => (
+        {options.map((t) => (
           <a
             key={t.label}
             href={t.href}

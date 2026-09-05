@@ -30,6 +30,17 @@ export const TRAINER_TYPES: { label: string; href: string }[] = [
   { label: "תזונה", href: MATCH_FORM_URL },
 ];
 
+// Trainee intake — each training type has its own characterization questionnaire.
+// TODO: swap `href` for the dedicated questionnaire per discipline when ready.
+export const MATCH_TYPES: { label: string; href: string }[] = [
+  { label: "ריצה", href: MATCH_FORM_URL },
+  { label: "טריאתלון", href: MATCH_FORM_URL },
+  { label: "סטודיו כוח", href: MATCH_FORM_URL },
+  { label: "מאמן כושר אישי", href: MATCH_FORM_URL },
+  { label: "פילאטיס", href: MATCH_FORM_URL },
+  { label: "תזונה", href: MATCH_FORM_URL },
+];
+
 export type Category = {
   title: string;
   description: string;

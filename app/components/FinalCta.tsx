@@ -1,5 +1,5 @@
-import { ArrowLeft } from "lucide-react";
-import { MATCH_FORM_URL } from "@/app/lib/site";
+import { MATCH_TYPES } from "@/app/lib/site";
+import TrainerPicker from "./TrainerPicker";
 
 export default function FinalCta() {
   return (
@@ -19,15 +19,14 @@ export default function FinalCta() {
           <p className="mx-auto mt-4 max-w-[480px] text-base leading-7 text-muted">
             שאלון קצר, תוצאה מדויקת. תוך זמן קצר תקבלו את ההתאמה שמתאימה בדיוק לכם.
           </p>
-          <a
-            href={MATCH_FORM_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="cta-primary group mt-8 inline-flex items-center justify-center gap-2.5 rounded-full px-8 py-4 text-lg font-semibold text-white transition-transform duration-200 hover:scale-[1.03]"
-          >
-            מצא את ה־MATCH שלך
-            <ArrowLeft className="h-5 w-5 transition-transform group-hover:-translate-x-1" />
-          </a>
+          <div className="mt-8 flex justify-center">
+            <TrainerPicker
+              label="מצא את ה־MATCH שלך"
+              variant="primary"
+              options={MATCH_TYPES}
+              align="center"
+            />
+          </div>
         </div>
       </div>
     </section>
