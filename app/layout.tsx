@@ -1,6 +1,13 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import { Heebo, Space_Grotesk } from "next/font/google";
 import "./globals.css";
+
+/* Accessibility widget (UserWay) — free "toolbar" that gives visitors
+   text sizing, contrast, link highlighting, stop-animations, etc.
+   Sign up at https://userway.org (free plan), copy the Account ID and
+   set it here (or via NEXT_PUBLIC_USERWAY_ACCOUNT). Empty = widget off. */
+const USERWAY_ACCOUNT = process.env.NEXT_PUBLIC_USERWAY_ACCOUNT ?? "";
 
 const heebo = Heebo({
   variable: "--font-heebo",
@@ -85,6 +92,14 @@ export default function RootLayout({
           דלג לתוכן הראשי
         </a>
         {children}
+
+        {USERWAY_ACCOUNT ? (
+          <Script
+            src="https://cdn.userway.org/widget.js"
+            data-account={USERWAY_ACCOUNT}
+            strategy="lazyOnload"
+          />
+        ) : null}
       </body>
     </html>
   );
