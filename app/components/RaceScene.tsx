@@ -185,9 +185,9 @@ export default function RaceScene() {
 
   return (
     <section ref={wrapRef} id="journey" className="relative h-[210vh] sm:h-[420vh]">
-      <div className="sticky top-24 mx-auto w-full max-w-[1200px] px-6 sm:top-0 sm:max-w-none sm:px-0">
+      <div className="sticky top-24 mx-auto w-full sm:top-0">
         {/* mobile-only heading — sits above the boxed video, not overlaid on it */}
-        <div className="mb-4 text-center sm:hidden">
+        <div className="mb-4 px-6 text-center sm:hidden">
           <p className="kicker justify-center">המסע שלך</p>
           <h2 className="mx-auto mt-2 max-w-[420px] text-2xl font-black leading-tight text-foreground">
             מלווים אותך מ<span className="text-[#ff4d4f]">קו הזינוק</span> ועד
@@ -195,8 +195,8 @@ export default function RaceScene() {
           </h2>
         </div>
 
-        {/* the video stage: a contained 16:9 rectangle on mobile, full-bleed cinematic on desktop */}
-        <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-line bg-ink sm:aspect-auto sm:h-[100svh] sm:rounded-none sm:border-0">
+        {/* the video stage: a full-width landscape rectangle on mobile (edge to edge), full-bleed cinematic on desktop */}
+        <div className="relative aspect-[3/2] w-full overflow-hidden bg-ink sm:aspect-auto sm:h-[100svh]">
           <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" />
 
           {/* grade + blend into the page — desktop only (the mobile box has its own border/card look) */}
@@ -271,7 +271,7 @@ export default function RaceScene() {
         </div>
 
         {/* mobile-only: caption + progress rail below the boxed video */}
-        <div className="mt-4 sm:hidden">
+        <div className="mt-4 px-6 sm:hidden">
           <div className="relative h-8 text-center">
             {STAGES.map((s, i) => (
               <p
