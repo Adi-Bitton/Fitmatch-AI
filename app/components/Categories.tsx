@@ -3,12 +3,12 @@
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { ArrowUpLeft } from "lucide-react";
-import { CATEGORIES, MATCH_FORM_URL, type Category } from "@/app/lib/site";
+import { CATEGORIES, type Category } from "@/app/lib/site";
 
 function Card({ category, className = "" }: { category: Category; className?: string }) {
   return (
     <a
-      href={MATCH_FORM_URL}
+      href={category.href}
       target="_blank"
       rel="noopener noreferrer"
       className={`group relative block aspect-[4/5] shrink-0 overflow-hidden rounded-2xl border border-line bg-surface transition-all duration-300 hover:-translate-y-1.5 hover:border-violet/50 hover:shadow-[0_24px_60px_-24px_rgba(139,92,246,0.5)] ${className}`}
