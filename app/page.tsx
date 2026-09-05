@@ -5,6 +5,7 @@ import Benefits from "./components/Benefits";
 import About from "./components/About";
 import Categories from "./components/Categories";
 import HowItWorks from "./components/HowItWorks";
+import Article from "./components/Article";
 import Founder from "./components/Founder";
 import Trainers from "./components/Trainers";
 import FinalCta from "./components/FinalCta";
@@ -23,6 +24,7 @@ export default function Home() {
         <About />
         <Categories />
         <HowItWorks />
+        <Article />
         <Founder />
         <Trainers />
         <FinalCta />

@@ -43,7 +43,7 @@ export default function Contact() {
             rel="noopener noreferrer"
             className="card group flex items-center gap-4 p-5 transition-colors hover:border-violet/50"
           >
-            <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-violet/10 text-violet-light">
+            <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#25D366]/15 text-[#25D366]">
               <FaWhatsapp className="text-xl" />
             </span>
             <span className="text-right">
@@ -60,7 +60,7 @@ export default function Contact() {
             rel="noopener noreferrer"
             className="card group flex items-center gap-4 p-5 transition-colors hover:border-violet/50"
           >
-            <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-violet/10 text-violet-light">
+            <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#f58529] via-[#dd2a7b] to-[#8134af] text-white">
               <FaInstagram className="text-xl" />
             </span>
             <span className="text-right">

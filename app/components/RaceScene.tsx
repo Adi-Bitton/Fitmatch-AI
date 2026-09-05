@@ -184,77 +184,127 @@ export default function RaceScene() {
   }
 
   return (
-    <section ref={wrapRef} id="journey" className="relative h-[280vh] sm:h-[420vh]">
-      <div className="sticky top-0 h-[100svh] w-full overflow-hidden bg-ink">
-        <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" />
-
-        {/* grade + blend into the page */}
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/20 to-ink/45" />
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-ink to-transparent" />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-ink to-transparent" />
-
-        {/* loading veil */}
-        {!ready && (
-          <div className="absolute inset-0 grid place-items-center bg-ink">
-            <div className="w-48 text-center">
-              <div className="h-px w-full bg-white/15">
-                <div
-                  className="h-full bg-violet-light transition-[width] duration-200"
-                  style={{ width: `${pct}%` }}
-                />
-              </div>
-              <p className="mt-3 text-xs tracking-[0.3em] text-faint">טוען…</p>
-            </div>
-          </div>
-        )}
-
-        {/* headline */}
-        <div className="absolute inset-x-0 top-[11%] px-6 text-center">
+    <section ref={wrapRef} id="journey" className="relative h-[210vh] sm:h-[420vh]">
+      <div className="sticky top-24 mx-auto w-full max-w-[1200px] px-6 sm:top-0 sm:max-w-none sm:px-0">
+        {/* mobile-only heading — sits above the boxed video, not overlaid on it */}
+        <div className="mb-4 text-center sm:hidden">
           <p className="kicker justify-center">המסע שלך</p>
-          <h2 className="mx-auto mt-3 max-w-[720px] text-3xl font-black leading-tight text-foreground sm:max-w-none sm:whitespace-nowrap sm:text-4xl lg:text-5xl">
+          <h2 className="mx-auto mt-2 max-w-[420px] text-2xl font-black leading-tight text-foreground">
             מלווים אותך מ<span className="text-[#ff4d4f]">קו הזינוק</span> ועד
             השגת <span className="text-[#ff4d4f]">המטרות שלך</span>
           </h2>
         </div>
 
-        {/* per-stage caption */}
-        <div className="absolute inset-x-0 bottom-[20%] h-10 px-6 text-center">
-          {STAGES.map((s, i) => (
-            <p
-              key={s.key}
-              className="absolute inset-x-0 mx-auto max-w-[520px] px-6 text-base leading-7 text-muted sm:text-lg"
-              style={{ opacity: si === i ? 1 : 0, transition: "opacity 300ms" }}
-            >
-              {s.caption}
-            </p>
-          ))}
+        {/* the video stage: a contained 16:9 rectangle on mobile, full-bleed cinematic on desktop */}
+        <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-line bg-ink sm:aspect-auto sm:h-[100svh] sm:rounded-none sm:border-0">
+          <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" />
+
+          {/* grade + blend into the page — desktop only (the mobile box has its own border/card look) */}
+          <div className="pointer-events-none absolute inset-0 hidden bg-gradient-to-t from-ink/70 via-ink/20 to-ink/45 sm:block" />
+          <div className="pointer-events-none absolute inset-x-0 top-0 hidden h-28 bg-gradient-to-b from-ink to-transparent sm:block" />
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 hidden h-40 bg-gradient-to-t from-ink to-transparent sm:block" />
+
+          {/* loading veil */}
+          {!ready && (
+            <div className="absolute inset-0 grid place-items-center bg-ink">
+              <div className="w-40 text-center sm:w-48">
+                <div className="h-px w-full bg-white/15">
+                  <div
+                    className="h-full bg-violet-light transition-[width] duration-200"
+                    style={{ width: `${pct}%` }}
+                  />
+                </div>
+                <p className="mt-3 text-xs tracking-[0.3em] text-faint">טוען…</p>
+              </div>
+            </div>
+          )}
+
+          {/* headline — desktop only, overlaid on the full-bleed video */}
+          <div className="absolute inset-x-0 top-[11%] hidden px-6 text-center sm:block">
+            <p className="kicker justify-center">המסע שלך</p>
+            <h2 className="mx-auto mt-3 max-w-[720px] whitespace-nowrap text-4xl font-black leading-tight text-foreground lg:text-5xl">
+              מלווים אותך מ<span className="text-[#ff4d4f]">קו הזינוק</span> ועד
+              השגת <span className="text-[#ff4d4f]">המטרות שלך</span>
+            </h2>
+          </div>
+
+          {/* per-stage caption — desktop only */}
+          <div className="absolute inset-x-0 bottom-[20%] hidden h-10 px-6 text-center sm:block">
+            {STAGES.map((s, i) => (
+              <p
+                key={s.key}
+                className="absolute inset-x-0 mx-auto max-w-[520px] px-6 text-lg leading-7 text-muted"
+                style={{ opacity: si === i ? 1 : 0, transition: "opacity 300ms" }}
+              >
+                {s.caption}
+              </p>
+            ))}
+          </div>
+
+          {/* progress rail — desktop only, overlaid */}
+          <div
+            dir="rtl"
+            className="absolute inset-x-0 bottom-[9%] mx-auto hidden max-w-[580px] px-8 sm:block"
+          >
+            <div className="relative h-px w-full bg-white/15">
+              <div
+                className="absolute right-0 top-0 h-full bg-gradient-to-l from-violet-light to-lime"
+                style={{ width: `${progress * 100}%` }}
+              />
+              <span
+                className="absolute top-1/2 h-2.5 w-2.5 -translate-y-1/2 rounded-full bg-lime shadow-[0_0_12px_rgba(201,242,78,0.85)]"
+                style={{ right: `${progress * 100}%`, marginRight: "-5px" }}
+              />
+            </div>
+            <div className="mt-3 flex justify-between">
+              {STAGES.map((s, i) => (
+                <span
+                  key={s.key}
+                  className="text-xs font-medium tracking-wide"
+                  style={{ color: i <= si ? "var(--foreground)" : "var(--faint)" }}
+                >
+                  {s.label}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
 
-        {/* progress rail */}
-        <div
-          dir="rtl"
-          className="absolute inset-x-0 bottom-[9%] mx-auto max-w-[580px] px-8"
-        >
-          <div className="relative h-px w-full bg-white/15">
-            <div
-              className="absolute right-0 top-0 h-full bg-gradient-to-l from-violet-light to-lime"
-              style={{ width: `${progress * 100}%` }}
-            />
-            <span
-              className="absolute top-1/2 h-2.5 w-2.5 -translate-y-1/2 rounded-full bg-lime shadow-[0_0_12px_rgba(201,242,78,0.85)]"
-              style={{ right: `${progress * 100}%`, marginRight: "-5px" }}
-            />
-          </div>
-          <div className="mt-3 flex justify-between">
+        {/* mobile-only: caption + progress rail below the boxed video */}
+        <div className="mt-4 sm:hidden">
+          <div className="relative h-8 text-center">
             {STAGES.map((s, i) => (
-              <span
+              <p
                 key={s.key}
-                className="text-[10px] font-medium tracking-wide sm:text-xs"
-                style={{ color: i <= si ? "var(--foreground)" : "var(--faint)" }}
+                className="absolute inset-x-0 mx-auto text-sm leading-6 text-muted"
+                style={{ opacity: si === i ? 1 : 0, transition: "opacity 300ms" }}
               >
-                {s.label}
-              </span>
+                {s.caption}
+              </p>
             ))}
+          </div>
+          <div dir="rtl" className="mx-auto max-w-[420px]">
+            <div className="relative h-px w-full bg-white/15">
+              <div
+                className="absolute right-0 top-0 h-full bg-gradient-to-l from-violet-light to-lime"
+                style={{ width: `${progress * 100}%` }}
+              />
+              <span
+                className="absolute top-1/2 h-2.5 w-2.5 -translate-y-1/2 rounded-full bg-lime shadow-[0_0_12px_rgba(201,242,78,0.85)]"
+                style={{ right: `${progress * 100}%`, marginRight: "-5px" }}
+              />
+            </div>
+            <div className="mt-3 flex justify-between">
+              {STAGES.map((s, i) => (
+                <span
+                  key={s.key}
+                  className="text-[10px] font-medium tracking-wide"
+                  style={{ color: i <= si ? "var(--foreground)" : "var(--faint)" }}
+                >
+                  {s.label}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </div>
