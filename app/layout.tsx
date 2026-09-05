@@ -16,7 +16,7 @@ const spaceGrotesk = Space_Grotesk({
   display: "swap",
 });
 
-const SITE_URL = "https://fitmatch-ai-teal.vercel.app";
+const SITE_URL = "https://www.fitmatch-ai.com";
 const TITLE = "FITMATCH AI — התאמה מדויקת בין מתאמנים לאנשי מקצוע";
 const DESCRIPTION =
   "שאלון אפיון אישי בשילוב טכנולוגיית AI שמתאים לך את המאמן, הקבוצה או הסטודיו המדויקים לאישיות, למטרות ולצרכים שלך. פחות חיפוש, יותר תוצאות.";
@@ -78,6 +78,12 @@ export default function RootLayout({
       className={`${heebo.variable} ${spaceGrotesk.variable} h-full antialiased`}
     >
       <body className="min-h-full bg-ink font-sans text-foreground">
+        <a
+          href="#top"
+          className="sr-only focus:not-sr-only focus:fixed focus:right-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-violet focus:px-4 focus:py-2 focus:font-semibold focus:text-white"
+        >
+          דלג לתוכן הראשי
+        </a>
         {children}
       </body>
     </html>

@@ -19,8 +19,8 @@
   --surface: #272430;
   --line: rgba(255, 255, 255, 0.1);
 
-  --muted: #b2afc0;
-  --faint: #837f93;
+  --muted: #b8b5c6;
+  --faint: #9a96a8;
 }
 
 @theme inline {
@@ -64,6 +64,13 @@ body {
 ::selection {
   background: color-mix(in oklab, var(--violet) 45%, transparent);
   color: #fff;
+}
+
+/* visible keyboard focus for accessibility */
+:focus-visible {
+  outline: 2px solid var(--violet-light);
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
 h1,

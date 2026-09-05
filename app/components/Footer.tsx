@@ -52,7 +52,15 @@ export default function Footer() {
       <div className="border-t border-line">
         <div className="mx-auto flex w-full max-w-[1200px] flex-col items-center justify-between gap-2 px-6 pb-24 pt-6 text-xs text-faint sm:flex-row sm:px-8 sm:pb-6">
           <p>© {year} FITMATCH AI · כל הזכויות שמורות · @Adi Bitton</p>
-          <p>נבנה בישראל</p>
+          <p className="flex items-center gap-3">
+            <a
+              href="/accessibility"
+              className="transition-colors hover:text-foreground"
+            >
+              הצהרת נגישות
+            </a>
+            <span>נבנה בישראל</span>
+          </p>
         </div>
       </div>
     </footer>

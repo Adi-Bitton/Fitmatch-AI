@@ -83,6 +83,7 @@ export default function Contact() {
             <input
               type="text"
               required
+              aria-label="שם"
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="שם"
@@ -92,6 +93,7 @@ export default function Contact() {
               type="tel"
               required
               dir="rtl"
+              aria-label="מספר טלפון"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               placeholder="מספר טלפון"
@@ -101,6 +103,7 @@ export default function Contact() {
           <textarea
             required
             rows={5}
+            aria-label="גוף ההודעה"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             placeholder="גוף ההודעה"

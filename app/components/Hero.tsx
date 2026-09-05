@@ -5,19 +5,17 @@ import TrainerPicker from "./TrainerPicker";
 
 export default function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden">
-      {/* texture + glow */}
-      <div className="bg-grid pointer-events-none absolute inset-0" />
-      <div className="glow pointer-events-none absolute left-1/2 top-[-14%] h-[620px] w-[620px] -translate-x-1/2" />
+    <section id="top" className="relative overflow-x-clip">
+      {/* texture + glow — clipped to the hero, never to the CTA menus */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="bg-grid absolute inset-0" />
+        <div className="glow absolute left-1/2 top-[-14%] h-[620px] w-[620px] -translate-x-1/2" />
+      </div>
 
       <div className="relative mx-auto grid w-full max-w-[1200px] items-center gap-8 px-6 pb-14 pt-28 sm:px-8 lg:min-h-[86vh] lg:grid-cols-[1fr_1.08fr] lg:gap-4 lg:pb-20 lg:pt-32">
         {/* Copy */}
         <div className="order-2 text-center lg:order-1 lg:text-right">
-          <p className="kicker justify-center lg:justify-start">
-            פלטפורמת התאמה מבוססת AI
-          </p>
-
-          <h1 className="mt-5 font-black leading-[1.08] tracking-tight text-[34px] sm:text-6xl lg:text-[62px]">
+          <h1 className="font-black leading-[1.08] tracking-tight text-[34px] sm:text-6xl lg:text-[62px]">
             <span className="block text-foreground">התאמה מדוייקת</span>
             <span className="mt-1 block text-foreground">תוצאות גדולות</span>
             <span
