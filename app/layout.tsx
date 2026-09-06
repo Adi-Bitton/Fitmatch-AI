@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
 import { Heebo, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 
@@ -92,6 +93,7 @@ export default function RootLayout({
           דלג לתוכן הראשי
         </a>
         {children}
+        <Analytics />
 
         {USERWAY_ACCOUNT ? (
           <Script
