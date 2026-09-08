@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>FITMATCH AI — מסמך אפיון ותיעוד</title>
+<style>
+  body{
+    font-family:"David","Times New Roman",Georgia,serif;
+    font-size:12pt; line-height:1.6; color:#1a1a1a;
+    max-width:800px; margin:2.5cm auto; padding:0 1cm;
+  }
+  h1{font-size:22pt; border-bottom:2px solid #6d28d9; padding-bottom:6px; margin-top:0;}
+  h2{font-size:16pt; color:#4c1d95; margin-top:28px; border-bottom:1px solid #ccc; padding-bottom:3px;}
+  h3{font-size:13pt; color:#333; margin-top:18px;}
+  p{margin:8px 0;}
+  table{border-collapse:collapse; width:100%; margin:12px 0; font-size:11pt;}
+  th,td{border:1px solid #999; padding:6px 9px; text-align:right; vertical-align:top;}
+  th{background:#ede9fe; font-weight:bold;}
+  code,pre{font-family:"Consolas","Courier New",monospace; font-size:10.5pt;}
+  code{background:#f2f2f2; padding:1px 4px; border-radius:3px;}
+  pre{background:#f6f6f6; border:1px solid #ddd; padding:10px; overflow:auto; direction:ltr; text-align:left; white-space:pre-wrap;}
+  ul,ol{margin:8px 0; padding-right:24px;}
+  li{margin:3px 0;}
+  hr{border:none; border-top:1px solid #ccc; margin:24px 0;}
+  blockquote{border-right:3px solid #f59e0b; margin:12px 0; padding:4px 14px; background:#fffbeb;}
+  .meta{color:#555; font-size:11pt;}
+  .footer-note{color:#777; font-size:10pt; font-style:italic; margin-top:32px;}
+</style>
+</head>
+<body>
+
+<h1>FITMATCH AI — מסמך אפיון ותיעוד</h1>
+
+<p class="meta">
+עודכן לאחרונה: 8 בספטמבר 2026<br>
+ענף עבודה: <code>redesign/premium-brand</code> · ענף מקור/גיבוי: <code>master</code><br>
+דומיין חי: https://www.fitmatch-ai.com<br>
+מאגר: https://github.com/Adi-Bitton/Fitmatch-AI
+</p>
+
+<hr>
+
+<h2>1. סקירה כללית</h2>
+
+<p>
+FITMATCH AI היא פלטפורמת התאמה מבוססת AI שמחברת מתאמנים לאנשי מקצוע
+(מאמנים אישיים, סטודיו, קבוצות ותזונאים) על סמך שאלון אפיון אישי לכל תחום.
+המייסד: בר אטיאס — לוחם ומפקד לשעבר בחטיבת גבעתי, מתחרה באיירון מן.
+</p>
+
+<p>
+הפרויקט בגרסה הנוכחית הוא <strong>עיצוב מחדש מלא של הפרונט-אנד</strong>: התוכן
+והמבנה של האתר המקורי נשמרו, והחזות נבנתה מחדש כמערכת מותג פרימיום
+(סגול/ליים על רקע גרפיט סגלגל), רספונסיבית למובייל ולדסקטופ.
+</p>
+
+<h3>סטאק טכנולוגי</h3>
+<table>
+<tr><th>רכיב</th><th>גרסה / פרטים</th></tr>
+<tr><td>Next.js</td><td>16.2.12 (App Router, Turbopack)</td></tr>
+<tr><td>React</td><td>19.2.4</td></tr>
+<tr><td>TypeScript</td><td>מלא, <code>strict</code></td></tr>
+<tr><td>Tailwind CSS</td><td>v4 (<code>@import "tailwindcss"</code>, <code>@theme inline</code>)</td></tr>
+<tr><td>גופנים</td><td><code>next/font/google</code> — Heebo (עברית+לטינית), Space Grotesk (וורדמארק/לטינית)</td></tr>
+<tr><td>אייקונים</td><td><code>lucide-react</code>, <code>react-icons</code> (FaWhatsapp / FaInstagram)</td></tr>
+<tr><td>אנליטיקס</td><td><code>@vercel/analytics</code></td></tr>
+<tr><td>אירוח</td><td>Vercel (פריסה אוטומטית מ-GitHub)</td></tr>
+<tr><td>שפה/כיווניות</td><td><code>&lt;html lang="he" dir="rtl"&gt;</code></td></tr>
+</table>
+
+<h3>הערה חשובה על הגיבוי</h3>
+<p>הקוד המקורי לא נמחק. הוא קיים ב:</p>
+<ul>
+<li>ענף <code>master</code> (page.tsx מקורי בן ~1228 שורות)</li>
+<li>תג <code>backup-before-redesign-2026-09-03</code></li>
+<li>שני העותקים דחופים ל-GitHub</li>
+</ul>
+<p>
+<code>git checkout master</code> משחזר את האתר המקורי במלואו. כל העבודה החדשה
+מתבצעת על הענף <code>redesign/premium-brand</code>.
+</p>
+
+<hr>
+
+<h2>2. מבנה הפרויקט</h2>
+
+<pre>
+app/
+  layout.tsx              — &lt;html&gt;, מטא-דאטה, גופנים, Analytics, widget נגישות, קישור "דלג לתוכן"
+  page.tsx                — הרכבת העמוד הראשי (סדר הסקשנים)
+  globals.css             — טוקנים לעיצוב + מחלקות עזר (.card, .panel, .glow, .kicker, .cta-primary...)
+  opengraph-image.tsx     — תמונת OG דינמית (next/og), 1200x630
+  accessibility/page.tsx  — עמוד הצהרת נגישות (/accessibility)
+  lib/
+    site.ts               — כל הנתונים המשותפים: CONTACT, NAV_LINKS, טפסים, CATEGORIES, HOW_STEPS
+  components/
+    Header.tsx            — כותרת דביקה, ניווט, תפריט מובייל, כפתור "התחילו עכשיו" (בורר תחומים)
+    Hero.tsx              — כותרת 3 שורות, אמבלם, שני כפתורי CTA (בוררים), רצועת אמון + פילים
+    RaceScene.tsx         — סצנת הגלילה של האיירון מן (canvas scrubber)
+    Benefits.tsx          — 4 כרטיסי יתרונות ממורכזים
+    About.tsx             — סקשן "עלינו" (id="about")
+    Categories.tsx        — 6 תחומי אימון; גריד בדסקטופ, מרקיזה אוטומטית במובייל
+    HowItWorks.tsx        — "איך זה עובד": גריד עם חצים בדסקטופ, קלפים נגללים במובייל
+    Article.tsx           — "רוצים להכיר את הסיפור?" — הטמעת יוטיוב מדקה 28:58
+    Founder.tsx           — "הכירו את המייסד": כותרת → תמונות אלכסוניות → מלל
+    Trainers.tsx          — פנייה לצד המאמנים; בורר "הצטרפו כמאמנים"
+    FinalCta.tsx          — קריאה לפעולה סופית (בורר תחומים)
+    Contact.tsx           — "נשמח לשמוע מכם": כרטיסי וואטסאפ/אינסטגרם + טופס שנשלח לוואטסאפ
+    Footer.tsx            — וורדמארק, ניווט, יצירת קשר, זכויות + @Adi Bitton, קישור הצהרת נגישות
+    FloatingWhatsApp.tsx  — כפתור וואטסאפ צף
+    TrainerPicker.tsx     — רכיב הבורר הנפתח (משמש גם למאמנים וגם למתאמנים)
+    Wordmark.tsx          — הלוגו הטקסטואלי "FITMATCH AI"
+docs/
+  אפיון-הפרויקט.md / .html — המסמך הזה
+design-source/            — נכסי מקור לרילס (לא נפרס לאתר, ב-.gitignore)
+public/
+  fitmatch-icon.png       — אמבלם המותג המלא (ההירו)
+  race/frames/            — 153 פריימים (frame_001..153.webp) לסצנת הגלילה
+  ironman.jpg, bar-army.jpg — תמונות המייסד
+  running/triathlon/studio-strength/strength/pilates/nutrition.jpg — תמונות תחומים
+</pre>
+
+<p>נתיב alias: <code>@/*</code> → שורש הפרויקט.</p>
+
+<hr>
+
+<h2>3. מערכת העיצוב (globals.css)</h2>
+
+<h3>טוקנים (משתני CSS ב-<code>:root</code>)</h3>
+<table>
+<tr><th>טוקן</th><th>ערך</th><th>שימוש</th></tr>
+<tr><td><code>--background</code> / <code>--ink</code></td><td><code>#1b1a22</code></td><td>רקע ראשי — גרפיט סגלגל (לא שחור זוהר)</td></tr>
+<tr><td><code>--ink-2</code></td><td><code>#211f2a</code></td><td>רקעים משניים (פוטר, תפריט מובייל)</td></tr>
+<tr><td><code>--surface</code></td><td><code>#272430</code></td><td>רקע כרטיסים</td></tr>
+<tr><td><code>--foreground</code></td><td><code>#f2f1f6</code></td><td>טקסט ראשי</td></tr>
+<tr><td><code>--muted</code></td><td><code>#b8b5c6</code></td><td>טקסט משני (הועלה לניגודיות טובה יותר)</td></tr>
+<tr><td><code>--faint</code></td><td><code>#9a96a8</code></td><td>טקסט עמום (הועלה לניגודיות טובה יותר)</td></tr>
+<tr><td><code>--violet</code></td><td><code>#8b5cf6</code></td><td>צבע מותג ראשי</td></tr>
+<tr><td><code>--violet-light</code></td><td><code>#a78bfa</code></td><td>הדגשות, פוקוס</td></tr>
+<tr><td><code>--violet-deep</code></td><td><code>#6d28d9</code></td><td>גרדיאנטים</td></tr>
+<tr><td><code>--lime</code></td><td><code>#c9f24e</code></td><td>צבע מותג משני (accent)</td></tr>
+<tr><td><code>--line</code></td><td><code>rgba(255,255,255,0.1)</code></td><td>גבולות</td></tr>
+</table>
+
+<h3>מחלקות עזר עיקריות</h3>
+<ul>
+<li><code>.kicker</code> — כותרת-על קטנה עם קו לפני (Space Grotesk, letter-spacing רחב)</li>
+<li><code>.card</code> — כרטיס עם גבול, גרדיאנט עדין ורקע surface, פינות 1.25rem</li>
+<li><code>.panel</code> — קופסה גדולה עם גרדיאנט וגבול, פינות 1.75rem</li>
+<li><code>.glow</code> — הילה רדיאלית שדועכת ל-alpha 0 לפני הקצה (ללא "מלבן" נראה)</li>
+<li><code>.cta-primary</code> — כפתור ראשי עם גרדיאנט סגול והילה</li>
+<li><code>.bg-grid</code> — מרקם רקע דק מאוד עם דעיכה הדרגתית</li>
+<li><code>:focus-visible</code> — מסגרת פוקוס סגולה גלויה לכל רכיב אינטראקטיבי (נגישות)</li>
+<li>מדיה <code>prefers-reduced-motion</code> — מבטלת אנימציות ומעברים</li>
+</ul>
+
+<h3>מרווחים בין סקשנים</h3>
+<p>
+כל הסקשנים משתמשים באותו ריפוד אנכי אחיד:
+<code>py-7</code> (מובייל) · <code>sm:py-9</code> (טאבלט) · <code>lg:py-14</code> (דסקטופ) — כ-56px/72px/112px.
+</p>
+
+<hr>
+
+<h2>4. פירוט הסקשנים (לפי סדר בעמוד)</h2>
+
+<p>
+<code>page.tsx</code> מרכיב: Header → Hero → RaceScene → Benefits → About →
+Categories → HowItWorks → Article → Founder → Trainers → FinalCta →
+Contact → Footer → FloatingWhatsApp.
+<code>&lt;main dir="rtl" className="overflow-x-clip"&gt;</code>.
+</p>
+
+<h3>4.1 Header</h3>
+<p>
+כותרת דביקה. שקופה בראש העמוד; בגלילה מקבלת רקע <code>bg-ink/80</code> עם
+<code>backdrop-blur</code>. ניווט דסקטופ מ-<code>NAV_LINKS</code>. במובייל — כפתור המבורגר
+שפותח פאנל נשלף מימין (עם גלילה פנימית) שמכיל את הניווט + <strong>רשימת
+6 תחומי ההתאמה</strong> (במקום dropdown בתוך dropdown). בדסקטופ כפתור
+"התחילו עכשיו" הוא בורר תחומים קטן (<code>size="sm"</code>).
+</p>
+
+<h3>4.2 Hero</h3>
+<ul>
+<li>כותרת ב-3 שורות: <code>התאמה מדוייקת</code> / <code>תוצאות גדולות</code> / <code>FITMATCH AI</code>
+(השורה השלישית בגרדיאנט סגול, <code>dir="ltr"</code>).</li>
+<li><strong>הוסר</strong> המשפט הקטן "פלטפורמת התאמה מבוססת AI" שהיה מעל הכותרת.</li>
+<li>פסקת תיאור.</li>
+<li>שני כפתורי CTA:
+  <ul>
+  <li>"מצא את ה־MATCH שלך" — בורר תחומים למתאמנים (<code>MATCH_TYPES</code>)</li>
+  <li>"אני מאמן / סטודיו" — בורר תחומים למאמנים (<code>TRAINER_TYPES</code>)</li>
+  </ul>
+</li>
+<li>רצועת אמון: "1,200+ התאמות בוצעו" · "6 תחומי אימון".</li>
+<li>שורת פילים עם שמות התחומים.</li>
+<li>ויזואל: אמבלם המותג המלא (<code>/fitmatch-icon.png</code>), גדול, "נשפך" אל
+תוך הפריסה בדסקטופ (<code>lg:-ml-[9%] lg:w-[118%]</code>), עם הילה רכה מאחוריו.</li>
+<li>שכבות הרקע הדקורטיביות עטופות ב-wrapper עם <code>overflow-hidden</code> נפרד,
+כדי שהבורר הנפתח לא ייחתך על-ידן.</li>
+</ul>
+
+<h3>4.3 RaceScene</h3>
+<p>ראו סעיף 6.</p>
+
+<h3>4.4 Benefits</h3>
+<p>
+4 כרטיסים, אייקון + כותרת + טקסט <strong>ממורכזים</strong> (<code>items-center text-center</code>).
+פריטים: תוצאות אמיתיות · חיסכון בזמן וכסף · התאמה אישית חכמה · מגוון רחב.
+רווחים הדוקים: <code>gap-2 sm:gap-2.5 lg:gap-3</code>.
+</p>
+
+<h3>4.5 About</h3>
+<p>
+<code>id="about"</code>. <code>.panel</code> ממורכז, kicker "עלינו", כותרת עם מילה מודגשת
+בגרדיאנט ("בהתאמה הנכונה"), פסקת מיסיה.
+</p>
+
+<h3>4.6 Categories</h3>
+<p>
+<code>id="categories"</code>. 6 תחומים מתוך <code>CATEGORIES</code>. בדסקטופ — גריד 3 עמודות.
+במובייל — מרקיזה שנגללת אוטומטית (rAF, עוצרת בנגיעה). כל כרטיס מקשר
+לשאלון של אותו תחום (<code>category.href</code>). דירוג צבע אחיד לכל התמונות.
+</p>
+
+<h3>4.7 HowItWorks</h3>
+<p>
+<code>id="how"</code>. 3 שלבים מתוך <code>HOW_STEPS</code> (מספרים 01/02/03 ב-Space Grotesk,
+אייקונים ClipboardList/Sparkles/PhoneCall).
+</p>
+<ul>
+<li><strong>דסקטופ</strong>: גריד 5 עמודות עם חצים מחברים בין הכרטיסים.</li>
+<li><strong>מובייל</strong>: מקבץ קלפים נגללים (swipe) — הקלף הפעיל למעלה, שאר
+הקלפים מוטים ומדורגים מאחוריו, נקודות ניווט + רמז "החליקו". זהו
+שחזור של חוויית הקלפים מהאתר המקורי.</li>
+</ul>
+
+<h3>4.8 Article</h3>
+<p>
+הוחזר לאחר שהושמט בטעות בעיצוב מחדש. כותרת "רוצים להכיר את הסיפור
+קצת יותר מקרוב?" + הטמעת יוטיוב:
+<code>https://www.youtube.com/embed/cbSBvXPicU0?start=1738</code> (מתחיל בדקה 28:58,
+מהנקודה שבה הכתבה מדברת על החברה). ממוקם מיד לפני "הכירו את המייסד".
+</p>
+
+<h3>4.9 Founder</h3>
+<p>
+<code>id="founder"</code>. סדר במובייל: <strong>כותרת "הכירו את המייסד" → תמונות → מלל</strong>
+(תואם לאתר המקורי). התמונות אלכסוניות וחופפות (<code>-rotate-4</code> / <code>rotate-4</code>),
+<code>/ironman.jpg</code> (נחתך מסימן מים) ו-<code>/bar-army.jpg</code>. בדסקטופ — פריסת
+2 עמודות (טקסט מימין, תמונות משמאל) דרך <code>grid</code> order/row-span.
+</p>
+
+<h3>4.10 Trainers</h3>
+<p>
+<code>id="trainers"</code>. פנייה לצד המאמנים/סטודיו. כפתור ראשי "הצטרפו כמאמנים"
+פותח את בורר התחומים למאמנים (<code>TrainerPicker</code> עם <code>TRAINER_TYPES</code>).
+כפתור משני "יש לי שאלה" → <code>#contact</code>.
+</p>
+
+<h3>4.11 FinalCta</h3>
+<p>
+"מוכנים למצוא את ה־MATCH שלכם?" + כפתור בורר תחומים למתאמנים.
+שכבות הזוהר הדקורטיביות עטופות ב-wrapper <code>overflow-hidden</code> נפרד עם
+פינות מעוגלות, כדי שהבורר הנפתח לא ייחתך.
+</p>
+
+<h3>4.12 Contact</h3>
+<p>
+<code>id="contact"</code>. כרטיסי וואטסאפ (אייקון ירוק <code>#25D366</code>) ואינסטגרם
+(אייקון בגרדיאנט הכתום-ורוד-סגול המקורי) עם טלפון/יוזר אמיתיים.
+טופס (שם / טלפון / הודעה) — בשליחה נפתח <code>wa.me</code> עם הודעה מוכנה.
+לכל שדה יש <code>aria-label</code> (נגישות).
+</p>
+
+<h3>4.13 Footer</h3>
+<p>
+וורדמארק, תגית, ניווט, וואטסאפ/אינסטגרם.<br>
+שורת תחתית: <code>© &lt;שנה&gt; FITMATCH AI · כל הזכויות שמורות · @Adi Bitton</code>
+בצד אחד; "הצהרת נגישות" (קישור ל-<code>/accessibility</code>) + "נבנה בישראל" בצד השני.
+</p>
+
+<hr>
+
+<h2>5. השאלונים (Google Forms)</h2>
+
+<p>
+מוגדרים ב-<code>app/lib/site.ts</code> באובייקט <code>FORMS</code>. טופס כללי לגיבוי:
+<code>MATCH_FORM_URL</code>.
+</p>
+
+<h3>שאלוני מאמנים (<code>TRAINER_TYPES</code>) — כולם מחוברים</h3>
+<table>
+<tr><th>תחום</th><th>קישור</th></tr>
+<tr><td>ריצה</td><td>docs.google.com/forms/d/e/1FAIpQLSe8dHKpdmG4yGDPgfOxOMOdt2FcrZJ3DUthrYVP21PMfIpaVQ/...</td></tr>
+<tr><td>טריאתלון</td><td>forms.gle/e7kJopzPKj44eeBQ6</td></tr>
+<tr><td>סטודיו כוח</td><td>forms.gle/ymuphuwtBw5f4YFF6</td></tr>
+<tr><td>מאמן כושר אישי</td><td>forms.gle/Vjc8cDvEYjfUPCeC8</td></tr>
+<tr><td>פילאטיס</td><td>forms.gle/5LswFwZSsetduLaP6</td></tr>
+<tr><td>תזונה</td><td>forms.gle/cX3S24Amw2E7nNgz9</td></tr>
+</table>
+
+<h3>שאלוני מתאמנים (<code>MATCH_TYPES</code> + כרטיסי <code>CATEGORIES</code>)</h3>
+<table>
+<tr><th>תחום</th><th>קישור</th><th>סטטוס</th></tr>
+<tr><td>ריצה</td><td>forms.gle/RhHcYfRKX8zMzwS96</td><td>מחובר</td></tr>
+<tr><td>סטודיו כוח</td><td>forms.gle/oJ1H1EFemjuUV2uMA</td><td>מחובר</td></tr>
+<tr><td>מאמן כושר אישי</td><td>forms.gle/n7y3vhwzodpZ5Xp37</td><td>מחובר</td></tr>
+<tr><td>תזונה</td><td>forms.gle/oJ1H1EFemjuUV2uMA</td><td>מחובר — ראו הערה</td></tr>
+<tr><td>טריאתלון</td><td>טופס כללי (<code>MATCH_FORM_URL</code>)</td><td>ממתין לשאלון ייעודי</td></tr>
+<tr><td>פילאטיס</td><td>טופס כללי (<code>MATCH_FORM_URL</code>)</td><td>ממתין לשאלון ייעודי</td></tr>
+</table>
+
+<blockquote>
+<strong>הערה לבדיקה:</strong> הקישור למתאמן תזונה זהה לקישור של מתאמן סטודיו כוח
+(<code>forms.gle/oJ1H1EFemjuUV2uMA</code>) — כפי שסופק. ייתכן שזו טעות העתקה;
+יש לוודא ולעדכן. מסומן גם בהערה בקוד ב-<code>site.ts</code>.
+</blockquote>
+
+<hr>
+
+<h2>6. RaceScene — סצנת הגלילה של האיירון מן</h2>
+
+<p><code>app/components/RaceScene.tsx</code> (Client Component).</p>
+
+<h3>הרעיון</h3>
+<p>
+אנימציית מסע: מקו הזינוק ועד השגת המטרות, דרך שלבי הטריאתלון
+(זינוק → שחייה → רכיבה → ריצה → סיום). התוכן מגיע מסרטון שהמייסדת
+יצרה ב-AI (5 סטילס → סרטון). מתוכו חולצו <strong>153 פריימים</strong> ליחס 16:9,
+עם עוגן חיתוך אנכי שונה לכל שלב (כדי שהמתחרה יישאר בפריים למרות
+שהמקור ריבועי). הפריימים: <code>public/race/frames/frame_001..153.webp</code>
+(WebP, ~4.5MB בסך הכל).
+</p>
+
+<h3>מנגנון טכני</h3>
+<ul>
+<li>הסקשן גבוה (<code>h-[210vh]</code> מובייל / <code>h-[420vh]</code> דסקטופ).</li>
+<li>בתוכו <code>&lt;canvas&gt;</code> דביק (<code>sticky</code>).</li>
+<li>מיקום הגלילה (0–1) בוחר את הפריים ומצייר אותו על ה-canvas
+(cover-fit עם הטיה קלה כלפי מעלה).</li>
+<li>כל הפריימים נטענים מראש; פס טעינה קצר עד שהשלב הראשון מוכן;
+fallback לפריים הקרוב שכבר נטען — למניעת הבהוב.</li>
+<li><code>prefers-reduced-motion</code> / ללא JS → תמונת סיום סטטית + כותרת.</li>
+</ul>
+
+<h3>תצוגה</h3>
+<ul>
+<li><strong>דסקטופ</strong>: וידאו במסך מלא (full-bleed) עם כותרת, כיתוב לכל שלב
+ופס התקדמות — כשכבות overlay.</li>
+<li><strong>מובייל</strong>: מלבן ברוחב מלא (edge-to-edge) ביחס 3:2. הכותרת מעליו,
+הכיתוב ופס ההתקדמות מתחתיו (לא overlay).</li>
+</ul>
+
+<h3>כותרת</h3>
+<p>
+"מלווים אותך מ<strong>קו הזינוק</strong> ועד השגת <strong>המטרות שלך</strong>" — המילים "קו הזינוק"
+ו-"המטרות שלך" בצבע אדום (<code>#ff4d4f</code>, מתכתב עם האדום של IRONMAN).
+בדסקטופ הכותרת בשורה אחת (<code>whitespace-nowrap</code>), במובייל נגללת.
+</p>
+
+<h3>פס ההתקדמות</h3>
+<p>
+פס דק עם נקודה נעה בגרדיאנט סגול→ליים. <strong>הכיתובים זינוק/שחייה/רכיבה/
+ריצה/סיום מתחת לפס הוסרו</strong> לבקשת המייסדת (הפס והנקודה נשארו).
+</p>
+
+<hr>
+
+<h2>7. נגישות</h2>
+
+<h3>מה נעשה בקוד</h3>
+<ul>
+<li>קישור "דלג לתוכן הראשי" בראש כל עמוד (<code>layout.tsx</code>, מופיע ב-focus).</li>
+<li>מסגרת פוקוס גלויה (<code>:focus-visible</code>) לכל רכיב אינטראקטיבי.</li>
+<li><code>aria-label</code> לשדות טופס יצירת הקשר ולכפתור הוואטסאפ הצף.</li>
+<li>העלאת ניגודיות הצבעים של <code>--muted</code> ו-<code>--faint</code>.</li>
+<li>כיבוד <code>prefers-reduced-motion</code> (אנימציות + סצנת הגלילה).</li>
+<li>מבנה עמוד סמנטי, <code>alt</code> לתמונות, <code>lang="he" dir="rtl"</code>.</li>
+</ul>
+
+<h3>עמוד הצהרת נגישות</h3>
+<p>
+<code>/accessibility</code> — הצהרה בעברית (רמת WCAG 2.1 AA / ת"י 5568 ככל שניתן,
+מגבלות ידועות, פרטי פנייה). מקושר מהפוטר.
+</p>
+
+<h3>ווידג'ט נגישות</h3>
+<p>
+מחובר בקוד ב-<code>layout.tsx</code> (UserWay, דרך <code>next/script</code>, <code>lazyOnload</code>).
+<strong>רנדר רק אם</strong> משתנה הסביבה <code>NEXT_PUBLIC_USERWAY_ACCOUNT</code> מוגדר —
+כרגע לא מוגדר, אז הווידג'ט כבוי. להפעלה: הרשמה ב-userway.org, העתקת
+Account ID, והגדרתו כמשתנה סביבה ב-Vercel (Production + Preview).
+ניתן להחליף ב-EqualWeb/נגישות ע"י שינוי ה-script.
+</p>
+
+<h3>מה שנותר (מחוץ לקוד)</h3>
+<ul>
+<li>בדיקת נגישות ע"י <strong>מורשה נגישות השירות</strong> — זה מה שמאשר עמידה בתקן.</li>
+<li>הצהרת נגישות תקנית מלאה עם שם <strong>רכז נגישות</strong> ואיש קשר אחראי.</li>
+<li>audit מלא: ניגודיות, סדר כותרות, alt לכל תמונה, נגישות סצנת ה-canvas.</li>
+</ul>
+
+<hr>
+
+<h2>8. אנליטיקס</h2>
+<p>
+<code>@vercel/analytics</code> מותקן; <code>&lt;Analytics /&gt;</code> מ-<code>@vercel/analytics/next</code>
+מרונדר ב-<code>layout.tsx</code>. יאסוף צפיות בעמודים ברגע שהקומיט נפרס לפרודקשן
+ו-Analytics מופעל בדשבורד Vercel (לשונית Analytics → Enable).
+</p>
+
+<hr>
+
+<h2>9. פריסה, Git ודומיין</h2>
+
+<h3>תהליך</h3>
+<ul>
+<li>כל העבודה על ענף <code>redesign/premium-brand</code>, נדחף ל-GitHub.</li>
+<li>Vercel מחובר למאגר ובונה אוטומטית לכל push.</li>
+<li>הדומיין <code>www.fitmatch-ai.com</code> מקושר לסביבת ה-Production של הפרויקט.</li>
+</ul>
+
+<h3>נקודה פתוחה קריטית</h3>
+<p>
+ה-<strong>Production Branch</strong> ב-Vercel עדיין מוגדר כ-<code>master</code> (האתר הישן).
+לכן push-ים לענף <code>redesign/premium-brand</code> יוצרים <strong>Preview בלבד</strong> ולא
+מתעדכנים אוטומטית בדומיין. עד עכשיו העלאות לפרודקשן נעשו ידנית
+("Promote to Production"), ולכן חלק מהקומיטים האחרונים (נגישות, הסרת
+הכיתוב, תיקון הבורר, Analytics) <strong>טרם עלו לאתר החי</strong>.
+</p>
+<p>
+<strong>התיקון (חד-פעמי):</strong> Vercel → הפרויקט → Settings → Git →
+Production Branch → לשנות ל-<code>redesign/premium-brand</code> → Save.
+הדומיין נשאר מקושר; מאותו רגע כל push עולה אוטומטית לאתר החי.
+(לחלופין: למזג <code>redesign/premium-brand</code> → <code>master</code>.)
+</p>
+
+<hr>
+
+<h2>10. נכסים</h2>
+
+<h3>public/ (נפרסים)</h3>
+<ul>
+<li><code>fitmatch-icon.png</code> — אמבלם המותג המלא (ההירו). <code>fitmatch-icon.src.png</code> — מקור.</li>
+<li><code>race/frames/frame_001..153.webp</code> — פריימים לסצנת הגלילה.</li>
+<li><code>ironman.jpg</code> (נחתך מסימן מים Sportograf), <code>bar-army.jpg</code> — תמונות המייסד.</li>
+<li>תמונות תחומים: <code>running / triathlon / studio-strength / strength / pilates / nutrition.jpg</code>.</li>
+<li><code>opengraph-image.tsx</code> — תמונת OG דינמית.</li>
+</ul>
+
+<h3>design-source/ (לא נפרס — ב-.gitignore)</h3>
+<p>נכסי מקור לסרטוני הרילס לאינסטגרם:</p>
+<ul>
+<li><code>journey-full.mp4</code> — סרטון המסע המקורי (מ-5 הסטילס).</li>
+<li><code>macbook-screen.mp4</code> — תוכן מסך המקבוק (דף סגול → אנימציה).</li>
+<li><code>phone-chat.mp4</code> — מוקאפ מסך צ'אט.</li>
+<li><code>endcard.mp4</code> — כרטיס סיום.</li>
+<li><code>reels-full.mp4</code> / <code>reels-mock.mp4</code> / <code>reels-real.mp4</code> — גרסאות רילס מורכבות.
+<code>reels-real.mp4</code> = הגרסה עם הצילום האמיתי + הדבקת האתר על מסך המקבוק
+(התאמת פרספקטיבה). <code>reels-real-small.mp4</code> — גרסה דחוסה להעברה.</li>
+<li><code>reels-storyboard.md</code> / <code>reels-ai-prompts.md</code> — סטוריבורד ופרומפטים.</li>
+<li><code>reels-fonts/</code> — Heebo / Space Grotesk / Assistant לרינדור טקסט ב-ffmpeg.</li>
+</ul>
+
+<hr>
+
+<h2>11. מה שנותר לעשות</h2>
+<ol>
+<li><strong>Vercel Production Branch</strong> — לשנות ל-<code>redesign/premium-brand</code>
+(או למזג ל-<code>master</code>) כדי שהאתר החי יתעדכן אוטומטית. <strong>חוסם.</strong></li>
+<li><strong>Analytics</strong> — ללחוץ Enable בדשבורד Vercel.</li>
+<li><strong>ווידג'ט נגישות</strong> — הרשמה ל-UserWay/EqualWeb והגדרת
+<code>NEXT_PUBLIC_USERWAY_ACCOUNT</code> ב-Vercel.</li>
+<li><strong>בדיקת מורשה נגישות</strong> — לצורך עמידה משפטית מלאה בתקנות.</li>
+<li><strong>שאלון מתאמן תזונה</strong> — לוודא שהקישור נכון (כרגע זהה לסטודיו כוח).</li>
+<li><strong>שאלוני מתאמנים חסרים</strong> — טריאתלון, פילאטיס (כרגע טופס כללי).</li>
+<li><strong>רילס אינסטגרם</strong> — סיום ההרכבה (ממתין ל-3 שוטי שולחן מ-AI/צילום)
+או שימוש בגרסת <code>reels-real.mp4</code> הקיימת.</li>
+<li><code>SITE_URL</code> ב-<code>layout.tsx</code> כבר עודכן ל-<code>https://www.fitmatch-ai.com</code>.</li>
+</ol>
+
+<hr>
+
+<h2>12. יומן שינויים (קומיטים על הענף, מהחדש לישן)</h2>
+<table>
+<tr><th>קומיט</th><th>תיאור</th></tr>
+<tr><td>7e22f26</td><td>הוספת מסמך אפיון / תיעוד לפרויקט</td></tr>
+<tr><td>95ca5af</td><td>הוספת Vercel Analytics</td></tr>
+<tr><td>e5634c1</td><td>חיבור ווידג'ט נגישות (UserWay), מותנה ב-Account ID</td></tr>
+<tr><td>fe36ad1</td><td>ביטול חיתוך הבוררים, מעבר נגישות, הסרת הכיתוב מההירו</td></tr>
+<tr><td>a75040a</td><td>תיקון קטגוריות המאמנים + חיבור השאלונים לכל תחום</td></tr>
+<tr><td>8aa60f1</td><td>הפיכת ה-CTA של המתאמנים לבורר תחומים</td></tr>
+<tr><td>82886eb</td><td>הסרת תוויות השלבים מסצנת הגלילה; קרדיט @Adi Bitton בפוטר</td></tr>
+<tr><td>4858807</td><td>סצנת הגלילה במובייל: מלבן רוחב-מלא, קצת גדול יותר</td></tr>
+<tr><td>9a40e25</td><td>חמישה תיקוני מובייל טרום-השקה (סצנה, קלפים, כתבה, מייסד, אייקונים)</td></tr>
+<tr><td>712f7f2</td><td>צבע ההדגשה בכותרת הסצנה מסגול לאדום</td></tr>
+<tr><td>574541f</td><td>הדגשת "קו הזינוק" ו-"המטרות שלך" בסגול</td></tr>
+<tr><td>b183404</td><td>כותרת הסצנה בשורה אחת מ-sm ומעלה</td></tr>
+<tr><td>fb3eb72</td><td>ניסוח מחדש של כותרת סצנת הגלילה</td></tr>
+<tr><td>54f114d</td><td>בניית סצנת הגלילה מחדש כרצף פריימים נגלל</td></tr>
+<tr><td>e0a111e</td><td>חיבור 5 פריימי האיירון מן לסצנה</td></tr>
+<tr><td>a218c94</td><td>הוספת סצנת הגלילה אחרי ההירו</td></tr>
+<tr><td>4df8857</td><td>הידוק המרווחים האנכיים בין כל הסקשנים</td></tr>
+<tr><td>5da6ced</td><td>הידוק הרווחים בין כרטיסי היתרונות</td></tr>
+<tr><td>dcd010d</td><td>הסרת ה"מלבן" הנראה סביב אמבלם ההירו</td></tr>
+<tr><td>3078def</td><td>מיזוג אמבלם ההירו לרקע בהדרגתיות</td></tr>
+<tr><td>c0df913</td><td>אמבלם ההירו גדול יותר + נשפך לפריסה; מרכוז כרטיסי היתרונות</td></tr>
+<tr><td>6510636</td><td>דחיסת ה-PNG של אמבלם ההירו (890KB → 214KB)</td></tr>
+<tr><td>cc413ea</td><td>יישום התיקונים: לוגו מלא, כותרת 3 שורות, בורר מאמנים, רקע רך יותר</td></tr>
+<tr><td>ad51695</td><td>עיצוב הפרונט-אנד מחדש כמערכת מותג פרימיום</td></tr>
+</table>
+
+<p class="footer-note">המסמך נכתב על ידי Claude (Claude Code) כתיעוד לפרויקט FITMATCH AI.</p>
+
+</body>
+</html>
