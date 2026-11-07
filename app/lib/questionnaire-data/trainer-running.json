@@ -1,0 +1,573 @@
+{
+  "key": "trainer-running",
+  "role": "trainer",
+  "discipline": "running",
+  "description": "השאלון נועד לעזור לנו להבין לעומק את קבוצת הריצה או מאמן הריצה — מבחינה מקצועית, אישיותית, קהילתית ולוגיסטית — כדי לבצע התאמה מדויקת ככל האפשר בין רצים לבין המסגרת המתאימה להם ביותר.\n(אורך מילוא השאלון כ-15 דק' - ככל שתמלאו יותר פרטים תקבלו את ההתאמה המדויקת אליכם ומירב המתאמנים)",
+  "formAction": "https://docs.google.com/forms/d/e/1FAIpQLSe8dHKpdmG4yGDPgfOxOMOdt2FcrZJ3DUthrYVP21PMfIpaVQ/formResponse",
+  "pages": [
+    {
+      "title": null,
+      "questions": [
+        {
+          "entryId": 406106839,
+          "title": "שם המאמן/ קבוצה",
+          "description": null,
+          "type": "short",
+          "required": true
+        },
+        {
+          "entryId": 1575814537,
+          "title": "מספר טלפון",
+          "description": null,
+          "type": "short",
+          "required": true
+        },
+        {
+          "entryId": 1364334263,
+          "title": "כתובת אימייל",
+          "description": null,
+          "type": "short",
+          "required": true
+        },
+        {
+          "entryId": 1672366090,
+          "title": "קישור לאינסטגרם/ אתר ",
+          "description": null,
+          "type": "short",
+          "required": true
+        },
+        {
+          "entryId": 1484992178,
+          "title": "עיר פעילות מרכזית",
+          "description": null,
+          "type": "short",
+          "required": true
+        },
+        {
+          "entryId": 1745790258,
+          "title": "איזורי פעילות נוספים",
+          "description": null,
+          "type": "short",
+          "required": true
+        },
+        {
+          "entryId": 534891458,
+          "title": "כמה שנים הקבוצה פעילה?",
+          "description": null,
+          "type": "short",
+          "required": true
+        }
+      ]
+    },
+    {
+      "title": "חלק 2 - סוג הקבוצה והDNA שלה",
+      "questions": [
+        {
+          "entryId": 293488813,
+          "title": "איזה סוג מסגרת אתם?",
+          "description": null,
+          "type": "checkbox",
+          "options": [
+            "קבוצת ריצה תחרותית",
+            "קבוצת ריצה עממית",
+            "שילוב בין קבוצת ריצה תחרותית לעממית",
+            "קבוצת מתחילים (מתאמנים ללא רקע בריצה)",
+            "קבוצת מתקדמים (מתאמנים עם רקע בריצה",
+            "קבוצת נשים",
+            "קבוצת נוער",
+            "ליווי אישי בלבד",
+            "ליווי אונליין"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 958855642,
+          "title": "איך הייתם מתארים את הוייב המרכזי שלכם?",
+          "description": null,
+          "type": "checkbox",
+          "options": [
+            "הישגי ותחרותי",
+            "קהילתי ומשפחתי",
+            "מקצועי ושקט",
+            "קשוח ודוחף",
+            "חברתי ואנרגטי",
+            "משמעתי ומסודר"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 1443779183,
+          "title": "אם הייתם צריכים לתאר את הקבוצה/ הליווי ב-3 משפטים:",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 677767161,
+          "title": "מה לדעתכם מייחד אתכם ממאמנים או קבוצות אחרות?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 1010406005,
+          "title": "למה מתאמנים נשארים דווקא אצלכם?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        }
+      ]
+    },
+    {
+      "title": "חלק 3 - סוגי רצים והתאמה",
+      "questions": [
+        {
+          "entryId": 311091802,
+          "title": "עם אילו רמות אתם עובדים?",
+          "description": null,
+          "type": "checkbox",
+          "options": [
+            "מתחילים",
+            "בינוניים (עם רקע קטן בריצה)",
+            "מתקדמים",
+            "תחרותיים"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 37592060,
+          "title": "האם יש חלוקה לפי רמות / קצבים?",
+          "description": null,
+          "type": "radio",
+          "options": [
+            "כן",
+            "לא"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 1561737888,
+          "title": "אילו סוגי מטרות אתם מלווים?",
+          "description": null,
+          "type": "checkbox",
+          "options": [
+            "5 ק\"מ",
+            "10 ק\"מ",
+            "חצי מרתון",
+            "מרתון מלא",
+            "אולטרה מרתון",
+            "בחני כושר (בר-אור) לחיילים",
+            "שיפור כושר כללי",
+            "ירידה במשקל",
+            "חזרה מפציעה"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 1498183401,
+          "title": "איזה סוג רצים הכי מצליח אצלכם?",
+          "description": null,
+          "type": "short",
+          "required": true
+        },
+        {
+          "entryId": 1906357986,
+          "title": "עם איזה סוג רצים פחות מתאים לכם לעבוד?",
+          "description": null,
+          "type": "short",
+          "required": true
+        },
+        {
+          "entryId": 436013957,
+          "title": "מה אתם מצפים ממתאמן בקבוצה / בליווי?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 1425780874,
+          "title": "איזה אופי מתאמן הכי מתאים למסגרת שלכם?",
+          "description": null,
+          "type": "checkbox",
+          "options": [
+            "הישגי",
+            "חברתי",
+            "ממושמע",
+            "קליל",
+            "מחפש קהילה",
+            "צריך מסגרת",
+            "עצמאי"
+          ],
+          "required": true
+        }
+      ]
+    },
+    {
+      "title": "חלק 4 - מבנה האימונים",
+      "questions": [
+        {
+          "entryId": 210154085,
+          "title": "כמה אימוני ריצה יש בשבוע?",
+          "description": null,
+          "type": "radio",
+          "options": [
+            "1",
+            "2",
+            "3",
+            "4+"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 1202674981,
+          "title": "כמה אימוני ריצה קבוצתיים יש בשבוע וכמה אימונים עצמאיים?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 241488799,
+          "title": "באילו ימים ושעות מתקיימים האימונים?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 1980223517,
+          "title": "איפה מתקיימים האימונים?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 730064763,
+          "title": "האם יש: ",
+          "description": null,
+          "type": "checkbox",
+          "options": [
+            "אימוני מסלול",
+            "אימוני עליות",
+            "אימוני נפח",
+            "אימוני טמפו",
+            "אימוני אינטרוולים",
+            "אימוני טכניקה",
+            "ריצות קלות / אימוני התאוששות"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 2020529790,
+          "title": "האם יש תכנית ריצה אישית?",
+          "description": null,
+          "type": "radio",
+          "options": [
+            "כן",
+            "לא"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 2129042357,
+          "title": "האם יש אימוני אונליין",
+          "description": null,
+          "type": "radio",
+          "options": [
+            "כן",
+            "לא"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 456127112,
+          "title": "האם יש אימונים משלימים כחלק מתכנית האימונים?",
+          "description": null,
+          "type": "checkbox",
+          "options": [
+            "כוח",
+            "מוביליטי",
+            "פילאטיס",
+            "גמישות"
+          ],
+          "required": true
+        }
+      ]
+    },
+    {
+      "title": "חלק 5 - ליווי מקצועי ומעקב",
+      "questions": [
+        {
+          "entryId": 1948598227,
+          "title": "איך מתבצע המעקב אחרי המתאמנים?",
+          "description": null,
+          "type": "checkbox",
+          "options": [
+            "• TrainingPeaks",
+            "• Final Surge",
+            "• Garmin",
+            "• Excel",
+            "• WhatsApp"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 1455248861,
+          "title": "האם יש מעקב אישי על כל מתאמן?",
+          "description": null,
+          "type": "radio",
+          "options": [
+            "כן",
+            "לא"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 411833579,
+          "title": "עד כמה יש יחס אישי?",
+          "description": null,
+          "type": "scale",
+          "options": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 1180941422,
+          "title": "עד כמה אתם זמינים למתאמנים",
+          "description": null,
+          "type": "scale",
+          "options": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 408478209,
+          "title": "איך אתם מגיבים למתאמן שמאבד מוטיבציה?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 1383977048,
+          "title": "איך אתם עובדים עם רצים מתחילים?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 983357539,
+          "title": "איך אתם עובדים עם רצים תחרותיים?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 403607661,
+          "title": "לפני תחרויות האם מתבצע מפגש בין מאמן למתאמן ואיך הוא מתבצע?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        }
+      ]
+    },
+    {
+      "title": "חלק 6 - קהילה וחיבור חברתי",
+      "questions": [
+        {
+          "entryId": 1640804794,
+          "title": "עד כמה הקבילה בקבוצה חזקה?",
+          "description": null,
+          "type": "scale",
+          "options": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 306613054,
+          "title": "האם יש פעילויות מעבר לאימונים?",
+          "description": null,
+          "type": "checkbox",
+          "options": [
+            "ארוחות",
+            "מחנות אימון קבוצתיים",
+            "נסיעות למרוצים",
+            "מפגשים חברתיים",
+            "הרצאות"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 867031829,
+          "title": "עד כמה חשוב לכם החיבור החברתי בקבוצה ולמה?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 561025124,
+          "title": "איך אתם מחברים מתאמנים חדשים לקהילת הקבוצה?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        }
+      ]
+    },
+    {
+      "title": "חלק 7 - מחירים ומסלולים",
+      "questions": [
+        {
+          "entryId": 433969114,
+          "title": "פירוט מסלולים ומחירים",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 1139187001,
+          "title": "אילו מסלולים קיימים?",
+          "description": null,
+          "type": "checkbox",
+          "options": [
+            "תכנית קבוצתית בלבד",
+            "תיכנית אישית בלבד",
+            "ליווי מלא (הכולל אימוני קבוצה ואימונים אישיים)",
+            "אונליין בלבד"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 2044364535,
+          "title": "מה כלול בכל מסלול?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 1374497362,
+          "title": "האם יש:\nהתחייבות?\nדמי הרשמה?\nאימון ניסיון?\nהנחות לסטודנטים/ חיילים/ מילואימניקים?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        }
+      ]
+    },
+    {
+      "title": "חלק 8 - הישגים",
+      "questions": [
+        {
+          "entryId": 89465262,
+          "title": "הישגים מרכזיים של הקבוצה / המתאמנים?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 452996088,
+          "title": "האם יש רצים בקבוצה שסיימו:",
+          "description": null,
+          "type": "checkbox",
+          "options": [
+            "מרתון ראשון",
+            "סאב 40 ב-10 ק\"מ",
+            "סאב 90 בחצי מרתון",
+            "אולטרה מרתון",
+            "פודיום בתחרויות"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 805219909,
+          "title": "הישגים משמעותיים נוספים:",
+          "description": null,
+          "type": "short",
+          "required": true
+        }
+      ]
+    },
+    {
+      "title": "חלק 9 - שאלות עומק פסיכולוגיות",
+      "questions": [
+        {
+          "entryId": 545919993,
+          "title": "מה הופך רץ למתאמן שמצליח אצלכם?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 395644711,
+          "title": "מה לדעתם גורם לאנשים להתמיד בריצה לאורך זמן?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 1564629009,
+          "title": "מה יותר חשוב לכם?",
+          "description": null,
+          "type": "radio",
+          "options": [
+            "תוצאות",
+            "תהליך",
+            "קהילה",
+            "איזון בין הכל"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 1948956257,
+          "title": "איך הייתם מתארים את החוויה אצלכם לרץ חדש?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 1075114762,
+          "title": "איזה סוג מתאמנים הכי נהנה אצלכם?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 1960145534,
+          "title": "אם מתאמן לא מקפיד באימונים ובתכנית איך אתם פועלים ומה אתם עושים?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 871818880,
+          "title": "איזה סוגי אנשים לא מצליחים להתמיד אצלכם ועוזבים יחסית מהר (בחודשיים הראשונים)?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        }
+      ]
+    },
+    {
+      "title": "חלק 10 - סיום",
+      "questions": [
+        {
+          "entryId": 113416130,
+          "title": "האם יש משהו נוסף שחשוב לכם שנדע על הקבוצה/ הליווי?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

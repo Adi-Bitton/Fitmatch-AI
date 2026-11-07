@@ -1,0 +1,687 @@
+{
+  "key": "trainee-personal",
+  "role": "trainee",
+  "discipline": "personal",
+  "description": "מטרת השאלון\nההשאלון נועד לעזור לנו להבין אותך לעומק — לא רק מבחינת מטרות הכושר שלך, אלא גם מבחינת האישיות שלך, סגנון ההתמדה שלך, מה מניע אותך, מה מפיל אותך ואיזה סוג ליווי באמת יעזור לך להצליח לאורך זמן.\nהמטרה שלנו להביא אותך לתוצאות שתמיד חלמת בלי טעויות נוספות, נקודה.\nהשאלון כתוב בלשון זכר אך מופנה לשני המינים\nהשאלון הינו זכויות יוצרים של חברת FitMatch AI.",
+  "formAction": "https://docs.google.com/forms/d/e/1FAIpQLSfFMDnz8YJ0aQD1Aow5zKD5k_-8-7h4pUMeEQDUFtWQUI3fUg/formResponse",
+  "pages": [
+    {
+      "title": null,
+      "questions": [
+        {
+          "entryId": 951584077,
+          "title": "שם מלא",
+          "description": null,
+          "type": "short",
+          "required": true
+        },
+        {
+          "entryId": 1484483888,
+          "title": "מספר טלפון",
+          "description": null,
+          "type": "short",
+          "required": true
+        },
+        {
+          "entryId": 824547427,
+          "title": "אימייל",
+          "description": null,
+          "type": "short",
+          "required": true
+        },
+        {
+          "entryId": 152091189,
+          "title": "גיל",
+          "description": null,
+          "type": "short",
+          "required": true
+        },
+        {
+          "entryId": 269376772,
+          "title": "מגדר",
+          "description": null,
+          "type": "short",
+          "required": true
+        },
+        {
+          "entryId": 771759055,
+          "title": "כתובת מגורים מלא",
+          "description": null,
+          "type": "short",
+          "required": true
+        },
+        {
+          "entryId": 547363808,
+          "title": "איזורי אימון מועדפים",
+          "description": null,
+          "type": "short",
+          "required": true
+        },
+        {
+          "entryId": 1927253394,
+          "title": "מה אתה מחפש כרגע?",
+          "description": null,
+          "type": "radio",
+          "options": [
+            "מאמן אישי",
+            "אימונים זוגיים",
+            "קבוצות קטנות",
+            "ליווי אונליין",
+            "עדיין לא בטוח"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 313511323,
+          "title": "איפה אתה מעדיף להתאמן?",
+          "description": null,
+          "type": "radio",
+          "options": [
+            "חדר כושר מסודר",
+            "סטודיו",
+            "בבית המאמן",
+            "בבית שלי",
+            "בחוץ/ בפארק",
+            "תכנית אונליין"
+          ],
+          "required": false
+        }
+      ]
+    },
+    {
+      "title": "חלק 2 - מסגרת ומטרות",
+      "questions": [
+        {
+          "entryId": 1715586325,
+          "title": "מה המטרה המרכזית שלך כרגע?",
+          "description": null,
+          "type": "checkbox",
+          "options": [
+            "ירידה במשקל",
+            "חיטוב",
+            "עלייה במסת השריר",
+            "שיפור בכוח",
+            "שינוי אורח חיים",
+            "שיפור בטיחון עצמי",
+            "חזרה לכושר",
+            "בריאות",
+            "שיקום",
+            "שיפור ביצועים ספורטיביים"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 1857791050,
+          "title": "מה היית רוצה להשיג בחודשים הקרובים?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 458466435,
+          "title": "למה החלטת להתחיל דווקא עכשיו?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 1516481092,
+          "title": "אם תצליח בתהליך - מה באמת ישתנה אצלך בחיים לדעתך?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        }
+      ]
+    },
+    {
+      "title": "חלק 3 - ניסיון עבר והתמדה",
+      "questions": [
+        {
+          "entryId": 1528578061,
+          "title": "האם ניסית בעבר:",
+          "description": null,
+          "type": "radio",
+          "options": [
+            "מאמן אישי",
+            "חדר כושר",
+            "ליווי אונליין",
+            "קבוצות אימון",
+            "אפליקציות",
+            "ליווי תזונתי",
+            "אימונים בלבד"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 431680806,
+          "title": "האם היית בעבר במסגרת אימונים?",
+          "description": null,
+          "type": "radio",
+          "options": [
+            "כן",
+            "לא"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 173853535,
+          "title": "אם כן- למה עזבת?",
+          "description": null,
+          "type": "paragraph",
+          "required": false
+        },
+        {
+          "entryId": 126353946,
+          "title": "כמה פעמים ניסית בעבר להתחיל תהליך ולא התמדת?",
+          "description": null,
+          "type": "checkbox",
+          "options": [
+            "פעם אחת",
+            "2-3 פעמים",
+            "יותר מ-3 פעמים",
+            "אף פעם לא ניסיתי באמת"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 1153133281,
+          "title": "מה בדרך כלל השלב שבו אתה נופל?",
+          "description": null,
+          "type": "checkbox",
+          "options": [
+            "כבר בהתחלה",
+            "אחרי שבועיים",
+            "אחרי חודש",
+            "כשאני לא רואה תוצאות",
+            "כשנהיה עומס בחיים",
+            "כשאני מפספס כמה אימונים",
+            "כשאני מרגיש חוסר מוטיבציה"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 1841910927,
+          "title": "מה המשפט שהכי מתאר אותך?",
+          "description": null,
+          "type": "radio",
+          "options": [
+            "אני מתחיל חזק ונשבר מהר",
+            "אני צריך שמישהו יחזיק אותי",
+            "אני יודע מה לעשות אבל לא עושה",
+            "אני מפחד להכשל שוב",
+            "אני צריך סדר ברור"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 311051825,
+          "title": "מה לדעתך הכי מקשה עלייך להתמיד?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        }
+      ]
+    },
+    {
+      "title": "חלק 4 - התאמה פסיכולוגית והתנהגותית",
+      "questions": [
+        {
+          "entryId": 52474007,
+          "title": "כשקשה לך אתה צריך יותר:",
+          "description": null,
+          "type": "checkbox",
+          "options": [
+            "דחיפה",
+            "הכלה",
+            "מסגרת",
+            "הסבר",
+            "שקט"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 256115719,
+          "title": "איזה סוג פידבק הכי עובד עלייך?",
+          "description": null,
+          "type": "radio",
+          "options": [
+            "חד וישיר",
+            "רגוע ומסביר",
+            "מעודד",
+            "מבוסס נתונים",
+            "שילוב של דחיפה ותמיכה"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 194699346,
+          "title": "כשמאמן מעיר לך בצורה ישירה - מה הכי נכון לגביך?",
+          "description": null,
+          "type": "radio",
+          "options": [
+            "זה מדרבן אותי",
+            "אני מאבד מוטיבציה",
+            "אני מקשיב",
+            "זה מוריד לי ביטחון",
+            "תלוי בדרך שבה הוא אומר"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 1914318535,
+          "title": "מה אסור שמאמן יעשה איתך?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 2132811741,
+          "title": "איזה סוג גישה מורידה לך מוטיבציה?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 1788592469,
+          "title": "כשקשה לך - מה אתה צריך יותר?",
+          "description": null,
+          "type": "radio",
+          "options": [
+            "שמישהו ידחוף אותי",
+            "שמישהו יבין אותי",
+            "מסגרת ברורה",
+            "שקט וזמן לעצמי",
+            "מוטיבציה"
+          ],
+          "required": true
+        }
+      ]
+    },
+    {
+      "title": "סעיף 5 - משמעת ומוטיבציה",
+      "questions": [
+        {
+          "entryId": 978755183,
+          "title": "מה באמת מניע אותך?",
+          "description": null,
+          "type": "checkbox",
+          "options": [
+            "להיראות טוב יותר",
+            "להרגיש ביטחון",
+            "להיות בריא",
+            "להוכיח לעצמי",
+            "להתמודד עם קושי",
+            "לשנות הרגלים ואורח חיים",
+            "להרגיש חזק יותר"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 390882656,
+          "title": "מה יגרום לך להמשיך כשקשה?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 2146397696,
+          "title": "איזה סוג יעד עובד עלייך יותר?",
+          "description": null,
+          "type": "radio",
+          "options": [
+            "יעד מספרי ברור",
+            "יעד תחושתי",
+            "יעד ביצועי",
+            "יעד בריאותי",
+            "יעד אסתטי"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 1969049142,
+          "title": "מה הכי מוריד לך מוטיבציה?",
+          "description": null,
+          "type": "checkbox",
+          "options": [
+            "חוסר תוצאות",
+            "ביקורת",
+            "עומס בחיים",
+            "בדידות בתהליך",
+            "קושי להתמיד",
+            "פציעות",
+            "נפילות בתזונה",
+            "להרגיש חלש מול אחרים"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 1483127755,
+          "title": "מה יגרום לך לא להמשיך בתהליך אימונים?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        }
+      ]
+    },
+    {
+      "title": "חלק 6 - ביטחון עצמי וחווית אימון",
+      "questions": [
+        {
+          "entryId": 1323017462,
+          "title": "עד כמה אתה מרגיש בנוח להתאמן ליד אנשים אחרים?",
+          "description": null,
+          "type": "scale",
+          "options": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 73255955,
+          "title": "האם יש לך חוסר ביטחון סביב הגוף/ חדר כושר/ אימונים?",
+          "description": null,
+          "type": "radio",
+          "options": [
+            "כן",
+            "קצת",
+            "לא"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 1224746935,
+          "title": "מה הכי מטריד אותך באימוני כוח?",
+          "description": null,
+          "type": "checkbox",
+          "options": [
+            "לא לדעת מה לעשות",
+            "להיראות לא מקצועי",
+            "להיפצע",
+            "שאנשים יסתכלו עליי",
+            "להיכשל בתרגיל",
+            "כלום"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 1637415051,
+          "title": "איזה סוג וייב אתה מחפש?",
+          "description": null,
+          "type": "checkbox",
+          "options": [
+            "הישגי ותחרותי",
+            "מקצועי ושקט",
+            "חברי וקליל",
+            "קשוח ודוחף",
+            "רגוע ומכיל",
+            "אנרגטי ומרים"
+          ],
+          "required": true
+        }
+      ]
+    },
+    {
+      "title": "חלק 7 - קשר עם המאמן",
+      "questions": [
+        {
+          "entryId": 2034761974,
+          "title": "כמה קשר אישי אתה צריך כדי להצליח?",
+          "description": null,
+          "type": "scale",
+          "options": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 214357841,
+          "title": "איזה סוג תקשורת הכי מתאים לך?",
+          "description": null,
+          "type": "radio",
+          "options": [
+            "הודעות קצרות וברורות",
+            "שיחות עומק והסבר",
+            "צ'ק יומי",
+            "צ'ק שבועי",
+            "רק כשיש בעיה"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 545861686,
+          "title": "אם אתה לא עונה למאמן כמה ימים - מה היית רוצה שהוא יעשה?",
+          "description": null,
+          "type": "radio",
+          "options": [
+            "ישלח הודעה וידחוף אותי",
+            "ישאל אם הכל בסדר",
+            "ייתן לי מרחב",
+            "יתקשר",
+            "תלוי בסיטואציה"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 630109768,
+          "title": "איזה משפט הכי מתאר את המאמן שאתה צריך?",
+          "description": null,
+          "type": "radio",
+          "options": [
+            "מישהו שיחזיק אותי חזק באימונים",
+            "מישהו שיבין אותי כשקשה לי ויעזור לי לקום",
+            "מישהו מקצועי שיגיד לי בדיוק מה לעשות",
+            "מישהו אנרגטי שירים אותי",
+            "מישהו רגוע שלא ילחיץ אותי"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 1179212022,
+          "title": "מה הכי חשוב לך במאמן?",
+          "description": null,
+          "type": "radio",
+          "options": [
+            "מקצועיות",
+            "יחס אישי",
+            "זמינות",
+            "משמעת",
+            "מוטיבציה",
+            "תמיכה רגשית",
+            "ניסיון",
+            "אנרגיה טובה",
+            "מעקב צמוד"
+          ],
+          "required": true
+        }
+      ]
+    },
+    {
+      "title": "חלק 8 - אימוני כוח והעדפות אימון",
+      "questions": [
+        {
+          "entryId": 330759438,
+          "title": "מה הניסיון שלך באימוני כוח?",
+          "description": null,
+          "type": "radio",
+          "options": [
+            "אף פעם לא התאמנתי",
+            "מתחיל",
+            "בינוני",
+            "מתקדם"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 744949043,
+          "title": "איזה סוג אימונים אתה מחפש?",
+          "description": null,
+          "type": "checkbox",
+          "options": [
+            "כוח קלאסי בחדר כושר",
+            "פונקציונאלי",
+            "פיתוח גוף",
+            "HIIT",
+            "Powerlifting",
+            "אימונים לספורטאי סיבולת",
+            "קליסטניקס"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 1143038370,
+          "title": "כמה פעמים בשבוע אתה באמת יכול להתאמן?",
+          "description": null,
+          "type": "radio",
+          "options": [
+            "1-2",
+            "3-4",
+            "5+"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 359797056,
+          "title": "מה הכי קשה לך באימוני כוח?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 1333910290,
+          "title": "האם היו לך פציעות בעבר או קיימות פציעות או הגבלות בהווה?",
+          "description": null,
+          "type": "paragraph",
+          "required": false
+        },
+        {
+          "entryId": 2069665990,
+          "title": "האם חשוב לך שהמאמן יבין ב:",
+          "description": null,
+          "type": "checkbox",
+          "options": [
+            "שיקום",
+            "עבודה עם מתאמנים מתחילים",
+            "עבודה עם אנשים בעלי עודף משקל",
+            "עבודה עם חרדה חברתית",
+            "עבודה עם נשים",
+            "עבודה עם ספורטאים",
+            "פציעות ומוגבליות"
+          ],
+          "required": true
+        }
+      ]
+    },
+    {
+      "title": "שגרת חיים ולוגיסטיקה",
+      "questions": [
+        {
+          "entryId": 589931771,
+          "title": "מה רמת העומס שלך ביום-יום?",
+          "description": null,
+          "type": "radio",
+          "options": [
+            "נמוכה",
+            "בינונית",
+            "גבוהה מאוד"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 105457008,
+          "title": "מתי הכי נוח לך להתאמן?",
+          "description": null,
+          "type": "radio",
+          "options": [
+            "בוקר",
+            "צהריים",
+            "ערב",
+            "בכל זמן ביום"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 1924287667,
+          "title": "כמה זמן נסיעה אתה מוכן לעשות לאימון?",
+          "description": null,
+          "type": "radio",
+          "options": [
+            "עד 10 דקות",
+            "עד 20 דקות",
+            "עד 30 דקות",
+            "לא משנה לי"
+          ],
+          "required": false
+        },
+        {
+          "entryId": 1927891935,
+          "title": "מה התקציב שאתה מוכן לשלם לאימון?",
+          "description": null,
+          "type": "radio",
+          "options": [
+            "עד 100 ₪",
+            "100-150 ₪",
+            "150-200 ₪",
+            "200+ ₪"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 1789566718,
+          "title": "האם חשוב לך:",
+          "description": null,
+          "type": "checkbox",
+          "options": [
+            "חניה",
+            "מקלחות",
+            "סטודיו קטן",
+            "חדר כושר גדול",
+            "פרטיות",
+            "מיקום קרוב לבית"
+          ],
+          "required": true
+        }
+      ]
+    },
+    {
+      "title": "חלק 10 - שאלות סיום",
+      "questions": [
+        {
+          "entryId": 896449617,
+          "title": "מה לדעתך באמת עוצר אותך מלהגיע למטרות שלך?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 1614075240,
+          "title": "מה אתה צריך ממאמן כדי להצליח לאורך זמן?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 1341261141,
+          "title": "מה יהיה הסימן הראשון בעינייך לכך שההתאמה הייתה מוצלחת?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 1084700767,
+          "title": "האם יש משהו נוסף שחשוב לך שנדע כדי למצוא עבורך את ההתאמה הטובה ביותר?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

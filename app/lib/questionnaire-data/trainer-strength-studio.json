@@ -1,0 +1,620 @@
+{
+  "key": "trainer-strength-studio",
+  "role": "trainer",
+  "discipline": "strength-studio",
+  "description": "השאלון נועד לעזור לנו להבין לעומק את הסטודיו, הוייב, שיטת האימון, הקהילה, רמת האינטנסיביות, סוגי המתאמנים וסגנון ההדרכה — כדי לבצע התאמה מדויקת ככל האפשר בין מתאמנים לסטודיו שלכם ואליכם.\nהשאלון בלשון זכר אך מופנה לשני המינים",
+  "formAction": "https://docs.google.com/forms/d/e/1FAIpQLSe9Ql44nNB6IF1PZJOXKx1Ap9ODE8i8HaJ-Elxawry5Ru8T9g/formResponse",
+  "pages": [
+    {
+      "title": null,
+      "questions": [
+        {
+          "entryId": 1620553281,
+          "title": "שם הסטודיו",
+          "description": null,
+          "type": "short",
+          "required": true
+        },
+        {
+          "entryId": 974601758,
+          "title": "שם הבעלים / המאמן הראשי",
+          "description": null,
+          "type": "short",
+          "required": true
+        },
+        {
+          "entryId": 496782545,
+          "title": "מספר טלפון",
+          "description": null,
+          "type": "short",
+          "required": true
+        },
+        {
+          "entryId": 902739473,
+          "title": "כתובת אימייל",
+          "description": null,
+          "type": "short",
+          "required": true
+        },
+        {
+          "entryId": 678910626,
+          "title": "אינסטגרם / אתר",
+          "description": null,
+          "type": "short",
+          "required": true
+        },
+        {
+          "entryId": 1840836901,
+          "title": "עיר פעילות",
+          "description": null,
+          "type": "short",
+          "required": true
+        },
+        {
+          "entryId": 1688848106,
+          "title": "איזורי פעילות נוספים",
+          "description": null,
+          "type": "short",
+          "required": true
+        },
+        {
+          "entryId": 1841686539,
+          "title": "כתובת מלאה",
+          "description": null,
+          "type": "short",
+          "required": true
+        },
+        {
+          "entryId": 5688802,
+          "title": "כמה זמן הסטודיו קיים?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        }
+      ]
+    },
+    {
+      "title": "חלק 2 - סוג הסטודיו וה- DNA שלו",
+      "questions": [
+        {
+          "entryId": 31663475,
+          "title": "איזה סוג סטודיו אתם?",
+          "description": null,
+          "type": "checkbox",
+          "options": [
+            "סטודיו כוח",
+            "פונקציונלי",
+            "HIIT",
+            "קרוס טריינינג",
+            "Bootcamp",
+            "כוח לנשים",
+            "כוח לספורטאי סיבולת תחרותיים",
+            "כוח ושיקום"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 1579227439,
+          "title": "מה תחום ההתמחות המרכזי שלכם?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 546915013,
+          "title": "איך הייתם מתארים את הוייב המרכזי בסטודיו?",
+          "description": null,
+          "type": "checkbox",
+          "options": [
+            "אנרגטי ודוחף",
+            "מקצועי ושקט",
+            "חברתי וקהילתי",
+            "הישגי ותחרותי",
+            "קשוח ומשמעתי",
+            "משפחתי ומכיל",
+            "יוקרתי ואינטימי"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 348464055,
+          "title": "תתארו את הסטודיו/האימונים ב-3 משפטים:",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 1305834835,
+          "title": "מה מייחד אתכם ממאמנים/סטודיואים אחרים?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 1183570409,
+          "title": "למה אנשים נשארים דווקא אצלכם לדעתכם?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        }
+      ]
+    },
+    {
+      "title": "חלק 3 - סוגי מתאמנים והתאמה",
+      "questions": [
+        {
+          "entryId": 2068650273,
+          "title": "עם אילו סוגי מתאמנים אתם עובדים?",
+          "description": null,
+          "type": "checkbox",
+          "options": [
+            "מתחילים",
+            "מתקדמים",
+            "תחרותיים",
+            "נשים בלבד",
+            "גברים בלבד",
+            "גברים ונשים יחד",
+            "נוער",
+            "מבוגרים",
+            "נשים לאחר לידה",
+            "אנשים עם פציעות ומוגבלויות",
+            "אנשים עם צרכים מיוחדים",
+            "ספורטאים תחרותיים",
+            "שיקום/ פציעות וחזרה לכושר",
+            "אנשים בגיל השלישי",
+            "אנשים עם עודף משקל"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 1105345200,
+          "title": "עם אילו אוכלוסיות אתם הכי מרגישים בנוח לעבוד?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 1933425653,
+          "title": "עם אילו סוגי מתאמנים פחות מתאים לך לעבוד?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 1708931376,
+          "title": "האם יש אוכלוסיות שאתה לא עובד איתן?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 1725361998,
+          "title": "איזה אופי הכי מתאים לסטודיו שלכם / לך כמאמן?",
+          "description": null,
+          "type": "checkbox",
+          "options": [
+            "הישגי",
+            "חברתי",
+            "ממושמע",
+            "קליל",
+            "צריך מסגרת",
+            "צריך יחס אישי",
+            "עצמאי",
+            "אוהב תחרות"
+          ],
+          "required": true
+        }
+      ]
+    },
+    {
+      "title": "חלק 4 - מבנה השיעורים",
+      "questions": [
+        {
+          "entryId": 551857028,
+          "title": "איזה סוג אימונים מתקיימים בסטודיו?",
+          "description": null,
+          "type": "checkbox",
+          "options": [
+            "כוח",
+            "פונקציונלי",
+            "HIIT",
+            "סיבולת",
+            "קרוס טריינינג",
+            "תחנות",
+            "משקולות חופשי"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 125623676,
+          "title": "כמה מתאמנים יש בממוצע בכל אימון",
+          "description": null,
+          "type": "checkbox",
+          "options": [
+            "1-5",
+            "6-10",
+            "11-15",
+            "16+"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 1067229666,
+          "title": "כמה מאמנים יש בכל שיעור?",
+          "description": null,
+          "type": "radio",
+          "options": [
+            "1",
+            "2",
+            "3+"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 2080605156,
+          "title": "מה אורך אימון ממוצע?",
+          "description": null,
+          "type": "radio",
+          "options": [
+            "45 דק'",
+            "50 דק'",
+            "שעה",
+            "יותר משעה"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 1020928363,
+          "title": "האם יש אימונים אישיים בנוסף בסטודיו?",
+          "description": null,
+          "type": "radio",
+          "options": [
+            "כן",
+            "לא"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 1035255502,
+          "title": "האם יש חלוקה לפי רמות?",
+          "description": null,
+          "type": "radio",
+          "options": [
+            "כן",
+            "לא"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 341626659,
+          "title": "האם יש תוכניות מותאמות אישית?",
+          "description": null,
+          "type": "radio",
+          "options": [
+            "כן",
+            "לא"
+          ],
+          "required": true
+        }
+      ]
+    },
+    {
+      "title": "חלק 5 - שעות ולוגיסטיקה",
+      "questions": [
+        {
+          "entryId": 1785547829,
+          "title": "באילו ימים מתקיימים האימונים?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 1271736540,
+          "title": "האם יש חניה?",
+          "description": null,
+          "type": "radio",
+          "options": [
+            "כן",
+            "לא"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 1259587153,
+          "title": "האם יש מקלחות/לוקרים/ שירותים נוספים(סאונה, אמבטיות קרח וכדו') לסטודיו",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 1908745279,
+          "title": "האם הסטודיו נגיש לאנשים עם מוגבלויות?",
+          "description": null,
+          "type": "radio",
+          "options": [
+            "כן",
+            "לא"
+          ],
+          "required": true
+        }
+      ]
+    },
+    {
+      "title": "חלק 6 - יחס אישי וסגנון אימון",
+      "questions": [
+        {
+          "entryId": 1147176774,
+          "title": "עד כמה יש יחס אישי באימונים?",
+          "description": null,
+          "type": "scale",
+          "options": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 2125636429,
+          "title": "איך הייתם מתארים את סגנון ההדרכה?",
+          "description": null,
+          "type": "checkbox",
+          "options": [
+            "תומך ומכיל",
+            "מקצועי ומדויק",
+            "קשוח ודוחף",
+            "רגוע ומרגיע",
+            "אנרגטי",
+            "הישגי",
+            "חברי"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 1430193891,
+          "title": "איך אתם עובדים עם מתאמנים חדשים?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 1977694802,
+          "title": "איך אתם עובדים עם מתאמנים חסרי ביטחון?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 1646568792,
+          "title": "איך אתם מגיבים למתאמן שמאבד מוטיבציה?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 82329942,
+          "title": "איך אתם עובדים עם פציעות או מגבלות?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 1907331547,
+          "title": "מה חשוב לכם במיוחד במתאמנים שלכם?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 1774913703,
+          "title": "איך אתם מגיבים למתאמן שמאבד מוטיבציה ומפסיק להגיע לאימונים?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        }
+      ]
+    },
+    {
+      "title": "חלק 7 - מקצועיות ושיקום",
+      "questions": [
+        {
+          "entryId": 544579103,
+          "title": "האם יש לך הכשרות/תעודות מיוחדות?",
+          "description": null,
+          "type": "paragraph",
+          "required": false
+        },
+        {
+          "entryId": 1586782757,
+          "title": "האם אתם עובדים עם:",
+          "description": null,
+          "type": "checkbox",
+          "options": [
+            "פציעות גב",
+            "פציעות ברכיים",
+            "נשים בהריון",
+            "שיקום לאחר לידה",
+            "ספורטאי סיבולת תחרותיים",
+            "מבוגרים",
+            "פציעות כתף"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 1461748407,
+          "title": "האם יש שיתוף פעולה עם:",
+          "description": null,
+          "type": "checkbox",
+          "options": [
+            "פיזיותרפיסטים",
+            "רופאים",
+            "אנשי מקצוע נוספים מתחום השיקום"
+          ],
+          "required": true
+        }
+      ]
+    },
+    {
+      "title": "חלק 8 - קהילה ואווירה",
+      "questions": [
+        {
+          "entryId": 250382270,
+          "title": "עד כמה הקהילה בסטודיו חזקה",
+          "description": null,
+          "type": "scale",
+          "options": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 428080353,
+          "title": "האם יש פעילויות של הסטודיו מעבר לאימונים?",
+          "description": null,
+          "type": "checkbox",
+          "options": [
+            "אירועי קהילה",
+            "מסיבות",
+            "אתגרים",
+            "סדנאות",
+            "הרצאות",
+            "מחנות אימון"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 1986698302,
+          "title": "האם חשוב לכם החיבור החברתי בסטודיו?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 534693621,
+          "title": "האם יש קבוצות ווצאפ/ קהילה פעילה לסטודיו?",
+          "description": null,
+          "type": "radio",
+          "options": [
+            "כן",
+            "לא"
+          ],
+          "required": true
+        }
+      ]
+    },
+    {
+      "title": "חלק 9 - מחירים ומסלולים",
+      "questions": [
+        {
+          "entryId": 496154613,
+          "title": "אילו מסלולים קיימים?",
+          "description": null,
+          "type": "checkbox",
+          "options": [
+            "מנוי חודשי",
+            "כרטיסייה",
+            "אימונים אישיים",
+            "קבוצות קטנות",
+            "ליווי מלא"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 179276941,
+          "title": "פירוט כל המסלולים והמחירים:",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 1137099813,
+          "title": "האם יש:\nשיעור ניסיון?\nהתחייבות?\nדמי הרשמה?\nהנחות לסטודנטים/חיילים/מילואימניקים?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        }
+      ]
+    },
+    {
+      "title": "חלק 10 - שאלות עומק פסיכולוגיות",
+      "questions": [
+        {
+          "entryId": 263834719,
+          "title": "מה לדעתכם יגרום לאנשים להתמיד אצלכם?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 737585911,
+          "title": "מה לדעתכם גורם למתאמנים להרגיש בנוח אצלכם?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 1568332088,
+          "title": "איך הייתם מתארים את החוויה אצלכם למתאמן חדש?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 2070379753,
+          "title": "מה לדעתכם חשוב יותר?",
+          "description": null,
+          "type": "checkbox",
+          "options": [
+            "תוצאות",
+            "קהילה",
+            "מקצועיות",
+            "אווירה",
+            "התמדה",
+            "תהליך",
+            "דיוק"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 2007675620,
+          "title": "במידה ומתאמן לא מצליח להתמיד מה אתם עושים?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 2143806419,
+          "title": "איזה סוג אנשים הכי נהנה אצלכם לדעתכם?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 1304818009,
+          "title": "תתארו אתכם כמאמנים ב-3 משפטים:",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        }
+      ]
+    },
+    {
+      "title": "חלק 11 - סיום",
+      "questions": [
+        {
+          "entryId": 1164041822,
+          "title": "האם יש משהו נוסף שחשוב לכם שנדע על הסטודיו / עליכם?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

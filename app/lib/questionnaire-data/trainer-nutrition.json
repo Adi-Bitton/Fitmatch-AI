@@ -1,0 +1,618 @@
+{
+  "key": "trainer-nutrition",
+  "role": "trainer",
+  "discipline": "nutrition",
+  "description": "מטרת השאלון\nהשאלון נועד לעזור לנו להבין לעומק את סגנון הליווי, הגישה המקצועית, האישיות, שיטת העבודה וההתאמה של המאמן/יועץ — כדי לבצע התאמה מדויקת ככל האפשר בין מתאמנים לבין הליווי המתאים להם ביותר.",
+  "formAction": "https://docs.google.com/forms/d/e/1FAIpQLSf-XtGVUenkXppxerA3_ZymTW-JMDIj3ptOrdaZafiRq8gAgQ/formResponse",
+  "pages": [
+    {
+      "title": null,
+      "questions": [
+        {
+          "entryId": 335218943,
+          "title": "שם מלא",
+          "description": null,
+          "type": "short",
+          "required": true
+        },
+        {
+          "entryId": 1757581728,
+          "title": "מספר טלפון",
+          "description": null,
+          "type": "short",
+          "required": true
+        },
+        {
+          "entryId": 850092014,
+          "title": "אימייל",
+          "description": null,
+          "type": "short",
+          "required": true
+        },
+        {
+          "entryId": 1745145848,
+          "title": "אינסטגרם / אתר",
+          "description": null,
+          "type": "short",
+          "required": true
+        },
+        {
+          "entryId": 300531758,
+          "title": "עיר מגורים",
+          "description": null,
+          "type": "short",
+          "required": true
+        },
+        {
+          "entryId": 844471079,
+          "title": "אזורי פעילות",
+          "description": null,
+          "type": "short",
+          "required": true
+        },
+        {
+          "entryId": 1215895172,
+          "title": "אונליין / פרונטלי / גם וגם",
+          "description": null,
+          "type": "short",
+          "required": true
+        },
+        {
+          "entryId": 864242565,
+          "title": "כמה שנים בתחום?",
+          "description": null,
+          "type": "short",
+          "required": true
+        }
+      ]
+    },
+    {
+      "title": "חלק 2 - תחומי התמחות",
+      "questions": [
+        {
+          "entryId": 1884736028,
+          "title": "באילו תחומים אתה מתמחה?",
+          "description": null,
+          "type": "checkbox",
+          "options": [
+            "ירידה במשקל",
+            "חיטוב",
+            "עלייה במסת שרירתזונת ספורט לספורטאים (ריצה, טריאתלון, פיתוח גוף וכו')",
+            "ליווי לאורח חיים בריא",
+            "אימוני כוח",
+            "פיתוח גוף",
+            "שיקום וחזרה לכושר",
+            "נשים לאחר לידה",
+            "נוער וילדים"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 2032120820,
+          "title": "מה תחום ההתמחות שלך",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 1104166848,
+          "title": "אם אילו סוגי מתאמנים אתה עובד הכי הרבה?",
+          "description": null,
+          "type": "checkbox",
+          "options": [
+            "מתחילים",
+            "בינוניים",
+            "מתקדמים",
+            "תחרותיים",
+            "אנשים עם עודף משקל",
+            "נשים שחוזרים להתאמן",
+            "אנשים עם פציעות / מוגבלות"
+          ],
+          "required": true
+        }
+      ]
+    },
+    {
+      "title": "חלק 3 - הכשרה מקצועית",
+      "questions": [
+        {
+          "entryId": 822714931,
+          "title": "אילו הסמכות יש לך?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 936293256,
+          "title": "האם יש לך:",
+          "description": null,
+          "type": "checkbox",
+          "options": [
+            "תעודת מאמן חדר כושר",
+            "תעודת תזונאי",
+            "תעודת יועץ תזונה",
+            "קורסים מתקדמים",
+            "התמחות ספציפית"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 733752958,
+          "title": "האם אתה עובד עם גורמי מקצוע נוספים?",
+          "description": null,
+          "type": "checkbox",
+          "options": [
+            "פיזיותרפיסט",
+            "פסיכולוג ספורט",
+            "רופא",
+            "מאמן נוסף"
+          ],
+          "required": true
+        }
+      ]
+    },
+    {
+      "title": "חלק 4 - סגנון הליווי וה-DNA שלך",
+      "questions": [
+        {
+          "entryId": 1376522803,
+          "title": "איך היית מתאר את עצמך במאמן?",
+          "description": null,
+          "type": "checkbox",
+          "options": [
+            "קשוח",
+            "תומך",
+            "חברי",
+            "מקצועי ושקט",
+            "הישגי",
+            "שיטתי",
+            "רגוע",
+            "אנרגטי",
+            "מכיל",
+            "ישיר מאוד"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 328639660,
+          "title": "איך היית מתאר את סגנון הליווי שלך ב- 3-5 משפטים?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 761976607,
+          "title": "מה לדעתך מייחד אותך ממאמנים אחרים?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 316428600,
+          "title": "למה אנשים נשארים דווקא אצלך?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        }
+      ]
+    },
+    {
+      "title": "סעיף 5 - התאמה אישיותית",
+      "questions": [
+        {
+          "entryId": 216168781,
+          "title": "איזה סוג מתאמנים הכי מתאים אצלך?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 1657517874,
+          "title": "עם איזה סוג מתאמנים הכי פחות מתאים לך לעבוד?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 2106922134,
+          "title": "איזה אופי הכי מתאים לליווי שלך?",
+          "description": null,
+          "type": "checkbox",
+          "options": [
+            "אנשים שצריכים מסגרת",
+            "אנשים הישגיים",
+            "אנשים רגישים",
+            "אנשים שצריכים מוטיבציה",
+            "אנשים שיודעים לקבל תוכנית ולעבוד עצמאית",
+            "אנשים שצריכים קשר אישי"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 287044187,
+          "title": "מה אתה מצפה ממתאמן בתהליך?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        }
+      ]
+    },
+    {
+      "title": "חלק 6 - תזונה והרגלים",
+      "questions": [
+        {
+          "entryId": 674925753,
+          "title": "איך אתה ניגש לתהליך תזונתי?",
+          "description": null,
+          "type": "checkbox",
+          "options": [
+            "גישה קשוחה",
+            "גישה מאוזנת",
+            "גישה גמישה",
+            "התאמה אישית מלאה"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 1149310810,
+          "title": "האם אתה מאמין ב:",
+          "description": null,
+          "type": "checkbox",
+          "options": [
+            "ספירת קלוריות",
+            "תפריטים מסודרים מראש",
+            "גמישות תזונתית",
+            "צום לסרוגין",
+            "איזור ללא ספירה"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 1048620048,
+          "title": "איך אתה עובד עם אנשים שנופלים בתזונה?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 1047432248,
+          "title": "איך אתה מגיב למתאמן שלא עומד בתכנית?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 2076561807,
+          "title": "איך אתה עובד עם אכילה רגשית?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 960622504,
+          "title": "האם אתה עובד עם מתאמנים בעלי רגישויות, מחלות רקע, בעיות בקיבה ובעיות רפואיות?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        }
+      ]
+    },
+    {
+      "title": "חלק 7 - אימוני כוח",
+      "questions": [
+        {
+          "entryId": 573695007,
+          "title": "איזה סוג אימוני כוח אתה בונה?",
+          "description": null,
+          "type": "checkbox",
+          "options": [
+            "כוח בסיסי",
+            "פונקציונלי",
+            "פיתוח גוף",
+            "כוח לספוטאי סיבולת",
+            "ירידה במשקל / עלייה במסה",
+            "קליסטניקס"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 1833530680,
+          "title": "איפה מתקיימים האימונים?",
+          "description": null,
+          "type": "checkbox",
+          "options": [
+            "חדר כושר",
+            "סטודיו",
+            "בית המתאמן",
+            "אונליין"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 368121029,
+          "title": "האם אתה עובד עם תכנית מותאמת אישית או גנרית כללית",
+          "description": null,
+          "type": "radio",
+          "options": [
+            "תכנית גנרית",
+            "תכנית מותאמת אישית"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 58292621,
+          "title": "האם יש התאמה לפציעות / מוגבלות?",
+          "description": null,
+          "type": "radio",
+          "options": [
+            "לא",
+            "כן"
+          ],
+          "required": true
+        }
+      ]
+    },
+    {
+      "title": "חלק 8 - מעקב ותקשורת",
+      "questions": [
+        {
+          "entryId": 37758272,
+          "title": "איך מתבצע המעקב?",
+          "description": null,
+          "type": "checkbox",
+          "options": [
+            "ווטסאפ",
+            "אפליקציה",
+            "שיחות",
+            "צ'ק שבועי"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 1410360228,
+          "title": "עד כמה אתה זמין למתאמנים לאורך כל היום?",
+          "description": null,
+          "type": "scale",
+          "options": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 327918150,
+          "title": "פרט את שעות הזמינות:",
+          "description": null,
+          "type": "short",
+          "required": true
+        },
+        {
+          "entryId": 1761692255,
+          "title": "תוך כמה זמן אתה בדרך כלל עונה?",
+          "description": null,
+          "type": "radio",
+          "options": [
+            "עד שעה",
+            "כמה שעות",
+            "עד יום",
+            "עד יומיים"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 329650385,
+          "title": "איך אתה נותן פידבק למתאמנים?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 1445327391,
+          "title": "איך אתה מעביר ביקורת?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        }
+      ]
+    },
+    {
+      "title": "סעיף 9 - מעטפת וליווי",
+      "questions": [
+        {
+          "entryId": 1782729469,
+          "title": "אילו מסלולים קיימים אצלך?",
+          "description": null,
+          "type": "checkbox",
+          "options": [
+            "ליווי תזונה בלבד",
+            "אימוני כוח בלבד",
+            "ליווי מלא (תזונה ואימונים)",
+            "אונליין בלבד",
+            "פרונטלי בלבד"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 1918586325,
+          "title": "מה כלול בכל מסלול?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 247885125,
+          "title": "האם יש פגישות פרונטליות?",
+          "description": null,
+          "type": "radio",
+          "options": [
+            "כן",
+            "לא"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 1229087717,
+          "title": "האם יש קבוצת קהילה/ ווטסאפ?",
+          "description": null,
+          "type": "radio",
+          "options": [
+            "כן",
+            "לא"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 828751659,
+          "title": "האם אתה מלווה אישית או יועצים תחתייך?",
+          "description": null,
+          "type": "radio",
+          "options": [
+            "אני אישית",
+            "יועצים תחתיי"
+          ],
+          "required": true
+        }
+      ]
+    },
+    {
+      "title": "חלק 10 - מחירים ומסלולים",
+      "questions": [
+        {
+          "entryId": 919392488,
+          "title": "מחיר חודשי בסיסי",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 352656065,
+          "title": "אילו מסלולים קיימים?",
+          "description": null,
+          "type": "checkbox",
+          "options": [
+            "ליווי תזונה בלבד",
+            "אימוני כוח בלבד",
+            "ליווי מלא (תזונה ואימוני כוח)",
+            "אונליין בלבד",
+            "פרונטלי בלבד"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 825954521,
+          "title": "מה כלול בכל מסלול?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 674196825,
+          "title": "האם יש:\nהתחייבות?\nפגישת היכרות?\nתקופת/אימון ניסיון?\nהנחות לסטודנטים/חיילים/אנשי מילואים?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        }
+      ]
+    },
+    {
+      "title": "חלק 11 - תוצאות והצלחות",
+      "questions": [
+        {
+          "entryId": 1313149675,
+          "title": "איזה סוג תוצאות המתאמנים שלך בדרך כלל משיגים?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 745230617,
+          "title": "האם יש:",
+          "description": null,
+          "type": "checkbox",
+          "options": [
+            "לפני ואחרי של מתאמנים",
+            "המלצות",
+            "סיפורי הצלחה",
+            "שינוי משמעותי באורח חיים"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 2053623854,
+          "title": "מהי הצלחה של מתאמן בעיניך?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        }
+      ]
+    },
+    {
+      "title": "חלק 12 - שאלות עומק ופסיכולוגיה",
+      "questions": [
+        {
+          "entryId": 306910244,
+          "title": "מה לדעתך באמת גורם לאנשים להצליח בתהליך?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 1834940195,
+          "title": "למה לדעתך אנשים נכשלים בהתמדה?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 1570151214,
+          "title": "איך אתה בונה אמון עם מתאמן?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 1763140229,
+          "title": "מה יותר חשוב לך?",
+          "description": null,
+          "type": "radio",
+          "options": [
+            "תוצאות",
+            "התמדה",
+            "בריאות",
+            "שינוי אורח חיים"
+          ],
+          "required": true
+        },
+        {
+          "entryId": 279877973,
+          "title": "אם היית צריך לתאר את חווית הליווי אצלך למתאמן חדש - איך היית מתאר אותה?",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        },
+        {
+          "entryId": 1610852242,
+          "title": "תאר אותך כמאמן בקצרה",
+          "description": null,
+          "type": "paragraph",
+          "required": true
+        }
+      ]
+    },
+    {
+      "title": "חלק 13 - סיום",
+      "questions": [
+        {
+          "entryId": 1302131959,
+          "title": "האם יש משהו נוסף שחשוב לך שנדע על הליווי שלך?",
+          "description": null,
+          "type": "paragraph",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

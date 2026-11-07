@@ -11,24 +11,12 @@ export const CONTACT = {
 export const MATCH_FORM_URL =
   "https://docs.google.com/forms/d/1CmunFdshpkfB63OGo0Kl8xRM0c2Vof5OCAgNcWAzYH0/viewform";
 
-// Per-discipline questionnaires.
-const FORMS = {
-  // trainers / studios
-  trainerRunning:
-    "https://docs.google.com/forms/d/e/1FAIpQLSe8dHKpdmG4yGDPgfOxOMOdt2FcrZJ3DUthrYVP21PMfIpaVQ/viewform?usp=sharing&ouid=111186999667733889138",
-  trainerTriathlon: "https://forms.gle/e7kJopzPKj44eeBQ6",
-  trainerStrengthStudio: "https://forms.gle/ymuphuwtBw5f4YFF6",
-  trainerPersonal: "https://forms.gle/Vjc8cDvEYjfUPCeC8",
-  trainerPilates: "https://forms.gle/5LswFwZSsetduLaP6",
-  trainerNutrition: "https://forms.gle/cX3S24Amw2E7nNgz9",
-  // trainees
-  matchRunning: "https://forms.gle/RhHcYfRKX8zMzwS96",
-  matchStrengthStudio: "https://forms.gle/oJ1H1EFemjuUV2uMA",
-  matchPersonal: "https://forms.gle/n7y3vhwzodpZ5Xp37",
-  // NOTE: nutrition trainee form URL matches the strength-studio one as given —
-  // likely a copy/paste slip to confirm with the site owner.
-  matchNutrition: "https://forms.gle/oJ1H1EFemjuUV2uMA",
-} as const;
+// Per-discipline questionnaires now live natively on the site (see
+// app/lib/questionnaires.ts + app/match/[discipline] + app/trainers/[discipline]) —
+// no more hopping out to Google Forms. These internal routes replace the
+// external Google Form links that used to live here.
+const TRAINER_ROUTE = (discipline: string) => `/trainers/${discipline}`;
+const MATCH_ROUTE = (discipline: string) => `/match/${discipline}`;
 
 export const NAV_LINKS = [
   { href: "#about", label: "עלינו" },
@@ -39,25 +27,27 @@ export const NAV_LINKS = [
   { href: "#contact", label: "צור קשר" },
 ];
 
-// Trainer / studio onboarding — one questionnaire per discipline.
+// Trainer / studio onboarding — one native questionnaire per discipline.
 export const TRAINER_TYPES: { label: string; href: string }[] = [
-  { label: "ריצה", href: FORMS.trainerRunning },
-  { label: "טריאתלון", href: FORMS.trainerTriathlon },
-  { label: "סטודיו כוח", href: FORMS.trainerStrengthStudio },
-  { label: "מאמן כושר אישי", href: FORMS.trainerPersonal },
-  { label: "פילאטיס", href: FORMS.trainerPilates },
-  { label: "תזונה", href: FORMS.trainerNutrition },
+  { label: "ריצה", href: TRAINER_ROUTE("running") },
+  { label: "טריאתלון", href: TRAINER_ROUTE("triathlon") },
+  { label: "סטודיו כוח", href: TRAINER_ROUTE("strength-studio") },
+  { label: "מאמן כושר אישי", href: TRAINER_ROUTE("personal") },
+  { label: "פילאטיס", href: TRAINER_ROUTE("pilates") },
+  { label: "תזונה", href: TRAINER_ROUTE("nutrition") },
 ];
 
 // Trainee intake — each training type has its own characterization questionnaire.
-// Triathlon / pilates trainee forms not ready yet -> generic form for now.
+// Triathlon / pilates / nutrition trainee forms aren't confirmed yet (the
+// "nutrition" link supplied so far duplicated strength-studio's) -> generic
+// form for now, swap to MATCH_ROUTE("...") once the real ones are in.
 export const MATCH_TYPES: { label: string; href: string }[] = [
-  { label: "ריצה", href: FORMS.matchRunning },
+  { label: "ריצה", href: MATCH_ROUTE("running") },
   { label: "טריאתלון", href: MATCH_FORM_URL },
-  { label: "סטודיו כוח", href: FORMS.matchStrengthStudio },
-  { label: "מאמן כושר אישי", href: FORMS.matchPersonal },
+  { label: "סטודיו כוח", href: MATCH_ROUTE("strength-studio") },
+  { label: "מאמן כושר אישי", href: MATCH_ROUTE("personal") },
   { label: "פילאטיס", href: MATCH_FORM_URL },
-  { label: "תזונה", href: FORMS.matchNutrition },
+  { label: "תזונה", href: MATCH_FORM_URL },
 ];
 
 export type Category = {
@@ -72,7 +62,7 @@ export const CATEGORIES: Category[] = [
     title: "ריצה",
     description: "מאמנים אישיים וקבוצות ריצה",
     image: "/running.jpg",
-    href: FORMS.matchRunning,
+    href: MATCH_ROUTE("running"),
   },
   {
     title: "טריאתלון",
@@ -84,13 +74,13 @@ export const CATEGORIES: Category[] = [
     title: "סטודיו כוח",
     description: "סטודיואים לאימוני כוח וקבוצות",
     image: "/studio-strength.jpg",
-    href: FORMS.matchStrengthStudio,
+    href: MATCH_ROUTE("strength-studio"),
   },
   {
     title: "מאמני כושר אישיים",
     description: "מאמנים אישיים ומסגרות כוח",
     image: "/strength.jpg",
-    href: FORMS.matchPersonal,
+    href: MATCH_ROUTE("personal"),
   },
   {
     title: "פילאטיס",
@@ -102,7 +92,7 @@ export const CATEGORIES: Category[] = [
     title: "תזונה",
     description: "תזונאים קליניים וליווי מותאם אישית",
     image: "/nutrition.jpg",
-    href: FORMS.matchNutrition,
+    href: MATCH_FORM_URL,
   },
 ];
 

@@ -2,17 +2,16 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowUpLeft } from "lucide-react";
 import { CATEGORIES, type Category } from "@/app/lib/site";
 
 function Card({ category, className = "" }: { category: Category; className?: string }) {
-  return (
-    <a
-      href={category.href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={`group relative block aspect-[4/5] shrink-0 overflow-hidden rounded-2xl border border-line bg-surface transition-all duration-300 hover:-translate-y-1.5 hover:border-violet/50 hover:shadow-[0_24px_60px_-24px_rgba(139,92,246,0.5)] ${className}`}
-    >
+  const internal = category.href.startsWith("/");
+  const linkClass = `group relative block aspect-[4/5] shrink-0 overflow-hidden rounded-2xl border border-line bg-surface transition-all duration-300 hover:-translate-y-1.5 hover:border-violet/50 hover:shadow-[0_24px_60px_-24px_rgba(139,92,246,0.5)] ${className}`;
+
+  const content = (
+    <>
       <Image
         src={category.image}
         alt={category.title}
@@ -35,6 +34,16 @@ function Card({ category, className = "" }: { category: Category; className?: st
           {category.description}
         </p>
       </div>
+    </>
+  );
+
+  return internal ? (
+    <Link href={category.href} className={linkClass}>
+      {content}
+    </Link>
+  ) : (
+    <a href={category.href} target="_blank" rel="noopener noreferrer" className={linkClass}>
+      {content}
     </a>
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 import { TRAINER_TYPES } from "@/app/lib/site";
 
@@ -70,19 +71,34 @@ export default function TrainerPicker({
             : "invisible -translate-y-1 opacity-0"
         }`}
       >
-        {options.map((t) => (
-          <a
-            key={t.label}
-            href={t.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            role="menuitem"
-            onClick={() => setOpen(false)}
-            className="block rounded-xl px-4 py-3 text-center font-medium text-muted transition-colors hover:bg-violet/10 hover:text-foreground"
-          >
-            {t.label}
-          </a>
-        ))}
+        {options.map((t) => {
+          const internal = t.href.startsWith("/");
+          const itemClass =
+            "block rounded-xl px-4 py-3 text-center font-medium text-muted transition-colors hover:bg-violet/10 hover:text-foreground";
+          return internal ? (
+            <Link
+              key={t.label}
+              href={t.href}
+              role="menuitem"
+              onClick={() => setOpen(false)}
+              className={itemClass}
+            >
+              {t.label}
+            </Link>
+          ) : (
+            <a
+              key={t.label}
+              href={t.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              role="menuitem"
+              onClick={() => setOpen(false)}
+              className={itemClass}
+            >
+              {t.label}
+            </a>
+          );
+        })}
       </div>
     </div>
   );
