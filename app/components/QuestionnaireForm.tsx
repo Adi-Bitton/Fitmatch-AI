@@ -2,9 +2,18 @@
 
 import { useMemo, useState, useTransition } from "react";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Check, Loader2 } from "lucide-react";
-import type { Questionnaire, QuestionnaireField } from "@/app/lib/questionnaires";
-import { submitQuestionnaire, type QuestionnaireAnswers } from "@/app/lib/submitQuestionnaire";
+import { ArrowLeft, ArrowRight, Check, Loader2, Plus, X } from "lucide-react";
+import type {
+  Questionnaire,
+  QuestionnaireField,
+  RepeaterField,
+  SimpleField,
+} from "@/app/lib/questionnaires";
+import {
+  submitQuestionnaire,
+  type QuestionnaireAnswers,
+  type RowAnswers,
+} from "@/app/lib/submitQuestionnaire";
 
 type Props = {
   questionnaire: Questionnaire;
@@ -14,128 +23,142 @@ type Props = {
 
 type Stage = "intro" | number | "success" | "error";
 
-function Field({
+const fieldClass =
+  "w-full rounded-xl border border-white/12 bg-white/[0.04] px-4 py-3.5 text-right text-foreground outline-none transition-colors placeholder:text-faint focus:border-violet focus:bg-white/[0.06]";
+
+function FieldLabel({ field }: { field: SimpleField }) {
+  return (
+    <>
+      <h3 className="text-base font-bold leading-6 text-foreground sm:text-lg">
+        {field.title}
+        {field.required && <span className="mr-1 text-[#ff4d4f]"> *</span>}
+      </h3>
+      {field.description && <p className="mt-1 text-sm text-muted">{field.description}</p>}
+    </>
+  );
+}
+
+function SimpleInput({
+  field,
+  value,
+  onChange,
+}: {
+  field: SimpleField;
+  value: string | string[] | undefined;
+  onChange: (v: string | string[]) => void;
+}) {
+  return (
+    <div className="mt-4">
+      {field.type === "short" && (
+        <input
+          type="text"
+          value={(value as string) || ""}
+          onChange={(e) => onChange(e.target.value)}
+          className={fieldClass}
+        />
+      )}
+
+      {field.type === "paragraph" && (
+        <textarea
+          rows={4}
+          value={(value as string) || ""}
+          onChange={(e) => onChange(e.target.value)}
+          className={`${fieldClass} resize-none`}
+        />
+      )}
+
+      {field.type === "radio" && (
+        <div className="flex flex-col gap-2">
+          {field.options?.map((opt) => {
+            const selected = value === opt;
+            return (
+              <button
+                key={opt}
+                type="button"
+                onClick={() => onChange(opt)}
+                className={`rounded-xl border px-4 py-3 text-right text-sm font-medium transition-colors sm:text-base ${
+                  selected
+                    ? "border-violet bg-violet/15 text-foreground"
+                    : "border-white/12 bg-white/[0.03] text-muted hover:border-violet/40 hover:text-foreground"
+                }`}
+              >
+                {opt}
+              </button>
+            );
+          })}
+        </div>
+      )}
+
+      {field.type === "checkbox" && (
+        <div className="flex flex-col gap-2">
+          {field.options?.map((opt) => {
+            const arr = (value as string[]) || [];
+            const selected = arr.includes(opt);
+            return (
+              <button
+                key={opt}
+                type="button"
+                onClick={() => onChange(selected ? arr.filter((o) => o !== opt) : [...arr, opt])}
+                className={`flex items-center justify-between gap-2 rounded-xl border px-4 py-3 text-right text-sm font-medium transition-colors sm:text-base ${
+                  selected
+                    ? "border-violet bg-violet/15 text-foreground"
+                    : "border-white/12 bg-white/[0.03] text-muted hover:border-violet/40 hover:text-foreground"
+                }`}
+              >
+                {opt}
+                <span
+                  className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-md border ${
+                    selected ? "border-violet bg-violet text-white" : "border-white/20"
+                  }`}
+                >
+                  {selected && <Check className="h-3.5 w-3.5" strokeWidth={3} />}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      )}
+
+      {field.type === "scale" && (
+        <div dir="ltr" className="flex items-center justify-center gap-3 py-2">
+          {field.options?.map((opt) => {
+            const selected = value === opt;
+            return (
+              <button
+                key={opt}
+                type="button"
+                onClick={() => onChange(opt)}
+                className={`flex h-12 w-12 items-center justify-center rounded-full border text-base font-bold transition-colors ${
+                  selected
+                    ? "border-violet bg-violet text-white"
+                    : "border-white/15 bg-white/[0.03] text-muted hover:border-violet/50"
+                }`}
+              >
+                {opt}
+              </button>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function SimpleFieldCard({
   field,
   value,
   onChange,
   showError,
 }: {
-  field: QuestionnaireField;
+  field: SimpleField;
   value: string | string[] | undefined;
   onChange: (v: string | string[]) => void;
   showError: boolean;
 }) {
-  const fieldClass =
-    "w-full rounded-xl border border-white/12 bg-white/[0.04] px-4 py-3.5 text-right text-foreground outline-none transition-colors placeholder:text-faint focus:border-violet focus:bg-white/[0.06]";
-
   return (
     <div className="card p-5 sm:p-6">
-      <div className="flex items-start justify-between gap-2">
-        <h3 className="text-base font-bold leading-6 text-foreground sm:text-lg">
-          {field.title}
-          {field.required && <span className="mr-1 text-[#ff4d4f]"> *</span>}
-        </h3>
-      </div>
-      {field.description && (
-        <p className="mt-1 text-sm text-muted">{field.description}</p>
-      )}
-
-      <div className="mt-4">
-        {field.type === "short" && (
-          <input
-            type="text"
-            value={(value as string) || ""}
-            onChange={(e) => onChange(e.target.value)}
-            className={fieldClass}
-          />
-        )}
-
-        {field.type === "paragraph" && (
-          <textarea
-            rows={4}
-            value={(value as string) || ""}
-            onChange={(e) => onChange(e.target.value)}
-            className={`${fieldClass} resize-none`}
-          />
-        )}
-
-        {field.type === "radio" && (
-          <div className="flex flex-col gap-2">
-            {field.options?.map((opt) => {
-              const selected = value === opt;
-              return (
-                <button
-                  key={opt}
-                  type="button"
-                  onClick={() => onChange(opt)}
-                  className={`rounded-xl border px-4 py-3 text-right text-sm font-medium transition-colors sm:text-base ${
-                    selected
-                      ? "border-violet bg-violet/15 text-foreground"
-                      : "border-white/12 bg-white/[0.03] text-muted hover:border-violet/40 hover:text-foreground"
-                  }`}
-                >
-                  {opt}
-                </button>
-              );
-            })}
-          </div>
-        )}
-
-        {field.type === "checkbox" && (
-          <div className="flex flex-col gap-2">
-            {field.options?.map((opt) => {
-              const arr = (value as string[]) || [];
-              const selected = arr.includes(opt);
-              return (
-                <button
-                  key={opt}
-                  type="button"
-                  onClick={() =>
-                    onChange(selected ? arr.filter((o) => o !== opt) : [...arr, opt])
-                  }
-                  className={`flex items-center justify-between gap-2 rounded-xl border px-4 py-3 text-right text-sm font-medium transition-colors sm:text-base ${
-                    selected
-                      ? "border-violet bg-violet/15 text-foreground"
-                      : "border-white/12 bg-white/[0.03] text-muted hover:border-violet/40 hover:text-foreground"
-                  }`}
-                >
-                  {opt}
-                  <span
-                    className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-md border ${
-                      selected ? "border-violet bg-violet text-white" : "border-white/20"
-                    }`}
-                  >
-                    {selected && <Check className="h-3.5 w-3.5" strokeWidth={3} />}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-        )}
-
-        {field.type === "scale" && (
-          <div dir="ltr" className="flex items-center justify-center gap-3 py-2">
-            {field.options?.map((opt) => {
-              const selected = value === opt;
-              return (
-                <button
-                  key={opt}
-                  type="button"
-                  onClick={() => onChange(opt)}
-                  className={`flex h-12 w-12 items-center justify-center rounded-full border text-base font-bold transition-colors ${
-                    selected
-                      ? "border-violet bg-violet text-white"
-                      : "border-white/15 bg-white/[0.03] text-muted hover:border-violet/50"
-                  }`}
-                >
-                  {opt}
-                </button>
-              );
-            })}
-          </div>
-        )}
-      </div>
-
+      <FieldLabel field={field} />
+      <SimpleInput field={field} value={value} onChange={onChange} />
       {showError && (
         <p className="mt-2 text-sm text-[#ff4d4f]">שדה חובה — נא למלא לפני שממשיכים.</p>
       )}
@@ -143,10 +166,94 @@ function Field({
   );
 }
 
+function RepeaterCard({
+  field,
+  rows,
+  onChange,
+  isRowFieldMissing,
+}: {
+  field: RepeaterField;
+  rows: RowAnswers[];
+  onChange: (rows: RowAnswers[]) => void;
+  isRowFieldMissing: (rowIdx: number, entryId: number) => boolean;
+}) {
+  const safeRows = rows.length > 0 ? rows : [{}];
+
+  function updateRow(rowIdx: number, entryId: number, value: string | string[]) {
+    const next = safeRows.map((row, i) => (i === rowIdx ? { ...row, [entryId]: value } : row));
+    onChange(next);
+  }
+
+  function addRow() {
+    onChange([...safeRows, {}]);
+  }
+
+  function removeRow(rowIdx: number) {
+    onChange(safeRows.filter((_, i) => i !== rowIdx));
+  }
+
+  return (
+    <div className="card p-5 sm:p-6">
+      <h3 className="text-base font-bold leading-6 text-foreground sm:text-lg">
+        {field.title}
+        {field.required && <span className="mr-1 text-[#ff4d4f]"> *</span>}
+      </h3>
+      {field.description && <p className="mt-1 text-sm text-muted">{field.description}</p>}
+
+      <div className="mt-4 flex flex-col gap-4">
+        {safeRows.map((row, rowIdx) => (
+          <div
+            key={rowIdx}
+            className="relative rounded-xl border border-violet/20 bg-white/[0.02] p-4 sm:p-5"
+          >
+            {safeRows.length > 1 && (
+              <button
+                type="button"
+                onClick={() => removeRow(rowIdx)}
+                aria-label="הסרת מסלול"
+                className="absolute left-3 top-3 flex h-7 w-7 items-center justify-center rounded-full text-faint transition-colors hover:bg-white/10 hover:text-foreground"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            )}
+            <p className="mb-3 text-sm font-semibold text-violet-light">מסלול {rowIdx + 1}</p>
+            <div className="flex flex-col gap-4">
+              {field.fields.map((sub) => (
+                <div key={sub.entryId}>
+                  <FieldLabel field={sub} />
+                  <SimpleInput
+                    field={sub}
+                    value={row[sub.entryId]}
+                    onChange={(v) => updateRow(rowIdx, sub.entryId, v)}
+                  />
+                  {isRowFieldMissing(rowIdx, sub.entryId) && (
+                    <p className="mt-2 text-sm text-[#ff4d4f]">
+                      שדה חובה — נא למלא לפני שממשיכים.
+                    </p>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <button
+        type="button"
+        onClick={addRow}
+        className="mt-4 inline-flex items-center gap-2 rounded-full border border-dashed border-violet/40 px-4 py-2.5 text-sm font-semibold text-violet-light transition-colors hover:border-violet hover:bg-violet/10"
+      >
+        <Plus className="h-4 w-4" />
+        {field.addLabel}
+      </button>
+    </div>
+  );
+}
+
 export default function QuestionnaireForm({ questionnaire, title, subtitle }: Props) {
   const [stage, setStage] = useState<Stage>("intro");
   const [answers, setAnswers] = useState<QuestionnaireAnswers>({});
-  const [errorFields, setErrorFields] = useState<Set<number>>(new Set());
+  const [errorKeys, setErrorKeys] = useState<Set<string>>(new Set());
   const [pending, startTransition] = useTransition();
 
   const pages = questionnaire.pages;
@@ -159,28 +266,48 @@ export default function QuestionnaireForm({ questionnaire, title, subtitle }: Pr
     return Math.round(((pageIndex + 1) / pages.length) * 100);
   }, [stage, pageIndex, pages.length]);
 
-  function setAnswer(entryId: number, value: string | string[]) {
+  function setAnswer(entryId: number, value: string | string[] | RowAnswers[]) {
     setAnswers((prev) => ({ ...prev, [entryId]: value }));
-    setErrorFields((prev) => {
-      if (!prev.has(entryId)) return prev;
-      const next = new Set(prev);
-      next.delete(entryId);
+    setErrorKeys((prev) => {
+      if (prev.size === 0) return prev;
+      const next = new Set([...prev].filter((k) => !k.startsWith(`${entryId}:`) && k !== String(entryId)));
       return next;
     });
   }
 
+  function isSimpleEmpty(v: string | string[] | undefined) {
+    return Array.isArray(v) ? v.length === 0 : !v || !String(v).trim();
+  }
+
   function validateCurrentPage(): boolean {
     if (!currentPage) return true;
-    const missing = new Set<number>();
+    const missing = new Set<string>();
+
     for (const f of currentPage.questions) {
+      if (f.type === "repeater") {
+        const rows = (answers[f.entryId] as RowAnswers[] | undefined) ?? [{}];
+        if (!f.required) continue;
+        rows.forEach((row, rowIdx) => {
+          for (const sub of f.fields) {
+            if (!sub.required) continue;
+            if (isSimpleEmpty(row[sub.entryId])) {
+              missing.add(`${f.entryId}:${rowIdx}:${sub.entryId}`);
+            }
+          }
+        });
+        continue;
+      }
       if (!f.required) continue;
-      const v = answers[f.entryId];
-      const empty = Array.isArray(v) ? v.length === 0 : !v || !String(v).trim();
-      if (empty) missing.add(f.entryId);
+      if (isSimpleEmpty(answers[f.entryId] as string | string[] | undefined)) {
+        missing.add(String(f.entryId));
+      }
     }
-    setErrorFields(missing);
+
+    setErrorKeys(missing);
     if (missing.size > 0) {
-      document.getElementById(`q-${[...missing][0]}`)?.scrollIntoView({
+      const firstKey = [...missing][0];
+      const firstEntryId = firstKey.split(":")[0];
+      document.getElementById(`q-${firstEntryId}`)?.scrollIntoView({
         behavior: "smooth",
         block: "center",
       });
@@ -263,16 +390,29 @@ export default function QuestionnaireForm({ questionnaire, title, subtitle }: Pr
       {typeof stage === "number" && currentPage && (
         <div>
           <div className="flex flex-col gap-4">
-            {currentPage.questions.map((f) => (
-              <div key={f.entryId} id={`q-${f.entryId}`}>
-                <Field
-                  field={f}
-                  value={answers[f.entryId]}
-                  onChange={(v) => setAnswer(f.entryId, v)}
-                  showError={errorFields.has(f.entryId)}
-                />
-              </div>
-            ))}
+            {currentPage.questions.map((f: QuestionnaireField) =>
+              f.type === "repeater" ? (
+                <div key={f.entryId} id={`q-${f.entryId}`}>
+                  <RepeaterCard
+                    field={f}
+                    rows={(answers[f.entryId] as RowAnswers[] | undefined) ?? [{}]}
+                    onChange={(rows) => setAnswer(f.entryId, rows)}
+                    isRowFieldMissing={(rowIdx, subId) =>
+                      errorKeys.has(`${f.entryId}:${rowIdx}:${subId}`)
+                    }
+                  />
+                </div>
+              ) : (
+                <div key={f.entryId} id={`q-${f.entryId}`}>
+                  <SimpleFieldCard
+                    field={f}
+                    value={answers[f.entryId] as string | string[] | undefined}
+                    onChange={(v) => setAnswer(f.entryId, v)}
+                    showError={errorKeys.has(String(f.entryId))}
+                  />
+                </div>
+              ),
+            )}
           </div>
 
           <div className="mt-8 flex items-center justify-between gap-3">

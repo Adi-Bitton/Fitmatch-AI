@@ -3,7 +3,8 @@
 import { sql } from "@vercel/postgres";
 import type { Questionnaire } from "./questionnaires";
 
-export type QuestionnaireAnswers = Record<number, string | string[]>;
+export type RowAnswers = Record<number, string | string[]>;
+export type QuestionnaireAnswers = Record<number, string | string[] | RowAnswers[]>;
 
 export type SubmitResult = { ok: true } | { ok: false; error: string };
 
@@ -39,11 +40,32 @@ export async function submitQuestionnaire(
     // Build a human-readable snapshot keyed by the actual question text,
     // in form order, rather than raw Google entry IDs — this is what a
     // non-technical reader (or a future admin view) will actually see.
-    const readable: Record<string, string | string[]> = {};
+    const readable: Record<string, unknown> = {};
     for (const page of questionnaire.pages) {
       for (const field of page.questions) {
         const value = answers[field.entryId];
         if (value === undefined) continue;
+
+        if (field.type === "repeater") {
+          const rows = (value as RowAnswers[]).filter((row) =>
+            field.fields.some((sub) => {
+              const v = row[sub.entryId];
+              return Array.isArray(v) ? v.length > 0 : !!v && !!String(v).trim();
+            }),
+          );
+          if (rows.length === 0) continue;
+          readable[field.title] = rows.map((row) => {
+            const rowOut: Record<string, string | string[]> = {};
+            for (const sub of field.fields) {
+              const v = row[sub.entryId];
+              const empty = Array.isArray(v) ? v.length === 0 : !v || !String(v).trim();
+              if (!empty) rowOut[sub.title] = v;
+            }
+            return rowOut;
+          });
+          continue;
+        }
+
         const empty = Array.isArray(value) ? value.length === 0 : !String(value).trim();
         if (empty) continue;
         readable[field.title] = value;

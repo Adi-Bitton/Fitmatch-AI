@@ -10,7 +10,7 @@ import traineePersonal from "./questionnaire-data/trainee-personal.json";
 
 export type FieldType = "short" | "paragraph" | "radio" | "checkbox" | "scale";
 
-export type QuestionnaireField = {
+export type SimpleField = {
   entryId: number;
   title: string;
   description?: string | null;
@@ -18,6 +18,21 @@ export type QuestionnaireField = {
   options?: string[];
   required: boolean;
 };
+
+// A repeatable group of fields (e.g. one "plan" = included / price / ...),
+// with a "+ add another" control in the UI. Hand-authored only — Google
+// Forms has no equivalent, so this never comes from the extracted data.
+export type RepeaterField = {
+  entryId: number;
+  title: string;
+  description?: string | null;
+  type: "repeater";
+  required: boolean;
+  addLabel: string;
+  fields: SimpleField[];
+};
+
+export type QuestionnaireField = SimpleField | RepeaterField;
 
 export type QuestionnairePage = {
   title?: string | null;
@@ -31,7 +46,10 @@ export type Questionnaire = {
   role: Role;
   discipline: string;
   description?: string | null;
-  formAction: string;
+  // Legacy leftover from the earlier Google-Forms-submission approach;
+  // unused now that answers go into our own database. Hand-authored
+  // questionnaires can omit it.
+  formAction?: string;
   pages: QuestionnairePage[];
 };
 
