@@ -112,7 +112,8 @@
         {
           "entryId": 18,
           "title": "איך מתבצע המעקב אחרי המתאמנים?",
-          "type": "paragraph",
+          "type": "checkbox",
+          "options": ["TrainingPeaks", "Final Surge", "Garmin", "Excel", "WhatsApp"],
           "required": true
         }
       ]
